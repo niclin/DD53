@@ -1,6 +1,8 @@
 source 'https://rubygems.org'
 
-
+gem "simple_form"
+gem "carrierwave"
+gem "mini_magick"
 gem 'awesome_rails_console'
 gem 'devise'
 gem 'cocoon'

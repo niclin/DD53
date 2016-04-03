@@ -1,6 +1,50 @@
-<ul>
-  <% @menus.each do |menu| %>
-
-    <li> <%= link_to(menu.title, admin_menu_path(menu)) %> </li>
-  <% end %>
-</ul>
+<h2> Menu List </h2>
+<div class="pull-right" style="padding-bottom: 20px;">
+  <%= link_to("新增菜單", new_admin_menu_path, class: "btn btn-primary btn-sm") %>
+</div>
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th width="220">Menu Pic</th>
+      <th>Name</th>
+      <th>Address</th>
+      <th>Phone</th>
+      <th width="100"> Options</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @menus.each do |menu| %>
+      <tr>
+        <td>
+          <%= menu.id %>
+        </td>
+        <td>
+          <%= link_to menu_path(menu) do %>
+            <% if menu.photo.present? %>
+              <%= image_tag(menu.photo.image.thumb.url, class: "thumbnail") %>
+            <% else %>
+              <%= image_tag("http://placehold.it/200x200&text=No Pic", class: "thumbnail") %>
+            <% end %>
+          <% end %>
+        </td>
+        <td>
+          <%= menu.title %>
+        </td>
+        <td>
+          <%= menu.phone %>
+        </td>
+        <td>
+          <%= menu.address %>
+        </td>
+        <td>
+          <%= link_to("Edit", edit_admin_menu_path(menu), class: "btn btn-primary") %>
+        <br>
+        </br>
+          <%= link_to("Delete", admin_menu_path(menu), class: "btn btn-danger",
+                          method: :delete, data: { confirm: "Are you sure?" } )%>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

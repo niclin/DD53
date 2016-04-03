@@ -8,6 +8,7 @@ class Admin::MenusController < ApplicationController
 
   def new
     @menu = Menu.new
+    @photo = @menu.build_photo
   end
 
   def create
@@ -20,9 +21,34 @@ class Admin::MenusController < ApplicationController
     end
   end
 
+  def edit
+    @menu = Menu.find(params[:id])
+    if @menu.photo.present?
+      @photo = @menu.photo
+    else
+      @photo = @menu.build_photo
+    end
+  end
+
+  def update
+    @menu = Menu.find(params[:id])
+
+    if @menu.update(menu_params)
+      redirect_to menus_path
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    @menu = Menu.find(params[:id])
+    @menu.destroy
+    redirect_to admin_menus_path, alert: "菜單已刪除"
+  end
+
   private
 
   def menu_params
-    params.require(:menu).permit(:title, :phone, :address, :delivery)
+    params.require(:menu).permit(:title, :phone, :address, :delivery, photo_attributes: [:image, :id])
   end
 end

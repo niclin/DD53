@@ -3,4 +3,7 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :menus
   end
+  resources :menus
+
+  root "menus#index"
 end
