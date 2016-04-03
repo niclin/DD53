@@ -20,7 +20,7 @@
           <%= menu.id %>
         </td>
         <td>
-          <%= link_to menu_path(menu) do %>
+          <%= link_to admin_menu_path(menu) do %>
             <% if menu.photo.present? %>
               <%= image_tag(menu.photo.image.thumb.url, class: "thumbnail") %>
             <% else %>

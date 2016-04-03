@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  menu_id: 1
+  name: MyString
+  price: 1
+
+two:
+  menu_id: 1
+  name: MyString
+  price: 1

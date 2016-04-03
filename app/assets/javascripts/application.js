@@ -13,5 +13,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap/dropdown
+//= require cocoon
 //= require turbolinks
 //= require_tree .

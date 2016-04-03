@@ -1,4 +1,6 @@
 class Admin::MenusController < ApplicationController
+  layout "admin"
+
   before_action :authenticate_user!
   before_action :admin_required
 
@@ -30,11 +32,15 @@ class Admin::MenusController < ApplicationController
     end
   end
 
+  def show
+    @menu = Menu.find(params[:id])
+  end
+
   def update
     @menu = Menu.find(params[:id])
 
     if @menu.update(menu_params)
-      redirect_to menus_path
+      redirect_to admin_menus_path
     else
       render :edit
     end
@@ -49,6 +55,6 @@ class Admin::MenusController < ApplicationController
   private
 
   def menu_params
-    params.require(:menu).permit(:title, :phone, :address, :delivery, photo_attributes: [:image, :id])
+    params.require(:menu).permit(:title, :phone, :address, :delivery, photo_attributes: [:image, :id], foods_attributes: [:id, :name, :price, :_destroy])
   end
 end

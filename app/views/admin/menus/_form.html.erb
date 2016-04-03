@@ -1,0 +1,25 @@
+<div class="col-md-4 col-md-offset-4">
+  <hr>
+  <%= simple_form_for [:admin, @menu] do |f| %>
+    <div class="form-group">
+      <%= f.input :title, input_html: { class: "form-control"} %>
+      <%= f.input :phone, input_html: { class: "form-control"} %>
+      <%= f.input :address, input_html: { class: "form-control"} %>
+      <%= f.input :introduction, input_html: { class: "form-control"} %>
+      <%= f.input :delivery, :label => '是否可以外送？', :value => true %>
+    </div>
+   <div class="form-group">
+   <%= f.simple_fields_for :photo do |c| %>
+     <%= c.input :image , as: :file %>
+   <% end %>
+   <%= f.simple_fields_for :foods do |food| %>
+      <%= render 'food_fields', f: food %>
+   <% end %>
+  <div class="links">
+    <%= link_to_add_association 'Add Foods', f, :foods, class: "btn btn-default add-button" %>
+  </div>
+   <%= f.submit "Submit", class: "btn btn-primary", data: { disable_with: "Submitting..." } %>
+    <% end %>
+   </div>
+</div>
+
