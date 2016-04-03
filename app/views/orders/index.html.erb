@@ -1,0 +1,30 @@
+<% if @orders.blank? %>
+  <h1 class="text-center">今天尚未決定要吃什麼....請等中午時段！</h1>
+  <% else %>
+<h2>使用者列表</h2>
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>日期</th>
+      <th>店家</th>
+      <th>點餐</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @orders.each do |order| %>
+      <tr>
+        <td>
+          <%= order.date %>
+        </td>
+        <td>
+          <%= order.menu_name %>
+        </td>
+        <td>點餐
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<% end %>
+
