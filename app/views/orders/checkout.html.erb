@@ -42,6 +42,7 @@
         <tr>
           <th>商品資訊</th>
           <th>單價</th>
+          <th>操作選項 </th>
         </tr>
       </thead>
       <tbody>
@@ -54,6 +55,11 @@
             <td>
               <%= food.price %>
             </td>
+             <td>
+             <%= link_to item_path(food), method: :delete do %>
+               刪除
+             <% end %>
+           </td>
           </tr>
         <% end %>
 
@@ -65,6 +71,10 @@
     <div class="total clearfix">
       <span class="pull-right">
          <span> 總計 <%= render_cart_total_price(current_cart) %> NTD  </span>
+           <%= link_to("清空購物車", clean_carts_path ,
+              method: :delete , class: "pull-right",
+              style: "text-decoration: underline;",
+              data: { confirm: "你確定要清空整個購物車嗎？"} )%>
       </span>
     </div>
 

@@ -28,8 +28,8 @@ class OrdersController < ApplicationController
     @food = Food.find(params[:id])
 
     if !current_cart.items.include?(@food)
-      current_cart.add_product_to_cart(@food)
-      flash[:notice] = "你已成功將 #{@food.title} 加入購物車"
+      current_cart.add_food_to_cart(@food)
+      flash[:notice] = "你已成功將 #{@food.name} 加入購物車"
     else
       flash[:warning] = "你的購物車內已有此物品"
     end
