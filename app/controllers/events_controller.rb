@@ -1,0 +1,39 @@
+class EventsController < ApplicationController
+
+  def index
+    @events = Event.where(date: Date.today, status: true)
+    @menus = Menu.all
+  end
+
+  def ordering
+    @event = Event.find(params[:id])
+    @menu = Menu.find(@event.menu_id)
+    session[:event_id] = @event.id
+  end
+
+  def join_event
+    @event = Event.find(params[:id])
+    @menu = Menu.find(@event.menu_id)
+
+    if !current_user.is_member_of?(@event)
+      current_user.join!(@event)
+      flash[:notice] = "加入本討論版成功！"
+    else
+      flash[:warning] = "你已經是本討論版成員了！"
+    end
+    redirect_to ordering_event_path(@event)
+  end
+
+  def add_to_cart
+    @food = Food.find(params[:food_id])
+
+    if !current_cart.items.include?(@food)
+      current_cart.add_food_to_cart(@food)
+      flash[:notice] = "你已成功將 #{@food.name} 加入購物車"
+    else
+      flash[:warning] = "你的購物車內已有此物品"
+    end
+
+    redirect_to :back
+  end
+end

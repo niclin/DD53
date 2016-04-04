@@ -6,9 +6,9 @@ class User < ActiveRecord::Base
 
   has_many :orders
   has_many :menus
-
-  has_many :order_users
-  has_many :participated_orders, through: :order_users, source: :order
+  has_many :events
+  has_many :event_users
+  has_many :participated_events, through: :event_users, source: :event
 
   def admin?
     is_admin
@@ -22,11 +22,11 @@ class User < ActiveRecord::Base
     self.update_columns(is_admin: false)
   end
 
-  def join!(order)
-    participated_orders << order
+  def join!(event)
+    participated_events << event
   end
 
-  def is_member_of?(order)
-    participated_orders.include?(order)
+  def is_member_of?(event)
+    participated_events.include?(event)
   end
 end
