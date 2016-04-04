@@ -14,7 +14,12 @@ Rails.application.routes.draw do
   end
 
   resources :menus
-  resources :orders
+  resources :orders do
+    match 'checkout', to: 'orders#checkout', as: :checkout, via: [:get]
+    member do
+      post :join_order
+    end
+  end
 
   root "menus#index"
 end

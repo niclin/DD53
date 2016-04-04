@@ -20,7 +20,12 @@
         <td>
           <%= order.menu_name %>
         </td>
-        <td>點餐
+        <td>
+          <% if !current_user.is_member_of?(order) %>
+            <%= link_to '加入點餐', join_order_order_path(order), method: :post %>
+          <% else %>
+            <%= link_to '點餐', order_checkout_path(order) %>
+          <% end %>
         </td>
       </tr>
     <% end %>

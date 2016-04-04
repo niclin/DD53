@@ -1,0 +1,33 @@
+<div class="row">
+  <div>
+    <h2> 今日所吃 </h2>
+      <% if @menu.photo.present? %>
+        <%= image_tag(@menu.photo.image.thumb.url) %>
+      <% else %>
+        <%= image_tag("http://placehold.it/400x400&text=No Pic", class: "thumbnail") %>
+      <% end %>
+  </div>
+   <div class="col-xs-6">
+    <h2> 菜單總覽 </h2>
+  <table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>食物</th>
+      <th>價錢</th>
+      <th>數量</th>
+    </tr>
+  </thead>
+  <tbody>
+        <tr>
+          <% @menu.foods.each do |food| %>
+           <td><%= food.name %></td>
+           <td>NT$ <%= food.price %> 元</td>
+           <td>
+            <%= link_to "＋", :class => "btn btn-primary btn-default" %>
+            <%= link_to "—",  :class => "btn btn-primary btn-danger" %></td>
+          </ul>
+          </td>
+        </tr>
+       <% end %>
+  </table>
+</div>
