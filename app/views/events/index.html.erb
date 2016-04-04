@@ -1,4 +1,4 @@
-<% if @orders.blank? %>
+<% if @events.blank? %>
   <h1 class="text-center">今天尚未決定要吃什麼....請等中午時段！</h1>
   <% else %>
 <h2>使用者列表</h2>
@@ -12,19 +12,19 @@
     </tr>
   </thead>
   <tbody>
-    <% @orders.each do |order| %>
+    <% @events.each do |event| %>
       <tr>
         <td>
-          <%= order.date %>
+          <%= event.date %>
         </td>
         <td>
-          <%= order.menu_name %>
+          <%= event.menu_name %>
         </td>
         <td>
-          <% if !current_user.is_member_of?(order) %>
-            <%= link_to '加入點餐', join_order_order_path(order), method: :post %>
+          <% if !current_user.is_member_of?(event) %>
+            <%= link_to '加入點餐', join_event_event_path(event), method: :post %>
           <% else %>
-            <%= link_to '點餐', order_checkout_path(order) %>
+            <%= link_to '點餐', ordering_event_path(event)%>
           <% end %>
         </td>
       </tr>

@@ -23,7 +23,7 @@
            <td><%= food.name %></td>
            <td>NT$ <%= food.price %> 元</td>
            <td>
-            <%= link_to("點餐", add_to_cart_order_path(food), method: :post,
+            <%= link_to("點餐", event_add_to_cart_path(@event,food.id), method: :post,
                  class: "btn btn-danger") %></td>
           </ul>
           </td>
@@ -86,7 +86,6 @@
               style: "text-decoration: underline;",
               data: { confirm: "你確定要清空整個購物車嗎？"} )%>
       </span>
-
       <%= link_to("確認結賬", checkout_carts_path, method: :post, class: "btn btn-lg btn-danger pull-right") %>
     </div>
 

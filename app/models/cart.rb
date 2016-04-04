@@ -1,4 +1,5 @@
 class Cart < ActiveRecord::Base
+  has_many :events
   has_many :cart_items, dependent: :destroy
   has_many :items, through: :cart_items, source: :food
 
@@ -11,8 +12,8 @@ class Cart < ActiveRecord::Base
   def total_price
     sum = 0
 
-    items.each do |item|
-      sum = sum + item.price
+    cart_items.each do |cart_item|
+      sum = sum + (cart_item.food.price * cart_item.quantity)
     end
 
     sum
@@ -21,4 +22,9 @@ class Cart < ActiveRecord::Base
   def clean!
     cart_items.destroy_all
   end
+
+  def find_cart_item(food)
+    cart_items.find_by(food_id: food)
+  end
+
 end

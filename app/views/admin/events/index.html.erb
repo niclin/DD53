@@ -1,0 +1,29 @@
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>餐廳名稱</th>
+      <th>電話</th>
+      <th>外送狀態</th>
+      <th>選擇</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @menus.each do |menu| %>
+    <tr>
+      <td> <%= menu.id %> </td>
+            <td> <%= menu.title %></td>
+      <td> <%= menu.phone %></td>
+      <td>
+        <% if menu.delivery? %>
+           接受外送
+         <% else %>
+           不可以外送
+        <% end %>
+      </td>
+      <td><%= link_to("選擇", admin_select_path(menu), :method => :create , class: "btn btn-danger", data: { confirm: "確定是否吃「#{menu.title}」？選擇後不能刪除。" } ) %>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

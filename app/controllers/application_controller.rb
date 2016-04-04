@@ -18,13 +18,14 @@ class ApplicationController < ActionController::Base
   private
 
   def find_cart
-    cart = Cart.find_by(id: session[:cart_id])
+    cart = Cart.find_by(id: session[:cart_id], event_id: session[:event_id])
 
     unless cart.present?
-      cart = Cart.create
+      cart = Cart.create(event_id: session[:event_id])
     end
 
     session[:cart_id] = cart.id
+    session[:event_id] = cart.event_id
     cart
   end
 end

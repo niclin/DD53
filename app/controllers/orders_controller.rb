@@ -1,40 +1,31 @@
 class OrdersController < ApplicationController
-  def index
-    @orders = Order.where(date: Date.today, status: true)
-    @menus = Menu.all
+  before_action :authenticate_user!
+
+  def create
+    @order = current_user.orders.build(order_params)
+
+    if @order.save
+      @order.event_id = session[:event_id]
+      @order.build_item_cache_from_cart(current_cart)
+      @order.calculate_total!(current_cart)
+      current_cart.clean!
+      session.delete(:event_id)
+      redirect_to order_path(@order)
+    else
+      render "carts/checkout"
+    end
   end
 
-  def checkout
-    @order = Order.find(params[:order_id])
-    @menu = Menu.find(@order.menu_id)
-    @order_items = OrderItem.where(order_user_id: current_user.id)
-  end
-
-  def join_order
+  def show
     @order = Order.find(params[:id])
-    @menu = Menu.find(@order.menu_id)
-
-    if !current_user.is_member_of?(@order)
-      current_user.join!(@order)
-      flash[:notice] = "加入本討論版成功！"
-    else
-      flash[:warning] = "你已經是本討論版成員了！"
-    end
-
-    redirect_to order_checkout_path(@order)
+    @order_info = @order.info
+    @order_items = @order.items
   end
 
-  def add_to_cart
-    @food = Food.find(params[:id])
+  private
 
-    if !current_cart.items.include?(@food)
-      current_cart.add_food_to_cart(@food)
-      flash[:notice] = "你已成功將 #{@food.name} 加入購物車"
-    else
-      flash[:warning] = "你的購物車內已有此物品"
-    end
-
-    redirect_to :back
+  def order_params
+    params.require(:order).permit(info_attributes: [:user_name,
+                                                    :note] )
   end
-
 end

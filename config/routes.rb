@@ -3,32 +3,34 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :menus
-    resources :orders
+    resources :events
     resources :users do
       member do
         post :to_admin
         post :to_normal
       end
     end
-    match 'order/:menu_id/select', to: 'orders#order_select', as: :select, via: [:get, :post]
+    match 'event/:menu_id/select', to: 'events#select_menu', as: :select, via: [:get, :post]
   end
 
   resources :carts do
     collection do
+      post :checkout
       delete :clean
     end
   end
 
   resources :items, controller: "cart_items"
-
-  resources :menus
-  resources :orders do
-    match 'checkout', to: 'orders#checkout', as: :checkout, via: [:get]
+  resources :events do
     member do
-      post :join_order
-      post :add_to_cart
+      post :join_event
+      get :ordering
     end
+    match 'food/:food_id/add_to_cart', to: 'events#add_to_cart', as: :add_to_cart, via: [:get, :post]
   end
 
-  root "menus#index"
+
+  resources :menus
+  resources :orders
+  root "events#index"
 end
