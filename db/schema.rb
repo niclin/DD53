@@ -11,7 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160403162236) do
+ActiveRecord::Schema.define(version: 20160404131045) do
+
+  create_table "cart_items", force: :cascade do |t|
+    t.integer  "cart_id"
+    t.integer  "food_id"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.integer  "quantity",   default: 1
+  end
+
+  create_table "carts", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "foods", force: :cascade do |t|
     t.integer  "menu_id"
@@ -29,6 +42,42 @@ ActiveRecord::Schema.define(version: 20160403162236) do
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
     t.text     "introduction"
+  end
+
+  create_table "order_infos", force: :cascade do |t|
+    t.integer  "order_user_id"
+    t.string   "user_name"
+    t.text     "note"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  create_table "order_items", force: :cascade do |t|
+    t.integer  "order_user_id"
+    t.string   "food_name"
+    t.integer  "price"
+    t.integer  "quantity"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  create_table "order_users", force: :cascade do |t|
+    t.integer  "order_id"
+    t.integer  "user_id"
+    t.integer  "total"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "menu_id"
+    t.string   "menu_name"
+    t.boolean  "status"
+    t.integer  "total",      default: 0
+    t.date     "date"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
   create_table "photos", force: :cascade do |t|

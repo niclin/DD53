@@ -1,4 +1,6 @@
 source 'https://rubygems.org'
+# routes good
+gem 'sextant'
 
 gem "simple_form"
 gem "carrierwave"

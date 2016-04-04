@@ -3,9 +3,32 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :menus
+    resources :orders
+    resources :users do
+      member do
+        post :to_admin
+        post :to_normal
+      end
+    end
+    match 'order/:menu_id/select', to: 'orders#order_select', as: :select, via: [:get, :post]
   end
 
+  resources :carts do
+    collection do
+      delete :clean
+    end
+  end
+
+  resources :items, controller: "cart_items"
+
   resources :menus
+  resources :orders do
+    match 'checkout', to: 'orders#checkout', as: :checkout, via: [:get]
+    member do
+      post :join_order
+      post :add_to_cart
+    end
+  end
 
   root "menus#index"
 end

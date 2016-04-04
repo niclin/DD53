@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 1
+  menu_id: 1
+  menu_name: MyString
+  status: false
+  total: 1
+  date: 2016-04-04
+
+two:
+  user_id: 1
+  menu_id: 1
+  menu_name: MyString
+  status: false
+  total: 1
+  date: 2016-04-04
