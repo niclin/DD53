@@ -13,11 +13,13 @@ Rails.application.routes.draw do
     match 'order/:menu_id/select', to: 'orders#order_select', as: :select, via: [:get, :post]
   end
 
+  resources :carts
   resources :menus
   resources :orders do
     match 'checkout', to: 'orders#checkout', as: :checkout, via: [:get]
     member do
       post :join_order
+      post :add_to_cart
     end
   end
 

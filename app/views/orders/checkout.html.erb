@@ -23,11 +23,59 @@
            <td><%= food.name %></td>
            <td>NT$ <%= food.price %> 元</td>
            <td>
-            <%= link_to "＋", :class => "btn btn-primary btn-default" %>
-            <%= link_to "—",  :class => "btn btn-primary btn-danger" %></td>
+            <%= link_to("點餐", add_to_cart_order_path(food), method: :post,
+                 class: "btn btn-danger") %></td>
           </ul>
           </td>
         </tr>
        <% end %>
   </table>
 </div>
+
+<div class="row">
+  <div class="col-md-12">
+
+    <h2> 您的預定 </h2>
+
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>商品資訊</th>
+          <th>單價</th>
+        </tr>
+      </thead>
+      <tbody>
+
+        <% current_cart.items.each do |food| %>
+          <tr>
+            <td>
+              <%= food.name%>
+            </td>
+            <td>
+              <%= food.price %>
+            </td>
+          </tr>
+        <% end %>
+
+      </tbody>
+    </table>
+
+    <br>
+
+    <div class="total clearfix">
+      <span class="pull-right">
+         <span> 總計 <%= render_cart_total_price(current_cart) %> NTD  </span>
+      </span>
+    </div>
+
+    <hr>
+
+    <div class="checkout clearfix">
+
+    </div>
+  </div>
+</div>
+
+
+
+

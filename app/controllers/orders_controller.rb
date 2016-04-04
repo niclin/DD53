@@ -7,7 +7,7 @@ class OrdersController < ApplicationController
   def checkout
     @order = Order.find(params[:order_id])
     @menu = Menu.find(@order.menu_id)
-    @order_items = OrderInfo.where(user_id: current_user.id, order_id: @order)
+    @order_items = OrderItem.where(order_user_id: current_user.id)
   end
 
   def join_order
@@ -22,6 +22,19 @@ class OrdersController < ApplicationController
     end
 
     redirect_to order_checkout_path(@order)
+  end
+
+  def add_to_cart
+    @food = Food.find(params[:id])
+
+    if !current_cart.items.include?(@food)
+      current_cart.add_product_to_cart(@food)
+      flash[:notice] = "你已成功將 #{@food.title} 加入購物車"
+    else
+      flash[:warning] = "你的購物車內已有此物品"
+    end
+
+    redirect_to :back
   end
 
 end
