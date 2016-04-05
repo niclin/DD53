@@ -7,4 +7,11 @@ class Admin::OrdersController < ApplicationController
   def index
     @orders = Order.order("id DESC")
   end
+
+  def show
+    @order = Order.find(params[:id])
+    @order_info = @order.info
+    @order_items = @order.items
+    @event = @order.event
+  end
 end

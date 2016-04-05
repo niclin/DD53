@@ -15,7 +15,8 @@ Rails.application.routes.draw do
         post :to_normal
       end
     end
-    match 'event/:menu_id/select', to: 'events#select_menu', as: :select, via: [:get, :post]
+    match 'event/select', to: 'events#select', as: :select, via: [:get, :post]
+    match 'event/select/:menu_id', to: 'events#select_menu', as: :select_menu, via: [:get, :post]
   end
 
   resources :carts do
