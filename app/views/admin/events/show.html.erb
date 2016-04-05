@@ -1,3 +1,5 @@
+<h2><%= @event.menu_name %></h2>
+
 <table class="table table-bordered">
   <thead>
     <tr>
@@ -8,15 +10,14 @@
     </tr>
   </thead>
   <tbody>
-    <% @members.each do |member| %>
-      <% @orders.each do |order| %>
+    <% @orders.each do |order| %>
       <tr>
         <td>
-          <%= member.email %>
+          <%= order.user.email %>
         </td>
         <td>
           <% order.items.each do |item| %>
-          <%= item.food_name %> 數量 <%= item.quantity %> 份
+             <%= item.food_name %> / <%= item.quantity %> 份
           <br>
           <% end %>
         </td>
@@ -26,8 +27,8 @@
         <td>
           <%= order.info.note %>
         </td>
-        <% end %>
       </tr>
     <% end %>
   </tbody>
 </table>
+  共計 <%= @event.total_order_price(@event) %>NT

@@ -39,10 +39,10 @@ ActiveRecord::Schema.define(version: 20160404174538) do
     t.integer  "menu_id"
     t.string   "menu_name"
     t.boolean  "status"
-    t.integer  "total"
+    t.integer  "total",      default: 0
     t.date     "date"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
   create_table "foods", force: :cascade do |t|
