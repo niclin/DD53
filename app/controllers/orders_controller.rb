@@ -20,6 +20,7 @@ class OrdersController < ApplicationController
     @order = Order.find(params[:id])
     @order_info = @order.info
     @order_items = @order.items
+    @event = @order.event
   end
 
   private

@@ -1,6 +1,6 @@
 <div class="row">
   <div>
-    <h2> 今日所吃 </h2>
+    <h2> 今日所吃 <%= @menu.title %></h2>
       <% if @menu.photo.present? %>
         <%= image_tag(@menu.photo.image.thumb.url) %>
       <% else %>
