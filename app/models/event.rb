@@ -21,4 +21,13 @@ class Event < ActiveRecord::Base
       result = "false"
     end
   end
+
+  def total_order_price(event)
+    orders = event.orders
+    sum = 0
+    orders.each do |order|
+      sum = sum + order.total
+    end
+    sum
+  end
 end
