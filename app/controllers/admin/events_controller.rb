@@ -2,6 +2,17 @@ class Admin::EventsController < ApplicationController
   layout "admin"
 
   def index
+    @events = Event.where(date: Date.today, status: true)
+    @menus = Menu.all
+  end
+
+  def show
+    @event = Event.find(params[:id])
+    @members = @event.members
+    @orders = Order.where(event_id: @event)
+  end
+
+  def select
     @menus = Menu.all
   end
 

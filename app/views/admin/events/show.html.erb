@@ -1,0 +1,33 @@
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>目前點餐的人</th>
+      <th>餐點</th>
+      <th>共計</td>
+      <th>備註</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @members.each do |member| %>
+      <% @orders.each do |order| %>
+      <tr>
+        <td>
+          <%= member.email %>
+        </td>
+        <td>
+          <% order.items.each do |item| %>
+          <%= item.food_name %> 數量 <%= item.quantity %> 份
+          <br>
+          <% end %>
+        </td>
+        <td>
+          <%= order.total %>元
+        </td>
+        <td>
+          <%= order.info.note %>
+        </td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
