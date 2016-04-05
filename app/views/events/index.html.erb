@@ -24,7 +24,11 @@
           <% if !current_user.is_member_of?(event) %>
             <%= link_to '加入點餐', join_event_event_path(event), method: :post %>
           <% else %>
-            <%= link_to '點餐', ordering_event_path(event)%>
+            <% if event.check_order(current_user, event) %>
+              <%= link_to '點餐', ordering_event_path(event)%>
+            <% else %>
+            點餐完畢
+            <% end %>
           <% end %>
         </td>
       </tr>
