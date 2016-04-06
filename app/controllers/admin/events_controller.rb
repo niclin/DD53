@@ -2,7 +2,7 @@ class Admin::EventsController < ApplicationController
   layout "admin"
 
   def index
-    @events = Event.where(date: Date.today, status: true)
+    @events = Event.all
     @menus = Menu.all
   end
 

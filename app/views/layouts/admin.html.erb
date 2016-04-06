@@ -7,8 +7,8 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+ <%= render "common/navbar" %>
   <div class="container">
-    <%= render "common/navbar" %>
     <%= notice_message %>
     <div class="row">
       <div class="col-md-2">
@@ -25,5 +25,6 @@
       </div>
     </div>
   </div>
+  <%= render "common/footer" %>
 </body>
 </html>
