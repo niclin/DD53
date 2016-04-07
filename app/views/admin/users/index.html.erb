@@ -3,7 +3,7 @@
 <table class="table table-bordered">
   <thead>
     <tr>
-      <th>#</th>
+      <th>名字</th>
       <th>Email</th>
       <th>權限</th>
       <th>功能</th>
@@ -13,7 +13,7 @@
     <% @users.each do |user| %>
       <tr>
         <td>
-          <%= user.id %>
+          <%= user.name %>
         </td>
         <td>
           <%= user.email %>
