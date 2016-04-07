@@ -1,39 +1,37 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<div class="container">
+    <div class="row">
+        <div class="col-md-4 col-md-offset-4">
+            <div class="login-panel panel panel-default">
+                <div class="panel-heading">
+                  <h2>想改什麼帳號啦！</h2>
+                    <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+                      <%= f.error_notification %>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= devise_error_messages! %>
+                      <div class="form-inputs">
+                        <%= f.input :email,  :label => "電子郵件", required: true, autofocus: true, input_html: { class: 'form-control' }  %>
+                        <%= f.input :name,  :label => "使用者名稱", input_html: { class: 'form-control' }  %>
+                        <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+                          <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
+                        <% end %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
-  </div>
+                        <%= f.input :password,  :label => "密碼", autocomplete: "off", required: false, input_html: { class: 'form-control' }  %><small>若無須變更 保持空白即可</small>
+                        <%= f.input :password_confirmation,  :label => "確認密碼", required: false , input_html: { class: 'form-control' } %>
+                        <%= f.input :current_password,  :label => "目前使用的密碼", required: true , input_html: { class: 'form-control' } %><small>我們需要您目前的密碼來確認您的變更</small>
+                      </div>
 
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-  <% end %>
+                      <div class="form-actions">
+                        <%= f.button :submit, "更新", class: "btn btn-primary"  %>
+                      </div>
+                    <% end %>
 
-  <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
-  </div>
+                    <h3>取消我的帳號</h3>
 
-  <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "off" %>
-  </div>
+                    <p>不爽？想刪帳號 <%= link_to "那就點我啊", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
 
-  <div class="actions">
-    <%= f.submit "Update" %>
-  </div>
-<% end %>
-
-<h3>Cancel my account</h3>
-
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
-
-<%= link_to "Back", :back %>
+                    <%= link_to "返回", :back , class: "btn btn-primary" %>
+                </div>
+            </div>
+        </div>
+     </div>
+ </div>

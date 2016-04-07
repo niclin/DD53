@@ -1,28 +1,46 @@
-<h2>使用者列表</h2>
-
-<table class="table table-bordered">
-  <thead>
-    <tr>
-      <th>#</th>
-      <th>日期</th>
-      <th>店家</th>
-      <th>點餐</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @events.each do |event| %>
-      <tr>
-        <td><%= event.id %></td>
-        <td>
-          <%= event.date %>
-        </td>
-        <td>
-          <%= event.menu_name %>
-        </td>
-        <td>
-          <%= link_to '查看點餐情況', admin_event_path(event) %>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+           <div class="row">
+                <div class="col-lg-6">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            使用者列表
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                            <div class="table-responsive">
+                                <table class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                          <th>#</th>
+                                          <th>日期</th>
+                                          <th>店家</th>
+                                          <th>已點餐人數</th>
+                                          <th>點餐</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                      <% @events.each do |event| %>
+                                        <tr>
+                                          <td><%= event.id %></td>
+                                          <td>
+                                            <%= event.date %>
+                                          </td>
+                                          <td>
+                                            <%= event.menu_name %>
+                                          </td>
+                                          <td>
+                                            0
+                                          </td>
+                                          <td>
+                                            <%= link_to '查看點餐情況', admin_event_path(event) %>
+                                          </td>
+                                        </tr>
+                                      <% end %>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- /.table-responsive -->
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
