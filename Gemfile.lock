@@ -50,6 +50,7 @@ GEM
     bootstrap-sass (3.3.6)
       autoprefixer-rails (>= 5.2.1)
       sass (>= 3.3.4)
+    bootstrap_sb_admin_base_v2 (0.1.1)
     builder (3.2.2)
     byebug (8.2.2)
     carrierwave (0.10.0)
@@ -195,6 +196,7 @@ PLATFORMS
 DEPENDENCIES
   awesome_rails_console
   bootstrap-sass
+  bootstrap_sb_admin_base_v2
   byebug
   carrierwave
   cocoon
