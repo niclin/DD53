@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 # routes good
 gem 'sextant'
-
+gem 'bootstrap_sb_admin_base_v2'
 gem "simple_form"
 gem "carrierwave"
 gem "mini_magick"
