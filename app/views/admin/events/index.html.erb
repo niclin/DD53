@@ -13,8 +13,9 @@
                                           <th>#</th>
                                           <th>日期</th>
                                           <th>店家</th>
-                                          <th>已點餐人數</th>
-                                          <th>點餐</th>
+                                          <th>已點餐/正在點</th>
+                                          <th>當前總額</th>
+                                          <th>狀態</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -28,11 +29,18 @@
                                             <%= event.menu_name %>
                                           </td>
                                           <td>
-                                            0
-                                          </td>
+                                            <%= event.orders.count %> / <%= event.members.count %>
+                                         </td>
                                           <td>
-                                            <%= link_to '查看點餐情況', admin_event_path(event) %>
+                                            共計：<%= event.total %>
                                           </td>
+                                          <th>
+                                            <% if event.status? %>
+                                              <%= link_to '查看點餐情況', admin_event_path(event) %>
+                                            <% else %>
+                                              <%= link_to '已結單', admin_event_path(event) %>
+                                            <% end %>
+                                          </th>
                                         </tr>
                                       <% end %>
                                     </tbody>

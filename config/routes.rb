@@ -7,7 +7,9 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :menus
-    resources :events
+    resources :events do
+      post :invoice
+    end
     resources :orders
     resources :users do
       member do

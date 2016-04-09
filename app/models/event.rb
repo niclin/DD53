@@ -10,10 +10,6 @@ class Event < ActiveRecord::Base
     self.update_columns(status: true)
   end
 
-  def status_close
-    self.update_columns(status: false)
-  end
-
   def check_order(user, event)
     result = "true"
     order = Order.find_by(user_id: user.id, event_id: event.id)
@@ -28,6 +24,11 @@ class Event < ActiveRecord::Base
     orders.each do |order|
       sum = sum + order.total
     end
+    self.update_columns(total: sum)
     sum
+  end
+
+  def event_invoice
+    self.update_columns(status: false)
   end
 end

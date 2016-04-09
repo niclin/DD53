@@ -26,4 +26,10 @@ class Admin::EventsController < ApplicationController
       redirect_to :back, alert: "已開啟#{@menu.title}的訂餐，快通知大家吧！"
     end
   end
+
+  def invoice
+    @event = Event.find(params[:event_id])
+    @event.event_invoice
+    redirect_to admin_events_path
+  end
 end

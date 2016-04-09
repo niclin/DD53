@@ -32,3 +32,6 @@
   </tbody>
 </table>
   共計 <%= @event.total_order_price(@event) %>NT
+<% if @event.status? %>
+  <%= link_to '結單', admin_event_invoice_path(@event), method: :post, class: "btn btn-primary" %>
+<% end %>
