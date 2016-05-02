@@ -1,11 +1,13 @@
 <div class="container">
-  <h2>訂單列表 </h2>
+  <h2>個人訂單列表 </h2>
   <table class="table table-bordered">
     <thead>
       <tr>
-        <th>#</th>
+        <th>訂單編號</th>
+        <th>店家</th>
+        <th>金額</th>
         <th>生成時間</th>
-
+        <th>訂單狀況</th>
       </tr>
     </thead>
     <tbody>
@@ -13,7 +15,16 @@
       <% @orders.each do |order| %>
       <tr>
         <td> <%= link_to(order.id, order_path(order.id)) %> </td>
-        <td> <%= order.created_at.to_s(:long) %> </td>
+        <td> <%= order.event.menu_name %></td>
+        <td> <%= order.total %>元</td>
+        <td> <%= order.created_at.to_s(:date) %> </td>
+        <td>
+          <%if order.event.status? %>
+          進行中
+          <% else %>
+          已結單
+          <% end %>
+        </td>
       </tr>
       <% end %>
 
