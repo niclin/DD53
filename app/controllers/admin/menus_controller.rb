@@ -11,6 +11,7 @@ class Admin::MenusController < ApplicationController
   def new
     @menu = Menu.new
     @photo = @menu.build_photo
+
   end
 
   def create
@@ -55,6 +56,6 @@ class Admin::MenusController < ApplicationController
   private
 
   def menu_params
-    params.require(:menu).permit(:title, :phone, :address, :delivery, photo_attributes: [:image, :id], foods_attributes: [:id, :name, :price, :_destroy])
+    params.require(:menu).permit(:title, :phone, :address, :delivery, photo_attributes: [:image, :id], foods_attributes: [:id, :name, :price, :_destroy], :official_holiday_option_ids => [])
   end
 end
