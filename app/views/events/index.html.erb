@@ -1,44 +1,51 @@
 <header>
-    <div class="header-content">
-        <div class="header-content-inner">
-<% if @events.blank? %>
-  <h1 class="text-center">今天尚未決定要吃什麼....請等中午時段！</h1>
-  <% else %>
-    <h2>使用者列表</h2>
-    <table class="table table-bordered">
-      <thead>
-        <tr>
-          <th>日期</th>
-          <th>店家</th>
-          <th>點餐</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @events.each do |event| %>
-          <tr>
-            <td>
-              <%= event.date %>
-            </td>
-            <td>
-              <%= event.menu_name %>
-            </td>
-            <td>
-              <% if !current_user.is_member_of?(event) %>
+  <div class="header-content">
+    <div class="header-content-inner">
+      <% if @events.blank? %>
+      <h1 class="text-center">
+      今天尚未決定要吃什麼
+      <hr>
+      <%= image_tag "eatwhat.jpeg" %>
+      <hr>
+      請等中午時段！
+      </h1>
+      <% else %>
+      <div class="container">
+        <h2>使用者列表</h2>
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>日期</th>
+              <th>店家</th>
+              <th>點餐</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @events.each do |event| %>
+            <tr>
+              <td>
+                <%= event.date %>
+              </td>
+              <td>
+                <%= event.menu_name %>
+              </td>
+              <td>
+                <% if !current_user.is_member_of?(event) %>
                 <%= link_to '加入點餐', join_event_event_path(event), method: :post %>
-              <% else %>
+                <% else %>
                 <% if event.check_order(current_user, event) %>
-                  <%= link_to '點餐', ordering_event_path(event)%>
+                <%= link_to '點餐', ordering_event_path(event)%>
                 <% else %>
                 點餐完畢
                 <% end %>
-              <% end %>
-            </td>
-          </tr>
+                <% end %>
+              </td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
         <% end %>
-      </tbody>
-    </table>
-    <% end %>
-        </div>
+      </div>
     </div>
+  </div>
 </header>
-

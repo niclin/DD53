@@ -20,4 +20,7 @@ class Order < ActiveRecord::Base
     self.total = cart.total_price
     self.save
   end
+
+  def get_account_order_total
+  end
 end

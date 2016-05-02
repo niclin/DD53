@@ -8,6 +8,10 @@
       <%= f.input :introduction, input_html: { class: "form-control"} %>
       <%= f.input :delivery, :label => '是否可以外送？', :value => true %>
     </div>
+    公休日：
+                <%= f.collection_check_boxes(:official_holiday_option_ids, OfficialHolidayOption.all, :id, :name ) do |r| %>
+          <%= r.label  { r.check_box + t("official_holiday_options.#{r.text}") } %>
+      <% end %>
    <div class="form-group">
    <%= f.simple_fields_for :photo do |c| %>
      <%= c.input :image , as: :file %>
