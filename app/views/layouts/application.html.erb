@@ -1,19 +1,17 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Ilunch</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
-
- <%= render "common/navbar" %>
- <div class="container">
-  <%= notice_message %>
-</div>
-  <%= yield %>
- <%= render "common/footer" %>
-
-</body>
+  <head>
+    <title>Ilunch</title>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <%= render "common/navbar" %>
+    <%= notice_message %>
+    <div class="warpper">
+      <%= yield %>
+    </div>
+    <%= render "common/footer" %>
+  </body>
 </html>

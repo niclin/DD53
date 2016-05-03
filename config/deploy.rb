@@ -7,7 +7,7 @@ set :application, 'ilunch'
 set :repo_url, 'https://github.com/niclin/ilunch.git'
 set :deploy_to, '/var/www/rails'
 set :keep_releases, 5
-set :linked_files, fetch(:linked_files, []).push('config/database.yml', 'config/secrets.yml', 'initializers/carrier_wave.rb')
+set :linked_files, fetch(:linked_files, []).push('config/database.yml', 'config/secrets.yml', 'config/initializers/carrier_wave.rb')
 set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system')
 role :web, %w{deploy@192.168.10.246}
 # Default branch is :master

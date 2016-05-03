@@ -28,6 +28,9 @@
           </a>
           <div class="navbar-custom-menu">
             <ul class="nav navbar-nav">
+              <li>
+                <%= link_to '網站首頁', root_path %>
+              </li>
               <% if !current_user %>
               <li> <%= link_to("登入", new_user_session_path) %> </li>
               <% else %>
