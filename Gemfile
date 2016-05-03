@@ -1,7 +1,6 @@
 source 'https://rubygems.org'
 # routes good
 gem 'sextant'
-gem 'bootstrap_sb_admin_base_v2'
 gem "simple_form"
 gem "carrierwave"
 gem "mini_magick"
@@ -9,6 +8,7 @@ gem 'awesome_rails_console'
 gem 'devise'
 gem 'cocoon'
 gem 'bootstrap-sass'
+gem "font-awesome-rails"
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.4'
 # Use sqlite3 as the database for Active Record
