@@ -1,29 +1,49 @@
-<div class="col-md-4 col-md-offset-4">
+<div class="row">
   <hr>
   <%= simple_form_for [:admin, @menu] do |f| %>
-    <div class="form-group">
-      <%= f.input :title, input_html: { class: "form-control"} %>
-      <%= f.input :phone, input_html: { class: "form-control"} %>
-      <%= f.input :address, input_html: { class: "form-control"} %>
-      <%= f.input :introduction, input_html: { class: "form-control"} %>
-      <%= f.input :delivery, :label => '是否可以外送？', :value => true %>
+  <div class="col-md-6">
+    <div class="box box-info">
+      <div class="box-header">
+        <h3>form</h3>
+      </div>
+      <div class="box-body">
+        <div class="form-group">
+          <%= f.input :title, input_html: { class: "form-control"} %>
+          <%= f.input :phone, input_html: { class: "form-control"} %>
+          <%= f.input :address, input_html: { class: "form-control"} %>
+          <%= f.input :introduction, input_html: { class: "form-control"} %>
+        </div>
+      </div>
     </div>
-    公休日：
-                <%= f.collection_check_boxes(:official_holiday_option_ids, OfficialHolidayOption.all, :id, :name ) do |r| %>
-          <%= r.label  { r.check_box + t("official_holiday_options.#{r.text}") } %>
-      <% end %>
-   <div class="form-group">
-   <%= f.simple_fields_for :photo do |c| %>
-     <%= c.input :image , as: :file %>
-   <% end %>
-   <%= f.simple_fields_for :foods do |food| %>
-      <%= render 'food_fields', f: food %>
-   <% end %>
-  <div class="links">
-    <%= link_to_add_association 'Add Foods', f, :foods, class: "btn btn-default add-button" %>
   </div>
-   <%= f.submit "Submit", class: "btn btn-primary", data: { disable_with: "Submitting..." } %>
-    <% end %>
-   </div>
-</div>
-
+  <div class="col-md-6">
+    <div class="box box-info">
+      <div class="box-header">
+        <h3>option</h3>
+      </div>
+      <div class="box-body">
+        是否可以外送：<%= f.input :delivery, :label => '是', :value => true %>
+        公休日：
+        <%= f.collection_check_boxes(:official_holiday_option_ids, OfficialHolidayOption.all, :id, :name ) do |r| %>
+        <%= r.label  { r.check_box + t("official_holiday_options.#{r.text}") } %>
+        <% end %>
+        <div class="form-group">
+          <%= f.simple_fields_for :photo do |c| %>
+          <%= c.input :image , as: :file %>
+          <% end %>
+        </div>
+    <div class="form-group">
+      <%= f.simple_fields_for :foods do |food| %>
+      <%= render 'food_fields', f: food %>
+      <% end %>
+      <div class="links">
+        <%= link_to_add_association 'Add Foods', f, :foods, class: "btn btn-default add-button" %>
+      </div>
+      </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.submit "Submit", class: "btn btn-primary", data: {"association-insertion-node" => "tbody.line_items", "association-insertion-method" => "append"} %>
+      <% end %>
+    </div>
+  </div>

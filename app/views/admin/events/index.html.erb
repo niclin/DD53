@@ -1,0 +1,61 @@
+<section class="content-header">
+  <h1>
+  目前狀況
+  </h1>
+</section>
+<section class="content">
+  <div class="row">
+    <div class="col-lg-6">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          使用者列表
+        </div>
+        <!-- /.panel-heading -->
+        <div class="panel-body">
+          <div class="table-responsive">
+            <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>日期</th>
+                  <th>店家</th>
+                  <th>已點餐/正在點</th>
+                  <th>當前總額</th>
+                  <th>狀態</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% @events.each do |event| %>
+                <tr>
+                  <td><%= event.id %></td>
+                  <td>
+                    <%= event.date %>
+                  </td>
+                  <td>
+                    <%= event.menu_name %>
+                  </td>
+                  <td>
+                    <%= event.orders.count %> / <%= event.members.count %>
+                  </td>
+                  <td>
+                    共計：<%= event.total %>
+                  </td>
+                  <th>
+                    <% if event.status? %>
+                    <%= link_to '查看點餐情況', admin_event_path(event) %>
+                    <% else %>
+                    <%= link_to '已結單', admin_event_path(event) %>
+                    <% end %>
+                  </th>
+                </tr>
+                <% end %>
+              </tbody>
+            </table>
+          </div>
+          <!-- /.table-responsive -->
+        </div>
+        <!-- /.panel-body -->
+      </div>
+      <!-- /.panel -->
+    </div>
+  </section>

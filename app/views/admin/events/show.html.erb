@@ -1,3 +1,10 @@
+<section class="content-header">
+  <h1>
+  目前狀況
+  </h1>
+</section>
+<section class="content">
+
 <h2><%= @event.menu_name %></h2>
 
 <table class="table table-bordered">
@@ -35,3 +42,4 @@
 <% if @event.status? %>
   <%= link_to '結單', admin_event_invoice_path(@event), method: :post, class: "btn btn-primary" %>
 <% end %>
+</section>

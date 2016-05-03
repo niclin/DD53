@@ -6,16 +6,16 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
   </head>
-  <body class="hold-transition skin-blue sidebar-mini">
+  <body class="hold-transition skin-blue">
     <!-- Site wrapper -->
     <div class="wrapper">
       <header class="main-header">
         <!-- Logo -->
-        <a href="../../index2.html" class="logo">
+        <a href="<%= admin_events_path %>" class="logo">
           <!-- mini logo for sidebar mini 50x50 pixels -->
-          <span class="logo-mini"><b>A</b>LT</span>
+          <span class="logo-mini"><b>KT</b>O</span>
           <!-- logo for regular state and mobile devices -->
-          <span class="logo-lg"><b>Admin</b>LTE</span>
+          <span class="logo-lg"><b>KT</b>Order</span>
         </a>
         <!-- Header Navbar: style can be found in header.less -->
         <nav class="navbar navbar-static-top">
@@ -67,11 +67,10 @@
           <!-- Sidebar user panel -->
           <div class="user-panel">
             <div class="pull-left image">
-              <img src="kt_logo.jpeg" class="img-circle" alt="User Image">
+              <%= image_tag ("kt_logo.png")%>
             </div>
             <div class="pull-left info">
-              <p>Alexander Pierce</p>
-              <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+              <p>KT</p>
             </div>
           </div>
           <!-- sidebar menu: : style can be found in sidebar.less -->
@@ -110,21 +109,9 @@
     <!-- =============================================== -->
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
-      <section class="content">
-        <%= yield %>
-      </section>
+      <%= yield %>
     </div>
     <!-- /.content-wrapper -->
-    <footer class="main-footer">
-      <div class="pull-right hidden-xs">
-        <b>Version</b> 2.3.3
-      </div>
-      <strong>Copyright &copy; 2014-2015 <a href="http://almsaeedstudio.com">Almsaeed Studio</a>.</strong> All rights
-      reserved.
-    </footer>
-    <!-- Add the sidebar's background. This div must be placed
-    immediately after the control sidebar -->
-    <div class="control-sidebar-bg"></div>
   </div>
   <!-- ./wrapper -->
 </body>
