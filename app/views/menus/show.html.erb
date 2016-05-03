@@ -1,51 +1,79 @@
-<div class="container">
+<div class="row">
   <div class="col-md-6">
-    <div class="box">
+    <!-- Box Comment -->
+    <div class="box box-widget">
       <div class="box-header with-border">
-        <h3 class="box-title">介紹</h3>
+        <div class="user-block">
+          <span class="username"><a href="#"> <%=@menu.title%> </a></span>
+        </div>
+        <!-- /.user-block -->
       </div>
       <!-- /.box-header -->
       <div class="box-body">
         <% if @menu.photo.present? %>
-        <%= image_tag(@menu.photo.image.medium.url, class: "thumbnail") %>
+        <%= image_tag(@menu.photo.image.medium.url, class: "thumbnail img-responsive pad") %>
         <% else %>
-        <%= image_tag("http://placehold.it/400x400&text=No Pic", class: "thumbnail") %>
+        <%= image_tag("http://placehold.it/400x400&text=No Pic", class: "thumbnail img-responsive pad") %>
         <% end %>
-      </div>
-      <h3> <%=@menu.title%> </h3>
-      <p>地址: <%= @menu.address %></p>
-      <p>訂購專線: <%= @menu.phone %></p>
-      <p>外送:
-        <% if @menu.delivery? %>
-        可以外送！
-        <% else %>
-        不能外送
-        <% end %>
-      </p>
-      <p>介紹: <%= @menu.introduction %></p>
-      <br>
-      <%= link_to("上一頁", menus_path, class: "btn btn-default") %>
-    </div>
-  </div>
-  <div class="col-md-6">
-    <div class="box">
-      <div class="box-header with-border">
-        <h3 class="box-title">菜單</h3>
-      </div>
-      <!-- /.box-header -->
-      <div class="box-body">
-        <% @menu.foods.each do |food| %>
-        <table class="table table-hover">
-          <tbody>
-            <tr>
-              <td><%= food.name %></td>
-              <td>NTD<%= food.price %></td>
+        <div class="table-responsive">
+          <table class="table">
+            <tbody><tr>
+              <th style="width:20%">地址:</th>
+              <td><%= @menu.address %></td>
             </tr>
-          </tbody>
-        </table>
-        <% end %>
+            <tr>
+              <th>訂購專線:</th>
+              <td><%= @menu.phone %></td>
+            </tr>
+            <tr>
+              <th>外送:</th>
+              <td>          <% if @menu.delivery? %>
+                可以外送！
+                <% else %>
+                不能外送
+              <% end %></td>
+            </tr>
+            <tr>
+              <th>公休日:</th>
+
+              <td>
+                <% @menu.official_holiday_options.each do |option| %>
+                <%= option.name.humanize %>
+                   <% end %>
+              </td>
+
+            </tr>
+            <tr>
+              <th>介紹:</th>
+              <td><%= @menu.introduction %></td>
+            </tr>
+          </tbody></table>
+        </div>
       </div>
+    </div>
+    <!-- /.box-body -->
+    <!-- /.box -->
+  </div>
+<div class="col-md-6">
+  <div class="box box-widget">
+    <div class="box-header with-border">
+      <h3 class="box-title">菜單</h3>
+    </div>
+    <!-- /.box-header -->
+    <div class="box-body">
+      <table class="table table-hover">
+        <tbody>
+          <th>名稱</th>
+          <th>價錢</th>
+          <% @menu.foods.each do |food| %>
+          <tr>
+            <td style="width: 300px"><%= food.name %></td>
+            <td><%= food.price %>NTD</td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
     </div>
   </div>
 </div>
-</section>
+</div>
