@@ -11,11 +11,11 @@
   </div>
 </div>
 <% else %>
-<div class="contianer">
-  <div class="col-md-12">
+<div class="row">
+  <div class="col-md-6">
 <div class="box box-info">
   <div class="box-header with-border">
-    <h3 class="box-title">Latest Orders</h3>
+    <h3 class="box-title">點餐任務</h3>
   </div>
   <!-- /.box-header -->
   <div class="box-body">
@@ -26,7 +26,6 @@
             <th>日期</th>
             <th>店家</th>
             <th>點餐</th>
-            <th>status</th>
           </tr>
         </thead>
         <tbody>
@@ -40,10 +39,10 @@
             </td>
             <td>
               <% if !current_user.is_member_of?(event) %>
-              <%= link_to '加入點餐', join_event_event_path(event), method: :post %>
+              <%= link_to '加入點餐', join_event_event_path(event), method: :post, class: "btn btn-sm btn-info btn-flat pull-left" %>
               <% else %>
               <% if event.check_order(current_user, event) %>
-              <%= link_to '點餐', ordering_event_path(event)%>
+              <%= link_to '點餐', ordering_event_path(event), class: "btn btn-sm btn-info btn-flat pull-left"%>
               <% else %>
               點餐完畢
               <% end %>

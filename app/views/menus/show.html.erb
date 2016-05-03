@@ -3,10 +3,7 @@
     <!-- Box Comment -->
     <div class="box box-widget">
       <div class="box-header with-border">
-        <div class="user-block">
-          <span class="username"><a href="#"> <%=@menu.title%> </a></span>
-        </div>
-        <!-- /.user-block -->
+        <h3 class="box-title"><%=@menu.title%> </h3>
       </div>
       <!-- /.box-header -->
       <div class="box-body">
@@ -28,20 +25,18 @@
             <tr>
               <th>外送:</th>
               <td>          <% if @menu.delivery? %>
-                可以外送！
+                <span class="label label-success">可以外送</span>
                 <% else %>
-                不能外送
+                <span class="label label-danger">不能外送</span>
               <% end %></td>
             </tr>
             <tr>
               <th>公休日:</th>
-
               <td>
                 <% @menu.official_holiday_options.each do |option| %>
                 <%= option.name.humanize %>
-                   <% end %>
+                <% end %>
               </td>
-
             </tr>
             <tr>
               <th>介紹:</th>
@@ -54,26 +49,26 @@
     <!-- /.box-body -->
     <!-- /.box -->
   </div>
-<div class="col-md-6">
-  <div class="box box-widget">
-    <div class="box-header with-border">
-      <h3 class="box-title">菜單</h3>
-    </div>
-    <!-- /.box-header -->
-    <div class="box-body">
-      <table class="table table-hover">
-        <tbody>
-          <th>名稱</th>
-          <th>價錢</th>
-          <% @menu.foods.each do |food| %>
-          <tr>
-            <td style="width: 300px"><%= food.name %></td>
-            <td><%= food.price %>NTD</td>
-          </tr>
-          <% end %>
-        </tbody>
-      </table>
+  <div class="col-md-6">
+    <div class="box box-widget">
+      <div class="box-header with-border">
+        <h3 class="box-title">菜單</h3>
+      </div>
+      <!-- /.box-header -->
+      <div class="box-body">
+        <table class="table table-hover">
+          <tbody>
+            <th>名稱</th>
+            <th>價錢</th>
+            <% @menu.foods.each do |food| %>
+            <tr>
+              <td style="width: 300px"><%= food.name %></td>
+              <td><%= food.price %>NTD</td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
-</div>
 </div>
