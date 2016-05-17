@@ -1,9 +1,5 @@
 <div class='nested-fields'>
-  <div class="field">
-    <%= f.input :name, input_html: { class: "form-input form-control" } %>
-  </div>
-  <div class="field">
-    <%= f.input :price, input_html: { class: "form-input form-control" } %>
-  </div>
-  <%= link_to_remove_association "Remove", f, class: "btn btn-default form-button" %>
+  <%= f.input :name, input_html: { class: "form-input form-control" } %>
+  <%= f.input :price, input_html: { class: "form-input form-control" } %>
+  <%= link_to_remove_association "刪除", f, class: "btn btn-default btn-xs" %>
 </div>

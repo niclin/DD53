@@ -1,91 +1,87 @@
 <div class="container">
-  <div>
-    <h2> 今日所吃 <%= @menu.title %></h2>
+  <div class="row">
+    <div class="col-xs-12">
+      <h2> 今日所吃 <%= @menu.title %></h2>
       <% if @menu.photo.present? %>
-        <%= image_tag(@menu.photo.image.thumb.url) %>
+      <%= image_tag(@menu.photo.image.thumb.url) %>
       <% else %>
-        <%= image_tag("http://placehold.it/400x400&text=No Pic", class: "thumbnail") %>
+      <%= image_tag("http://placehold.it/400x400&text=No Pic", class: "thumbnail") %>
       <% end %>
-  </div>
-   <div class="col-xs-6">
-    <h2> 菜單總覽 </h2>
-  <table class="table table-bordered">
-  <thead>
-    <tr>
-      <th>食物</th>
-      <th>價錢</th>
-      <th>數量</th>
-    </tr>
-  </thead>
-  <tbody>
-        <tr>
-          <% @menu.foods.each do |food| %>
-           <td><%= food.name %></td>
-           <td>NT$ <%= food.price %> 元</td>
-           <td>
-            <%= button_to("點餐", event_add_to_cart_path(@event,food.id), method: :post,
-                 class: "btn btn-danger") %>
+    </div>
+    <div class="col-xs-6">
+      <h2> 菜單總覽 </h2>
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>食物</th>
+            <th>價錢</th>
+            <th>數量</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <% @menu.foods.each do |food| %>
+            <td><%= food.name %></td>
+            <td>NT$ <%= food.price %> 元</td>
+            <td>
+              <%= button_to("點餐", event_add_to_cart_path(@event,food.id), method: :post,
+              class: "btn btn-danger") %>
             </td>
           </ul>
-          </td>
-        </tr>
-       <% end %>
-     </tbody>
+        </td>
+      </tr>
+      <% end %>
+    </tbody>
   </table>
 </div>
-  <div class="col-xs-6">
+<div class="col-xs-6">
+  <h2> 您的預定 </h2>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>商品資訊</th>
+        <th>單價</th>
+        <th>數量</th>
+        <th>操作選項 </th>
+      </tr>
+    </thead>
+    <tbody>
+      <% current_cart.items.each do |food| %>
+      <tr>
+        <td>
+          <%= food.name%>
+        </td>
+        <td>
+          <%= food.price %>
+        </td>
+        <td>
+          <% item = current_cart.cart_items.find_by(food_id: food) %>
+          <%= form_for item, url: item_path(food) do |f| %>
+          <%= f.select :quantity, [1,2,3,4,5] %>
+          <%= f.submit "更新", data: { disable_with: "Submiting..." } %>
+          <% end %>
+        </td>
+        <td>
+          <%= link_to item_path(food), method: :delete do %>
+          刪除
+          <% end %>
+        </td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
 
-    <h2> 您的預定 </h2>
-
-    <table class="table table-bordered">
-      <thead>
-        <tr>
-          <th>商品資訊</th>
-          <th>單價</th>
-          <th>數量</th>
-          <th>操作選項 </th>
-        </tr>
-      </thead>
-      <tbody>
-
-        <% current_cart.items.each do |food| %>
-          <tr>
-            <td>
-              <%= food.name%>
-            </td>
-            <td>
-              <%= food.price %>
-            </td>
-           <td>
-             <% item = current_cart.cart_items.find_by(food_id: food) %>
-
-             <%= form_for item, url: item_path(food) do |f| %>
-               <%= f.select :quantity, [1,2,3,4,5] %>
-               <%= f.submit "更新", data: { disable_with: "Submiting..." } %>
-             <% end %>
-           </td>
-             <td>
-             <%= link_to item_path(food), method: :delete do %>
-               刪除
-             <% end %>
-           </td>
-          </tr>
-        <% end %>
-
-      </tbody>
-    </table>
-  </div>
 </div>
-
-    <div class="container">
-      <span class="pull-right">
-         <span> 總計 <%= render_cart_total_price(current_cart) %> NTD  </span>
-           <%= link_to("清空購物車", clean_carts_path ,
-              method: :delete , class: "pull-right",
-              style: "text-decoration: underline;",
-              data: { confirm: "你確定要清空整個購物車嗎？"} )%>
-      </span>
-      <%= link_to("確認結賬", checkout_carts_path, method: :post, class: "btn btn-lg btn-danger pull-right") %>
-    </div>
-
+<div class="container">
+<span class="pull-right">
+<span> 總計 <%= render_cart_total_price(current_cart) %> NTD  </span>
+<%= link_to("清空購物車", clean_carts_path ,
+method: :delete , class: "pull-right",
+style: "text-decoration: underline;",
+data: { confirm: "你確定要清空整個購物車嗎？"} )%>
+</span>
+<%= link_to("確認結賬", checkout_carts_path, method: :post, class: "btn btn-lg btn-danger pull-right") %>
+</div>
+</div>
+</div>
 
