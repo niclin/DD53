@@ -18,9 +18,9 @@ class EventsController < ApplicationController
 
     if !current_user.is_member_of?(@event)
       current_user.join!(@event)
-      flash[:notice] = "加入本討論版成功！"
+      flash[:notice] = "加入餐點成功！"
     else
-      flash[:warning] = "你已經是本討論版成員了！"
+      flash[:warning] = "你已經是本餐點成員了！"
     end
     redirect_to ordering_event_path(@event)
   end
@@ -30,9 +30,9 @@ class EventsController < ApplicationController
 
     if !current_cart.items.include?(@food)
       current_cart.add_food_to_cart(@food)
-      flash[:notice] = "你已成功將 #{@food.name} 加入購物車"
+      flash[:notice] = "你已成功將 #{@food.name} 加入食物車"
     else
-      flash[:warning] = "你的購物車內已有此物品"
+      flash[:warning] = "你的食物車內已有此物品"
     end
 
     redirect_to :back

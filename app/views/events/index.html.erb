@@ -11,52 +11,55 @@
   </div>
 </div>
 <% else %>
+<div class="container">
 <div class="row">
-  <div class="col-md-6">
-<div class="box box-info">
-  <div class="box-header with-border">
-    <h3 class="box-title">點餐任務</h3>
-  </div>
-  <!-- /.box-header -->
-  <div class="box-body">
-    <div class="table-responsive">
-      <table class="table no-margin">
-        <thead>
-          <tr>
-            <th>日期</th>
-            <th>店家</th>
-            <th>點餐</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @events.each do |event| %>
-          <tr>
-            <td>
-              <%= event.date %>
-            </td>
-            <td>
-              <%= event.menu_name %>
-            </td>
-            <td>
-              <% if !current_user.is_member_of?(event) %>
-              <%= link_to '加入點餐', join_event_event_path(event), method: :post, class: "btn btn-sm btn-info btn-flat pull-left" %>
-              <% else %>
-              <% if event.check_order(current_user, event) %>
-              <%= link_to '點餐', ordering_event_path(event), class: "btn btn-sm btn-info btn-flat pull-left"%>
-              <% else %>
-              點餐完畢
+  <div class="col-md-6 col-md-offset-3">
+    <div class="box box-info">
+      <div class="box-header with-border">
+        <h3 class="box-title">點餐任務</h3>
+      </div>
+      <!-- /.box-header -->
+      <div class="box-body">
+        <div class="table-responsive">
+          <table class="table no-margin">
+            <thead>
+              <tr>
+                <th>日期</th>
+                <th>店家</th>
+                <th>點餐</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @events.each do |event| %>
+              <tr>
+                <td>
+                  <%= event.date %>
+                </td>
+                <td>
+                  <%= event.menu_name %>
+                </td>
+                <td>
+                  <% if !current_user.is_member_of?(event) %>
+                  <%= link_to '加入點餐', join_event_event_path(event), method: :post, class: "btn btn-sm btn-info btn-flat pull-left" %>
+                  <% else %>
+                  <% if event.check_order(current_user, event) %>
+                  <%= link_to '點餐', ordering_event_path(event), class: "btn btn-sm btn-info btn-flat pull-left"%>
+                  <% else %>
+                  點餐完畢
+                  <% end %>
+                  <% end %>
+                </td>
+              </tr>
               <% end %>
-              <% end %>
-            </td>
-          </tr>
-          <% end %>
-        </tbody>
-      </table>
+            </tbody>
+          </table>
+        </div>
+        <!-- /.table-responsive -->
+      </div>
+      <!-- /.box-body -->
     </div>
-    <!-- /.table-responsive -->
   </div>
-  <!-- /.box-body -->
+  <% end %>
+  </div>
 </div>
-</div>
-</div>
-<% end %>
+

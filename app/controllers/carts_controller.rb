@@ -10,7 +10,7 @@ class CartsController < ApplicationController
 
   def clean
     current_cart.clean!
-    flash[:warning] = "已清空購物車"
+    flash[:warning] = "已清空食物車"
     redirect_to :back
   end
 end

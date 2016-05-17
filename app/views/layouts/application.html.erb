@@ -8,11 +8,13 @@
   </head>
   <body class="ilunch-home">
     <%= render "common/navbar" %>
-    <%= notice_message %>
+    <div class="container">
+      <%= notice_message %>
+    </div>
     <div class="warpper">
       <section class="content">
-      <%= yield %>
-    </section>
+        <%= yield %>
+      </section>
     </div>
     <%= render "common/footer" %>
   </body>
