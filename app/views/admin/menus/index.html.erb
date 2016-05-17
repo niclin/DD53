@@ -10,8 +10,6 @@
 <table class="table table-bordered">
   <thead>
     <tr>
-      <th>#</th>
-      <th width="220">Menu Pic</th>
       <th>Name</th>
       <th>Address</th>
       <th>Phone</th>
@@ -21,18 +19,6 @@
   <tbody>
     <% @menus.each do |menu| %>
       <tr>
-        <td>
-          <%= menu.id %>
-        </td>
-        <td>
-          <%= link_to admin_menu_path(menu) do %>
-            <% if menu.photo.present? %>
-              <%= image_tag(menu.photo.image.thumb.url, class: "thumbnail") %>
-            <% else %>
-              <%= image_tag("http://placehold.it/200x200&text=No Pic", class: "thumbnail") %>
-            <% end %>
-          <% end %>
-        </td>
         <td>
           <%= menu.title %>
         </td>
