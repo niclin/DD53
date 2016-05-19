@@ -14,6 +14,13 @@ So, I want to build this repo and try to improve fucking mistake order.
 5. Create new Pull Request
 
 
+## ToDo
+
+1. []使用者要能修改送出後的訂單
+2. []後台新增菜單時自動預設放棄選項
+3. []使用者如勾選「放棄」後欲修改訂單，將會跳出姚明or成龍的圖片 + UCCU
+4. []後台新增菜單需能夠增加「大、中、小」「冷、熱飲」「意麵、米粉、陽春麵、等等麵種」
+
 ## Issues
 
 
