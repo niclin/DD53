@@ -1,7 +1,7 @@
 <div class="nested-fields well well-compact">
   <div class="form-inline">
-    <%= f.input :name, input_html: { class: "form-control" } %>
-    <%= f.input :price, input_html: { class: "form-control" } %>
+    <%= f.input :name, label:'名稱' , input_html: { class: "form-control" } %>
+    <%= f.input :price, label:'價錢' ,placeholder: '新增多品項時可留白', input_html: { class: "form-control" } %>
     <%= link_to_remove_association "刪除", f, class: "btn btn-default btn-xs" %>
   </div>
   <div class="food-subs">
@@ -9,7 +9,7 @@
     <%= render 'food_sub_fields', f: sub %>
     <% end %>
     <div class="links">
-      <%= link_to_add_association 'Add foods_subs', f, :food_subs %>
+      <%= link_to_add_association '新增多選項', f, :food_subs %>
     </div>
   </div>
 </div>

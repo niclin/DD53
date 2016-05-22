@@ -5,28 +5,26 @@
     <div class="nav-tabs-custom">
       <!-- Tabs within a box -->
       <ul class="nav nav-tabs pull-right">
-        <li class="active"><a href="#menu-info" data-toggle="tab">Area</a></li>
-        <li><a href="#menu-detail" data-toggle="tab">Donut</a></li>
-        <li><a href="#menu-foods" data-toggle="tab">Donut</a></li>
-        <li class="pull-left header"><i class="fa fa-inbox"></i> Sales</li>
+        <li class="active"><a href="#menu-info" data-toggle="tab">基本資料</a></li>
+        <li><a href="#menu-detail" data-toggle="tab">詳細資訊</a></li>
+        <li><a href="#menu-foods" data-toggle="tab">點餐選項</a></li>
+        <li class="pull-left header"><i class="fa fa-inbox"></i>菜單</li>
       </ul>
       <div class="tab-content no-padding">
         <!-- Morris chart - Sales -->
         <div class="chart tab-pane active" id="menu-info">
           <div class="col-md-12">
-            <h3>form</h3>
             <div class="form-group">
-              <%= f.input :title, input_html: { class: "form-control"} %>
-              <%= f.input :phone, input_html: { class: "form-control"} %>
-              <%= f.input :address, input_html: { class: "form-control"} %>
-              <%= f.input :introduction, input_html: { class: "form-control"} %>
+              <%= f.input :title, label:'店家名稱' %>
+              <%= f.input :phone, label:'電話' %>
+              <%= f.input :address, label:'地址' %>
+              <%= f.input :introduction, label:'簡介' %>
             </div>
           </div>
         </div>
         <div class="chart tab-pane" id="menu-detail" >
           <div class="col-md-12">
-            <h3>option</h3>
-            是否可以外送：<%= f.input :delivery, :label => '是', :value => true %>
+            <p>是否可以外送：<%= f.input :delivery, :label => '是', :value => true %></p>
             公休日：
             <%= f.collection_check_boxes(:official_holiday_option_ids, OfficialHolidayOption.all, :id, :name ) do |r| %>
             <%= r.label  { r.check_box + t("official_holiday_options.#{r.text}") } %>
@@ -40,24 +38,22 @@
         </div>
         <div class="chart tab-pane" id="menu-foods">
           <div class="col-md-12">
-                  <div class="form-group">
-          <%= f.simple_fields_for :foods do |food| %>
-          <%= render 'food_fields', f: food %>
-          <% end %>
-          <div class="links">
-            <%= link_to_add_association 'Add Foods', f, :foods, class: "btn btn-default add-button" %>
+            <div class="form-group">
+              <%= f.simple_fields_for :foods do |food| %>
+              <%= render 'food_fields', f: food %>
+              <% end %>
+              <div class="links">
+                <%= link_to_add_association '新增品項', f, :foods, class: "btn btn-default add-button" %>
+              </div>
+            </div>
           </div>
-
-    </div>
-    </div>
         </div>
       </div>
     </div>
   </div>
-
-<div class="col-md-12">
-  <div class="form-group">
-    <%= f.submit "Submit", class: "btn btn-primary", data: {"association-insertion-node" => "tbody.line_items", "association-insertion-method" => "append"} %>
-    <% end %>
+  <div class="col-md-12">
+    <div class="form-group">
+      <%= f.submit "Submit", class: "btn btn-primary", data: {"association-insertion-node" => "tbody.line_items", "association-insertion-method" => "append"} %>
+      <% end %>
+    </div>
   </div>
-</div>
