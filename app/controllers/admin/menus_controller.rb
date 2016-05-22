@@ -56,6 +56,12 @@ class Admin::MenusController < ApplicationController
   private
 
   def menu_params
-    params.require(:menu).permit(:title, :phone, :address, :delivery, photo_attributes: [:image, :id], foods_attributes: [:id, :name, :price, :_destroy], :official_holiday_option_ids => [])
+    params.require(:menu).permit(
+          :title, :phone, :address, :delivery,
+          :official_holiday_option_ids => [],
+          photo_attributes: [:image, :id],
+          foods_attributes: [:id, :name, :price, :_destroy, food_subs_attributes: [:id, :_destroy, :price, :description] ]
+
+      )
   end
 end

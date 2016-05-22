@@ -1,5 +1,15 @@
-<div class='nested-fields'>
-  <%= f.input :name, input_html: { class: "form-input form-control" } %>
-  <%= f.input :price, input_html: { class: "form-input form-control" } %>
-  <%= link_to_remove_association "刪除", f, class: "btn btn-default btn-xs" %>
+<div class="nested-fields well well-compact">
+  <div class="form-inline">
+    <%= f.input :name, input_html: { class: "form-control" } %>
+    <%= f.input :price, input_html: { class: "form-control" } %>
+    <%= link_to_remove_association "刪除", f, class: "btn btn-default btn-xs" %>
+  </div>
+  <div class="food-subs">
+    <%= f.simple_fields_for :food_subs do |sub| %>
+    <%= render 'food_sub_fields', f: sub %>
+    <% end %>
+    <div class="links">
+      <%= link_to_add_association 'Add foods_subs', f, :food_subs %>
+    </div>
+  </div>
 </div>

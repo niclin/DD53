@@ -1,0 +1,8 @@
+<div class="nested-fields">
+  <div class="form-inline">
+    <b>multi</b>
+    <%= f.input :description, placeholder: 'name the subtask', label: false %>
+    <%= f.input :price, placeholder: 'name the subtask', label: false %>
+    <%= link_to_remove_association "刪除", f, class: "btn btn-default btn-xs" %>
+  </div>
+</div>
