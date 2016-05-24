@@ -26,6 +26,8 @@ class Admin::EventsController < ApplicationController
       @event.status_open
       redirect_to :back, alert: "已開啟#{@menu.title}的訂餐，快通知大家吧！"
 
+      notifier = Slack::Notifier.new "https://hooks.slack.com/services/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"
+      notifier.ping "<a href="http://202.168.197.185/">已開啟#{@menu.title}的訂餐，快來點餐吧</a>"
 
     end
   end
