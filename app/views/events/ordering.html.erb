@@ -22,10 +22,27 @@
           <tr>
             <% @menu.foods.each do |food| %>
             <td><%= food.name %></td>
-            <td>NT$ <%= food.price %> 元</td>
             <td>
-              <%= button_to("點餐", event_add_to_cart_path(@event,food.id), method: :post,
-              class: "btn btn-danger") %>
+              <%if food.price.blank? %>
+              <% food.food_subs.each do |sub| %>
+              <div>
+                <%= sub.description %>/<%= sub.price %>
+              </div>
+              <% end %>
+              <% else %>
+              <%= food.price %>
+              <% end %>
+            </td>
+            <td>
+              <%if food.price.blank? %>
+              <% food.food_subs.each do |sub| %>
+              <%= button_to("＋", event_add_multi_to_cart_path(@event,food.id,sub.id), method: :post,
+              class: "btn btn-danger btn-xs") %>
+              <% end %>
+              <% else %>
+              <%= button_to("＋", event_add_to_cart_path(@event,food.id), method: :post,
+              class: "btn btn-danger btn-xs") %>
+              <% end %>
             </td>
           </td>
         </tr>
@@ -36,9 +53,9 @@
   <div class="col-xs-6">
     <h2> 您的預定
     <span class="badge"> 總計 <%= render_cart_total_price(current_cart) %> NTD  </span>
-          <small class="pull-right"> <%= link_to("清空所有選項", clean_carts_path ,
-      method: :delete , class: "btn btn-primary btn-sm",
-      data: { confirm: "你確定要清空整個購物車嗎？"} )%></small>
+    <small class="pull-right"> <%= link_to("清空所有選項", clean_carts_path ,
+    method: :delete , class: "btn btn-primary btn-sm",
+    data: { confirm: "你確定要清空整個購物車嗎？"} )%></small>
     </h2>
     <table class="table table-bordered">
       <thead>
@@ -50,7 +67,7 @@
         </tr>
       </thead>
       <tbody>
-        <% current_cart.items.each do |food| %>
+        <% current_cart.cart_items.each do |food| %>
         <tr>
           <td>
             <%= food.name%>
@@ -59,11 +76,7 @@
             <%= food.price %>
           </td>
           <td>
-            <% item = current_cart.cart_items.find_by(food_id: food) %>
-            <%= form_for item, url: item_path(food) do |f| %>
-            <%= f.select :quantity, [1,2,3,4,5] %>
-            <%= f.submit "更新", data: { disable_with: "Submiting..." } %>
-            <% end %>
+            <%= food.quantity %>
           </td>
           <td>
             <%= link_to item_path(food), method: :delete do %>
@@ -74,8 +87,6 @@
         <% end %>
       </tbody>
     </table>
-
-      <%= link_to("確認訂餐", checkout_carts_path, method: :post, class: "btn btn-danger pull-right") %>
-
+    <%= link_to("確認訂餐", checkout_carts_path, method: :post, class: "btn btn-danger pull-right") %>
   </div>
 </div>

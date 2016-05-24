@@ -15,10 +15,11 @@ ActiveRecord::Schema.define(version: 20160522155104) do
 
   create_table "cart_items", force: :cascade do |t|
     t.integer  "cart_id",    limit: 4
-    t.integer  "food_id",    limit: 4
-    t.datetime "created_at",                       null: false
-    t.datetime "updated_at",                       null: false
-    t.integer  "quantity",   limit: 4, default: 1
+    t.string   "name",       limit: 255
+    t.integer  "price",      limit: 4
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
+    t.integer  "quantity",   limit: 4,   default: 1
   end
 
   create_table "carts", force: :cascade do |t|

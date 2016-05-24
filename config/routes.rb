@@ -35,6 +35,7 @@ Rails.application.routes.draw do
       get :ordering
     end
     match 'food/:food_id/add_to_cart', to: 'events#add_to_cart', as: :add_to_cart, via: [:get, :post]
+    match 'food/:food_id/:sub_id/add_multi_to_cart', to: 'events#add_multi_to_cart', as: :add_multi_to_cart, via: [:get, :post]
   end
 
 

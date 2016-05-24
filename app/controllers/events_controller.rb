@@ -28,8 +28,23 @@ class EventsController < ApplicationController
   def add_to_cart
     @food = Food.find(params[:food_id])
 
-    if !current_cart.items.include?(@food)
+    if !current_cart.cart_items.include?(@food)
       current_cart.add_food_to_cart(@food)
+      flash[:notice] = "你已成功將 #{@food.name} 加入食物車"
+    else
+      flash[:warning] = "你的食物車內已有此物品"
+    end
+
+    redirect_to :back
+  end
+
+
+  def add_multi_to_cart
+    @food = Food.find(params[:food_id])
+    @food_sub = FoodSub.find(params[:sub_id])
+
+    if !current_cart.cart_items.include?(@food)
+      current_cart.add_multi_food_to_cart(@food, @food_sub)
       flash[:notice] = "你已成功將 #{@food.name} 加入食物車"
     else
       flash[:warning] = "你的食物車內已有此物品"

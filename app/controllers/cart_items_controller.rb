@@ -4,11 +4,11 @@ class CartItemsController < ApplicationController
 
   def destroy
     @cart = current_cart
-    @item = @cart.find_cart_item(params[:id])
-    @food = @item.food
+    @item = CartItem.find(params[:id])
+
     @item.destroy
 
-    flash[:warning] = "成功將 #{@food.name} 從購物車刪除!"
+    flash[:warning] = "成功將 #{@item.name} 從購物車刪除!"
     redirect_to :back
   end
 

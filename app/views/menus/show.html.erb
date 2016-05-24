@@ -63,7 +63,18 @@
             <% @menu.foods.each do |food| %>
             <tr>
               <td style="width: 300px"><%= food.name %></td>
-              <td><%= food.price %>NTD</td>
+              <td>
+                <%if food.price.blank? %>
+                  <% food.food_subs.each do |sub| %>
+                  <div>
+                    <%= sub.description %>
+                    <%= sub.price %>
+                    </div>
+                  <% end %>
+                <% else %>
+                  <%= food.price %>
+                <% end %>
+              </td>
             </tr>
             <% end %>
           </tbody>

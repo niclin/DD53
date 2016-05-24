@@ -13,7 +13,7 @@
             </tr>
           </thead>
           <tbody>
-            <% current_cart.items.each do |food| %>
+            <% current_cart.cart_items.each do |food| %>
             <tr>
               <td>
                 <%= food.name%>
@@ -22,8 +22,7 @@
                 <%= food.price %>
               </td>
               <td>
-                <% item = current_cart.cart_items.find_by(food_id: food) %>
-                <%= item.quantity %>
+                <%= food.quantity %>
               </td>
             </tr>
             <% end %>
@@ -39,7 +38,7 @@
           <%= f.simple_fields_for :info do |c| %>
           <legend>訂購人</legend>
           <div class="form-group col-lg-12">
-            <%= c.input :user_name, label: '暱稱', placeholder: '填一下你是誰好嗎'  %>
+            <%= c.input :user_name, label: '暱稱', placeholder: '填一下你是誰好嗎', input_html: {value: current_user.name }  %>
           </div>
           <div class="form-group col-lg-12">
             <%= c.input :note, label: '備註', placeholder: '飯少、飯多、要辣、等特殊需求可以寫這邊^_^'   %>

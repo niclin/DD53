@@ -1,8 +1,9 @@
-<div class="nested-fields well well-compact">
+<div class="nested-fields well well-compact food-fields">
   <div class="form-inline">
     <%= f.input :name, label:'名稱' , input_html: { class: "form-control" } %>
     <%= f.input :price, label:'價錢' ,placeholder: '新增多品項時可留白', input_html: { class: "form-control" } %>
     <%= link_to_remove_association "刪除", f, class: "btn btn-default btn-xs" %>
+  <%= check_box_tag 'multi-foods', 'multiple' %>
   </div>
   <div class="food-subs">
     <%= f.simple_fields_for :food_subs do |sub| %>

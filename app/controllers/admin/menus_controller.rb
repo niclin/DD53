@@ -50,18 +50,23 @@ class Admin::MenusController < ApplicationController
   def destroy
     @menu = Menu.find(params[:id])
     @menu.destroy
-    redirect_to admin_menus_path, alert: "菜單已刪除"
+
+    respond_to do |format|
+      format.html { redirect_to(admin_menus_url) }
+      format.xml  { head :ok }
+    end
+
   end
 
   private
 
   def menu_params
     params.require(:menu).permit(
-          :title, :phone, :address, :delivery,
-          :official_holiday_option_ids => [],
-          photo_attributes: [:image, :id],
-          foods_attributes: [:id, :name, :price, :_destroy, food_subs_attributes: [:id, :_destroy, :price, :description] ]
+      :title, :phone, :address, :delivery,
+      :official_holiday_option_ids => [],
+      photo_attributes: [:image, :id],
+      foods_attributes: [:id, :name, :price, :_destroy, food_subs_attributes: [:id, :_destroy, :price, :description] ]
 
-      )
+    )
   end
 end
