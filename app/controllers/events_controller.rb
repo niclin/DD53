@@ -52,4 +52,10 @@ class EventsController < ApplicationController
 
     redirect_to :back
   end
+
+  def reference
+    @event = Event.find(params[:id])
+    @members = @event.members
+    @orders = Order.where(event_id: @event)
+  end
 end

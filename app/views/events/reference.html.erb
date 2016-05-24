@@ -1,0 +1,44 @@
+<% if !@orders.blank? %>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <div class="box box-widget">
+      <!-- /.box-header -->
+      <div class="box-body">
+        <legend><%= @event.menu_name %></legend>
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>目前點餐的人</th>
+              <th>餐點</th>
+            <th>共計</td>
+            <th>備註</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @orders.each do |order| %>
+          <tr>
+            <td>
+              <%= order.user.name %>
+            </td>
+            <td>
+              <% order.items.each do |item| %>
+              <%= item.food_name %> / <%= item.quantity %> 份
+              <br>
+              <% end %>
+            </td>
+            <td>
+              <%= order.total %>元
+            </td>
+            <td>
+              <%= order.info.note %>
+            </td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<% else %>
+<h1 class="text-center">還沒有人開始點=.= 你可以先當第一個</h1>
+<% end %>

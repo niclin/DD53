@@ -27,6 +27,7 @@
                 <th>日期</th>
                 <th>店家</th>
                 <th>點餐</th>
+                <th>參考</th>
               </tr>
             </thead>
             <tbody>
@@ -49,6 +50,7 @@
                   <% end %>
                   <% end %>
                 </td>
+                <td><%= link_to '看看別人點什麼',reference_event_path(event) %></td>
               </tr>
               <% end %>
             </tbody>
