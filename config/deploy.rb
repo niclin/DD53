@@ -2,9 +2,9 @@
 lock '3.5.0'
 
 `ssh-add` # need this to make key-forwarding work
-set :application, 'ilunch'
+set :application, 'DD53'
 
-set :repo_url, 'https://github.com/niclin/ilunch.git'
+set :repo_url, 'https://github.com/niclin/DD53.git'
 set :deploy_to, '/var/www/rails'
 set :keep_releases, 5
 set :linked_files, fetch(:linked_files, []).push('config/database.yml', 'config/secrets.yml', 'config/initializers/carrier_wave.rb')
