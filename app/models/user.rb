@@ -3,12 +3,16 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
     :recoverable, :rememberable, :trackable, :validatable
-
   has_many :orders
   has_many :menus
   has_many :events
   has_many :event_users
   has_many :participated_events, through: :event_users, source: :event
+
+
+  def remember_me
+    true
+  end
 
   def admin?
     is_admin
