@@ -38,8 +38,36 @@
     <% end %>
   </tbody>
 </table>
-  共計 <%= @event.total_order_price(@event) %>NT
+
+
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th style="width: 200px;">所有餐點</th>
+      <th>總計份數</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @event.total_food_and_quantity.each do |f| %>
+      <tr>
+    <td><%= f[0] %></td>
+    <td><%= f[1] %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>共計</th>
+      <th><%= @event.total_order_price(@event) %>NT
 <% if @event.status? %>
   <%= link_to '結單', admin_event_invoice_path(@event), method: :post, class: "btn btn-primary" %>
-<% end %>
+<% end %></th>
+    </tr>
+  </thead>
+</table>
 </section>

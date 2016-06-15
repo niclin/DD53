@@ -6,6 +6,17 @@ class Event < ActiveRecord::Base
   has_many :members, through: :event_users, source: :user
   has_many :orders
 
+  def total_food_and_quantity
+    foods = []
+    self.orders.each do |order|
+      order.items.each do |item|
+        foods << item.food_name
+      end
+    end
+    food_hash = foods.inject(Hash.new(0)) { |total, e| total[e] += 1 ;total}
+    result = food_hash.to_a
+  end
+
   def status_open
     self.update_columns(status: true)
   end
