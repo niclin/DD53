@@ -23,4 +23,8 @@ class Order < ActiveRecord::Base
 
   def get_account_order_total
   end
+
+  def abandon_ordering
+    self.update_columns(is_abandon: true)
+  end
 end

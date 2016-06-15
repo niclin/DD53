@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160522155104) do
+ActiveRecord::Schema.define(version: 20160615141329) do
 
   create_table "cart_items", force: :cascade do |t|
     t.integer  "cart_id",    limit: 4
@@ -109,8 +109,9 @@ ActiveRecord::Schema.define(version: 20160522155104) do
     t.integer  "user_id",    limit: 4
     t.integer  "total",      limit: 4, default: 0
     t.integer  "event_id",   limit: 4
-    t.datetime "created_at",                       null: false
-    t.datetime "updated_at",                       null: false
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
+    t.boolean  "is_abandon",           default: false
   end
 
   create_table "photos", force: :cascade do |t|

@@ -34,6 +34,7 @@ Rails.application.routes.draw do
       post :join_event
       get :ordering
       get :reference
+      post :to_abandon
     end
     match 'food/:food_id/add_to_cart', to: 'events#add_to_cart', as: :add_to_cart, via: [:get, :post]
     match 'food/:food_id/:sub_id/add_multi_to_cart', to: 'events#add_multi_to_cart', as: :add_multi_to_cart, via: [:get, :post]

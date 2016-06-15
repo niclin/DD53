@@ -58,4 +58,12 @@ class EventsController < ApplicationController
     @members = @event.members
     @orders = Order.where(event_id: @event)
   end
+
+  def to_abandon
+    @event = Event.find(params[:id])
+    @order = Order.new(event_id: @event.id, total: '0', user_id: current_user.id, is_abandon: true)
+    @order.save
+
+    redirect_to :back
+  end
 end
