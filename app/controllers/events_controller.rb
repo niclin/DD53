@@ -63,7 +63,15 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
     @order = Order.new(event_id: @event.id, total: '0', user_id: current_user.id, is_abandon: true)
     @order.save
-
-    redirect_to :back
+    redirect_to :root
   end
+
+  def cancel_order
+  	@order = params[:order_id]
+  	@event = params[:event_id]
+    @cancel = Order.find_by(id: @order , event_id: @event, user_id: current_user)
+    @cancel.destroy
+  end
+
+
 end

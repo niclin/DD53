@@ -16,18 +16,17 @@ So, I want to build this repo and try to improve fucking mistake order.
 
 ## ToDo
 
-1. [  ]使用者要能修改送出後的訂單
-2. [  ]後台新增菜單時自動預設放棄選項
-3. [  ]使用者如勾選「放棄」後欲修改訂單，將會跳出姚明or成龍的圖片 + UCCU
-4. [  ]後台新增菜單需能夠增加「大、中、小」「冷、熱飲」「意麵、米粉、陽春麵、等等麵種」
-5. [  ]計算點餐的數量，要能知道一共幾份
-6. [  ]顯示尚未點餐人名
-7. [  ]後台新增菜單時價錢為0需要可以點餐（直接做預設數字0）
+1. [ v ]使用者要能修改送出後的訂單
+2. [ v ]使用者如勾選「放棄」後欲修改訂單，將會跳出姚明or成龍的圖片 + UCCU
+3. [ v ]後台新增菜單需能夠增加「大、中、小」「冷、熱飲」「意麵、米粉、陽春麵、等等麵種」
+4. [ v ]計算點餐的數量，要能知道一共幾份
+5. [  ]顯示尚未點餐人名
+6. [  ]後台新增菜單時價錢為0需要可以點餐（直接做預設數字0）
 
 ## Issues
 
 
-If you have problems, please create a [Github issue](https://github.com/niclin/ilunch/issues).
+If you have problems, please create a [Github issue](https://github.com/niclin/DD53/issues).
 
 
 ##License

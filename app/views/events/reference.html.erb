@@ -32,6 +32,9 @@
             </td>
             <td>
               <%= order.info.note %>
+              <% if current_user == order.user %>
+            <%= link_to("刪除重來", event_cancel_order_path(@event, order), method: :post, class: "btn btn-danger", data: { confirm: "確定獲得重新點餐的機會x 1次 ?"} ) %>
+              <% end %>
             </td>
           </tr>
           <% else %>
@@ -39,8 +42,13 @@
             <td colspan="2">
               <%= order.user.name %>
             </td>
-            <td colspan="2">
+            <td>
               放棄
+            </td>
+            <td>
+                                          <% if current_user == order.user %>
+            <%= link_to("刪除重來", event_cancel_order_path(@event, order), method: :post, class: "btn btn-danger", data: { confirm: "確定獲得重新點餐的機會x 1次 ?"} ) %>
+              <% end %>
             </td>
           </tr>
           <% end %>

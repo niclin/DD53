@@ -4,43 +4,38 @@
   </h1>
 </section>
 <section class="content">
-
-<h2><%= @event.menu_name %></h2>
-
-<table class="table table-bordered">
-  <thead>
-    <tr>
-      <th>目前點餐的人</th>
-      <th>餐點</th>
+  <h2><%= @event.menu_name %></h2>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>目前點餐的人</th>
+        <th>餐點</th>
       <th>共計</td>
       <th>備註</th>
     </tr>
   </thead>
   <tbody>
     <% @orders.each do |order| %>
-      <tr>
-        <td>
-          <%= order.user.name %>
-        </td>
-        <td>
-          <% order.items.each do |item| %>
-             <%= item.food_name %> / <%= item.quantity %> 份
-          <br>
-          <% end %>
-        </td>
-        <td>
-          <%= order.total %>元
-        </td>
-        <td>
-          <%= order.info.note %>
-        </td>
-      </tr>
+    <tr>
+      <td>
+        <%= order.user.name %>
+      </td>
+      <td>
+        <% order.items.each do |item| %>
+        <%= item.food_name %> / <%= item.quantity %> 份
+        <br>
+        <% end %>
+      </td>
+      <td>
+        <%= order.total %>元
+      </td>
+      <td>
+        <%= order.info.note %>
+      </td>
+    </tr>
     <% end %>
   </tbody>
 </table>
-
-
-
 <table class="table table-bordered">
   <thead>
     <tr>
@@ -50,24 +45,27 @@
   </thead>
   <tbody>
     <% @event.total_food_and_quantity.each do |f| %>
-      <tr>
-    <td><%= f[0] %></td>
-    <td><%= f[1] %></td>
-      </tr>
+    <tr>
+      <td><%= f[0] %></td>
+      <td><%= f[1] %></td>
+    </tr>
     <% end %>
   </tbody>
 </table>
-
-
 <table class="table table-bordered">
   <thead>
     <tr>
       <th>共計</th>
       <th><%= @event.total_order_price(@event) %>NT
-<% if @event.status? %>
-  <%= link_to '結單', admin_event_invoice_path(@event), method: :post, class: "btn btn-primary" %>
-<% end %></th>
+      </th>
     </tr>
   </thead>
 </table>
+
+<p>提醒親愛的助理人員，點餐完畢請務必點取結單，避免修改菜單之後點錯餐死無對證。</p>
+
+<% if @event.status? %>
+<%= link_to '結單', admin_event_invoice_path(@event), method: :post, class: "btn btn-primary" %>
+<% end %>
+
 </section>

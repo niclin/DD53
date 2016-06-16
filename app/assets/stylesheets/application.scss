@@ -14,12 +14,14 @@
  *= require_self
  */
 
-  @import "bootstrap-sprockets";
-  @import "bootstrap";
-  @import "font-awesome";
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import "font-awesome";
 
-.ilunch-home {
-  background-color: #ecf0f5;
+.DD53-home {
+    background-color: #ecf0f5;
 }
 
-.food-subs { margin-left: 100px; }
+.food-subs {
+    margin-left: 100px;
+}
