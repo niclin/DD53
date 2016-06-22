@@ -1,71 +1,124 @@
 <section class="content-header">
-  <h1>
-  目前點餐狀況
-  </h1>
+  <h1>目前點餐狀況</h1>
 </section>
+
 <section class="content">
-  <h2><%= @event.menu_name %></h2>
-  <table class="table table-bordered">
-    <thead>
-      <tr>
-        <th>目前點餐的人</th>
-        <th>餐點</th>
-      <th>共計</td>
-      <th>備註</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @orders.each do |order| %>
-    <tr>
-      <td>
-        <%= order.user.name %>
-      </td>
-      <td>
-        <% order.items.each do |item| %>
-        <%= item.food_name %> / <%= item.quantity %> 份
-        <br>
-        <% end %>
-      </td>
-      <td>
-        <%= order.total %>元
-      </td>
-      <td>
-        <%= order.info.note %>
-      </td>
-    </tr>
-    <% end %>
-  </tbody>
-</table>
-<table class="table table-bordered">
-  <thead>
-    <tr>
-      <th style="width: 200px;">所有餐點</th>
-      <th>總計份數</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @event.total_food_and_quantity.each do |f| %>
-    <tr>
-      <td><%= f[0] %></td>
-      <td><%= f[1] %></td>
-    </tr>
-    <% end %>
-  </tbody>
-</table>
-<table class="table table-bordered">
-  <thead>
-    <tr>
-      <th>共計</th>
-      <th><%= @event.total_order_price(@event) %>NT
-      </th>
-    </tr>
-  </thead>
-</table>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="box box-warning">
+        <div class="box-header with-border">
+          <h3 class="box-title">訂餐明細</h3>
+        </div>
+        <div class="box-body">
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th>目前點餐的人</th>
+                <th>餐點</th>
+                <th>共計</th>
+                <th>備註</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @orders.each do |order| %>
+              <tr>
+                <td>
+                  <%= order.user.name %>
+                </td>
+                <td>
+                  <% order.items.each do |item| %>
+                  <%= item.food_name %> / <%= item.quantity %> 份
+                  <br>
+                  <% end %>
+                </td>
+                <td>
+                  <%= order.total %>元
+                </td>
+                <td>
+                  <%= order.info.note %>
+                </td>
+              </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
 
-<p>提醒親愛的助理人員，點餐完畢請務必點取結單，避免修改菜單之後點錯餐死無對證。</p>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="box box-success">
+        <div class="box-header with-border">
+          <h3 class="box-title">餐點總數</h3>
+        </div>
+        <div class="box-body">
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th style="width: 200px;">所有餐點</th>
+                <th>總計份數</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @event.total_food_and_quantity.each do |f| %>
+              <tr>
+                <td><%= f[0] %></td>
+                <td><%= f[1] %></td>
+              </tr>
+              <% end %>
+            </tbody>
+          </table>
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th>共計</th>
+                <th><%= @event.total_order_price(@event) %>NT
+                </th>
+              </tr>
+            </thead>
+          </table>
+          <p>提醒親愛的助理人員，點餐完畢請務必點取結單，避免修改菜單之後點錯餐死無對證。</p>
+          <% if @event.status? %>
+          <%= link_to '結單', admin_event_invoice_path(@event), method: :post, class: "btn btn-primary" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
 
-<% if @event.status? %>
-<%= link_to '結單', admin_event_invoice_path(@event), method: :post, class: "btn btn-primary" %>
-<% end %>
+    <div class="col-md-6">
+      <div class="box box-success">
+        <div class="box-header with-border">
+          <h3 class="box-title">店家資訊</h3>
+        </div>
+        <div class="box-body">
+          <strong><i class="fa fa-book margin-r-5"></i> 店名</strong>
+          <p class="text-muted">
+            <%= @event.menu_name %>
+          </p>
+          <hr>
+          <strong><i class="fa fa-book margin-r-5"></i> 電話</strong>
+          <p class="text-muted">
+            <%= @event.menu.phone %>
+          </p>
+          <hr>
+          <strong><i class="fa fa-book margin-r-5"></i> 地址</strong>
+          <p class="text-muted">
+            <%= @event.menu.address %>
+          </p>
+          <hr>
+          <strong><i class="fa fa-book margin-r-5"></i> 外送</strong>
+          <p class="text-muted">
+            <% if @event.menu.delivery? %>
+            <span class="label label-success">可以外送</span>
+            <% else %>
+            <span class="label label-danger">不能外送</span>
+            <% end %>
+          </p>
+          <hr>
+        </div>
+      </div>
+    </div>
+  </div>
 
 </section>
