@@ -88,4 +88,6 @@ Rails.application.configure do
 
     authentication: :plain,
   }
+
+  config.roadie.provider = Roadie::FilesystemProvider.new("", Rails.root.join("public"))
 end
