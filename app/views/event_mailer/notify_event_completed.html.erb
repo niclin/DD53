@@ -12,7 +12,6 @@
             <tr>
               <th>點餐者</th>
               <th>餐點</th>
-              <th>共計</th>
               <th>備註</th>
             </tr>
           </thead>
@@ -27,9 +26,6 @@
                 <%= item.food_name %> / <%= item.quantity %> 份
                 <br>
                 <% end %>
-              </td>
-              <td>
-                <%= order.total %>元
               </td>
               <td>
                 <%= order.info.note %>
