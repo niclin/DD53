@@ -1,7 +1,8 @@
 source 'https://rubygems.org'
 # routes good
+gem "roadie", "2.4.3"
 gem 'google_custom_search_api'
-
+gem "letter_opener", group: :development
 gem 'sextant'
 gem "simple_form"
 gem "carrierwave"
