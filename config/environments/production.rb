@@ -78,13 +78,5 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   config.action_mailer.delivery_method = :smtp
-  config.action_mailer.smtp_settings = {
-    port:           587,
-    address:        "smtp.mailgun.org",
-    user_name:      "mailgun_user",
-    password:       "mailgun_secret",
-    domain:         "sandbox2114ba67659947d796e8ce058d099f00.mailgun.org",
-
-    authentication: :plain,
-  }
+  config.action_mailer.smtp_settings = config_for(:email).symbolize_keys
 end
