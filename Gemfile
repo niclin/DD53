@@ -4,6 +4,7 @@ gem 'delayed_job_active_record'
 gem 'roadie-rails', '~> 1.0'
 gem 'google_custom_search_api'
 gem "letter_opener", group: :development
+gem 'capistrano3-delayed-job', '~> 1.0', group: :development
 gem 'sextant'
 gem "simple_form"
 gem "carrierwave"

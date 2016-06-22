@@ -52,4 +52,8 @@ namespace :deploy do
     end
   end
 
+  after 'deploy:published', 'restart' do
+    invoke 'delayed_job:restart'
+  end
+
 end
