@@ -28,7 +28,6 @@ class Admin::EventsController < ApplicationController
       if Rails.env.production?
         notifier = Slack::Notifier.new "https://hooks.slack.com/services/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"
         notifier.ping "<a href='http://dd53.xyz/'>一起吃#{@menu.title}吧，要記得點餐唷！</a> :heart:"
-        EventMailer.notify_event_completed(@event).deliver_now!
       end
     end
   end
@@ -36,6 +35,7 @@ class Admin::EventsController < ApplicationController
   def invoice
     @event = Event.find(params[:event_id])
     @event.event_invoice
+    EventMailer.notify_event_completed(@event).deliver_now!
     redirect_to admin_events_path
   end
 end
