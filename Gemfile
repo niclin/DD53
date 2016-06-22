@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
-# routes good
+
+gem 'delayed_job_active_record'
 gem 'roadie-rails', '~> 1.0'
 gem 'google_custom_search_api'
 gem "letter_opener", group: :development
