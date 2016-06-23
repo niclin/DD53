@@ -1,7 +1,6 @@
 <section class="content-header">
   <h1>目前點餐狀況</h1>
 </section>
-
 <section class="content">
   <div class="row">
     <div class="col-md-12">
@@ -21,6 +20,7 @@
             </thead>
             <tbody>
               <% @orders.each do |order| %>
+              <% if !order.is_abandon? %>
               <tr>
                 <td>
                   <%= order.user.name %>
@@ -38,6 +38,16 @@
                   <%= order.info.note %>
                 </td>
               </tr>
+              <% else %>
+              <tr>
+                <td colspan="3">
+                  <%= order.user.name %>
+                </td>
+                <td>
+                  放棄
+                </td>
+              </tr>
+              <% end %>
               <% end %>
             </tbody>
           </table>
@@ -45,7 +55,6 @@
       </div>
     </div>
   </div>
-
   <div class="row">
     <div class="col-md-6">
       <div class="box box-success">
@@ -85,7 +94,6 @@
         </div>
       </div>
     </div>
-
     <div class="col-md-6">
       <div class="box box-success">
         <div class="box-header with-border">
@@ -120,5 +128,4 @@
       </div>
     </div>
   </div>
-
 </section>
