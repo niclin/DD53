@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160622155134) do
+ActiveRecord::Schema.define(version: 20160623014847) do
 
   create_table "cart_items", force: :cascade do |t|
     t.integer  "cart_id",    limit: 4
@@ -115,8 +115,9 @@ ActiveRecord::Schema.define(version: 20160622155134) do
     t.integer  "order_id",   limit: 4
     t.string   "user_name",  limit: 255
     t.text     "note",       limit: 65535
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
+    t.datetime "created_at",                               null: false
+    t.datetime "updated_at",                               null: false
+    t.boolean  "is_notify",                default: false
   end
 
   create_table "order_items", force: :cascade do |t|

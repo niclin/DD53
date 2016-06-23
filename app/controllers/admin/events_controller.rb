@@ -35,7 +35,13 @@ class Admin::EventsController < ApplicationController
   def invoice
     @event = Event.find(params[:event_id])
     @event.event_invoice
-    EventMailer.delay.notify_event_completed(@event)
+
+    @event.orders.each do |order|
+      if order.info.is_notify?
+        EventMailer.delay.notify_event_completed(@event, order.user)
+      end
+    end
+
     redirect_to admin_events_path
   end
 end

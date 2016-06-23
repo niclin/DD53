@@ -27,6 +27,6 @@ class OrdersController < ApplicationController
 
   def order_params
     params.require(:order).permit(info_attributes: [:user_name,
-                                                    :note] )
+                                                    :note, :is_notify] )
   end
 end
