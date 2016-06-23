@@ -37,8 +37,10 @@ class Admin::EventsController < ApplicationController
     @event.event_invoice
 
     @event.orders.each do |order|
-      if order.info.is_notify?
-        EventMailer.delay.notify_event_completed(@event, order.user)
+      if !order.is_abandon?
+        if order.info.is_notify?
+          EventMailer.delay.notify_event_completed(@event, order.user)
+        end
       end
     end
 

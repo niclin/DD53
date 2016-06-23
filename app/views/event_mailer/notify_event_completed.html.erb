@@ -1,5 +1,4 @@
 <%= stylesheet_link_tag  'application' %>
-
 <div class="row">
   <div class="col-md-12">
     <div class="box box-warning">
@@ -17,6 +16,7 @@
           </thead>
           <tbody>
             <% @orders.each do |order| %>
+            <% if !order.is_abandon? %>
             <tr>
               <td>
                 <%= order.user.name %>
@@ -31,6 +31,16 @@
                 <%= order.info.note %>
               </td>
             </tr>
+            <% else %>
+            <tr>
+              <td colspan="2">
+                <%= order.user.name %>
+              </td>
+              <td>
+                放棄
+              </td>
+            </tr>
+            <% end %>
             <% end %>
           </tbody>
         </table>
