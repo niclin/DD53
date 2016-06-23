@@ -44,7 +44,7 @@
             <%= c.input :note, label: '備註', placeholder: '飯少、飯多、要辣、等特殊需求可以寫這邊^_^' %>
           </div>
           <div class="form-group col-lg-12">
-            <%= c.input :is_notify, label: '結單時發團體明細Email通知我', as: :boolean, checked_value: true, unchecked_value: false  %>
+            <%= c.input :is_notify, label: '結單時發團體明細Email通知我', as: :boolean, checked_value: true, unchecked_value: false, :input_html => { :checked => true } %>
           </div>
           <% end %>
           <div class="checkout">
