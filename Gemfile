@@ -1,21 +1,5 @@
 source 'https://rubygems.org'
-gem 'daemons'
-gem 'delayed_job_active_record'
-gem 'roadie-rails', '~> 1.0'
-gem 'google_custom_search_api'
-gem "letter_opener", group: :development
-gem 'capistrano3-delayed-job', '~> 1.0', group: :development
-gem 'sextant'
-gem "simple_form"
-gem "carrierwave"
-gem "mini_magick"
-gem 'awesome_rails_console'
-gem 'devise'
-gem 'cocoon'
-gem 'bootstrap-sass'
-gem "font-awesome-rails"
-gem 'fog'
-gem 'slack-notifier'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.4'
 
@@ -38,14 +22,25 @@ gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
 
-# Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
-
-# Use Unicorn as the app server
-# gem 'unicorn'
-
-# Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
+gem 'friendly_id', '~> 5.0.0'
+gem "babosa"
+gem 'daemons'
+gem 'delayed_job_active_record'
+gem 'roadie-rails', '~> 1.0'
+gem 'google_custom_search_api'
+gem "letter_opener", group: :development
+gem 'capistrano3-delayed-job', '~> 1.0', group: :development
+gem 'sextant'
+gem "simple_form"
+gem "carrierwave"
+gem "mini_magick"
+gem 'awesome_rails_console'
+gem 'devise'
+gem 'cocoon'
+gem 'bootstrap-sass'
+gem "font-awesome-rails"
+gem 'fog'
+gem 'slack-notifier'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

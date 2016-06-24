@@ -48,6 +48,7 @@ GEM
       awesome_print
       pry-rails
       railties
+    babosa (1.0.2)
     bcrypt (3.1.11)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
@@ -238,6 +239,8 @@ GEM
     font-awesome-rails (4.6.3.0)
       railties (>= 3.2, < 5.1)
     formatador (0.2.5)
+    friendly_id (5.0.5)
+      activerecord (>= 4.0.0)
     globalid (0.3.6)
       activesupport (>= 4.1.0)
     google_custom_search_api (2.0.0)
@@ -385,6 +388,7 @@ PLATFORMS
 
 DEPENDENCIES
   awesome_rails_console
+  babosa
   bootstrap-sass
   byebug
   capistrano-passenger
@@ -398,6 +402,7 @@ DEPENDENCIES
   devise
   fog
   font-awesome-rails
+  friendly_id (~> 5.0.0)
   google_custom_search_api
   jbuilder (~> 2.0)
   jquery-rails
