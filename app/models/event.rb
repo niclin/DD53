@@ -7,6 +7,19 @@ class Event < ActiveRecord::Base
   has_many :members, through: :event_users, source: :user
   has_many :orders
 
+  extend FriendlyId
+  friendly_id :slug_candidates, use: :slugged
+
+  def normalize_friendly_id(input)
+    input.to_s.to_slug.normalize.to_s
+  end
+
+  def slug_candidates
+    [
+      [:menu_name, :date]
+    ]
+  end
+
   def total_food_and_quantity
     foods = []
     self.orders.each do |order|

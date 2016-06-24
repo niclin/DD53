@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160624050926) do
+ActiveRecord::Schema.define(version: 20160624052733) do
 
   create_table "cart_items", force: :cascade do |t|
     t.integer  "cart_id",    limit: 4
@@ -67,7 +67,10 @@ ActiveRecord::Schema.define(version: 20160624050926) do
     t.date     "date"
     t.datetime "created_at",                         null: false
     t.datetime "updated_at",                         null: false
+    t.string   "slug",       limit: 255
   end
+
+  add_index "events", ["slug"], name: "index_events_on_slug", unique: true, using: :btree
 
   create_table "food_subs", force: :cascade do |t|
     t.integer  "food_id",     limit: 4
