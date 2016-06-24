@@ -5,7 +5,7 @@ class Menu < ActiveRecord::Base
   has_many :official_holiday_options, through: :official_holidays
 
   extend FriendlyId
-  friendly_id :title, use: :slugged
+  friendly_id :slug_candidates, use: :slugged
 
   accepts_nested_attributes_for :photo
   accepts_nested_attributes_for :foods,
