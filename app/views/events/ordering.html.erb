@@ -62,21 +62,25 @@
         </tr>
       </thead>
       <tbody>
-        <% current_cart.cart_items.each do |food| %>
+        <% current_cart.cart_items.each do |item| %>
         <tr>
           <td>
-            <%= food.name%>
+            <%= item.name %>
           </td>
           <td>
-            <%= food.price %>
+            <%= item.price %>
           </td>
           <td>
-            <%= food.quantity %>
+             <%= form_for item, url: item_path(item), class: "form-horizontal", remote: true do |f| %>
+               <%= f.text_field :quantity %>
+                 <%= f.submit "更新", data: { disable_with: "Submiting..." } %>
+             <% end %>
           </td>
           <td>
-            <%= link_to item_path(food), method: :delete do %>
+            <%= link_to item_path(item), method: :delete do %>
             刪除
             <% end %>
+
           </td>
         </tr>
         <% end %>

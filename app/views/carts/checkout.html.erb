@@ -48,6 +48,7 @@
           </div>
           <% end %>
           <div class="checkout">
+          <%= link_to '返回上一步', :back, class: "btn btn-lg btn-default pull-left"%>
             <%= f.submit "確定就訂這些了", class: "btn btn-lg btn-danger pull-right",
             data: { disable_with: "Submitting..." } %>
           </div>

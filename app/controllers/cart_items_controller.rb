@@ -13,11 +13,8 @@ class CartItemsController < ApplicationController
   end
 
   def update
-    @cart = current_cart
-    @item = @cart.cart_items.find_by(food_id: params[:id])
-
-    @item.update(item_params)
-
+    @cart_item = CartItem.find(params[:id])
+    @cart_item.update(quantity: params[:cart_item][:quantity])
     redirect_to :back
   end
 

@@ -27,7 +27,7 @@ class Admin::EventsController < ApplicationController
       redirect_to :back, alert: "已開啟#{@menu.title}的訂餐，快通知大家吧！"
       if Rails.env.production?
         notifier = Slack::Notifier.new "https://hooks.slack.com/services/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"
-        notifier.ping "<a href='http://dd53.xyz/'>一起吃#{@menu.title}吧，要記得點餐唷！</a> :heart:"
+        notifier.ping "<a href='http://dd53.xyz/'>由「#{current_user.name}」開啟了訂餐任務，今天吃「#{@menu.title}」吧，要記得點餐唷！</a> :heart:"
       end
     end
   end
