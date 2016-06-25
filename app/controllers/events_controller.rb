@@ -67,8 +67,8 @@ class EventsController < ApplicationController
   end
 
   def cancel_order
-  	@order = params[:order_id]
-  	@event = params[:event_id]
+  	@order = Order.find(params[:order_id])
+  	@event = Event.find(params[:event_id])
     @cancel = Order.find_by(id: @order , event_id: @event, user_id: current_user)
     @cancel.destroy
   end
