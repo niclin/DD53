@@ -28,9 +28,8 @@
               <%= item.price %>
             </td>
             <td>
-              <%= form_for item, url: item_path(item), class: "form-horizontal", remote: true do |f| %>
-              <%= f.text_field :quantity %>
-              <%= f.submit "更新", data: { disable_with: "Submiting..." } %>
+              <%= simple_form_for item, url: item_path(item), class: "form-horizontal", remote: true do |f| %>
+              <%= f.input :quantity, collection: 1..15,label: false, class: 'form-control' %>
               <% end %>
             </td>
             <td>
