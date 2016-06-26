@@ -35,7 +35,6 @@ class EventsController < ApplicationController
       flash[:warning] = "你的食物車內已有此物品"
     end
     respond_to do |format|
-          flash.now[:notice] = "你已成功將 #{@food.name} 加入食物車"
       format.js
     end
 

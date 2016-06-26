@@ -28,8 +28,8 @@
               <%= item.price %>
             </td>
             <td>
-              <%= simple_form_for item, url: item_path(item), class: "form-horizontal", remote: true do |f| %>
-              <%= f.input :quantity, collection: 1..15,label: false, class: 'form-control' %>
+              <%= simple_form_for item, url: item_path(item), remote: true do |f| %>
+              <%= f.input :quantity, collection: 1..15,label: false, class: '123' %>
               <% end %>
             </td>
             <td>
