@@ -51,8 +51,9 @@ class EventsController < ApplicationController
     else
       flash[:warning] = "你的食物車內已有此物品"
     end
-
-    redirect_to :back
+    respond_to do |format|
+      format.js
+    end
   end
 
   def reference
@@ -74,6 +75,4 @@ class EventsController < ApplicationController
     @cancel = Order.find_by(id: @order , event_id: @event, user_id: current_user)
     @cancel.destroy
   end
-
-
 end

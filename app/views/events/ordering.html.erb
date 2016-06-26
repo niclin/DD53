@@ -1,10 +1,11 @@
 <div class="container">
   <div class="row">
-    <div class="col-xs-12">
-      <h2> 店名： <%= @menu.title %></h2>
-    </div>
     <div class="col-xs-12 col-sm-6">
-      <h2> 菜單總覽 </h2>
+        <div class="box box-widget text-center">
+    <div class="box-header with-border">
+      <h3 class="box-title">店名： <%= @menu.title %></h3>
+    </div>
+    <div class="box-body">
       <table class="table table-bordered">
         <thead>
           <tr>
@@ -45,10 +46,18 @@
       </tbody>
     </table>
   </div>
+  </div>
+  </div>
+
+
   <div class="col-xs-12 col-sm-6">
+    <div id="cart-inner">
     <%= render 'price_table' %>
-    <%= link_to("確認訂餐", checkout_carts_path, method: :post, class: "btn btn-danger pull-right") %>
-    <small> <%= link_to '放棄點餐', to_abandon_event_path, method: :post ,
-    data: { confirm: "你確定要放棄這次點餐？出門外面買很熱！而且我還沒有做餐點修改的功能！！你放棄就沒辦法在點了XDD！真的要放棄嗎？"} %></small>
+    <div class="box-footer">
+    <%= link_to("確認訂餐", checkout_carts_path, method: :post, class: "btn btn-success pull-right") %>
+    <small> <%= link_to '放棄點餐', to_abandon_event_path, method: :post ,class: "btn btn-default",
+    data: { confirm: "你確定要放棄這次點餐？出門外面買很熱！真的要放棄嗎？"} %></small>
+    </div>
+    </div>
   </div>
 </div>
