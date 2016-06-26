@@ -34,8 +34,10 @@ class EventsController < ApplicationController
     else
       flash[:warning] = "你的食物車內已有此物品"
     end
+    respond_to do |format|
+      format.js
+    end
 
-    redirect_to :back
   end
 
 
@@ -67,8 +69,8 @@ class EventsController < ApplicationController
   end
 
   def cancel_order
-  	@order = Order.find(params[:order_id])
-  	@event = Event.find(params[:event_id])
+    @order = Order.find(params[:order_id])
+    @event = Event.find(params[:event_id])
     @cancel = Order.find_by(id: @order , event_id: @event, user_id: current_user)
     @cancel.destroy
   end

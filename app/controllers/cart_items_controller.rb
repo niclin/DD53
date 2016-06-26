@@ -15,7 +15,9 @@ class CartItemsController < ApplicationController
   def update
     @cart_item = CartItem.find(params[:id])
     @cart_item.update(quantity: params[:cart_item][:quantity])
-    redirect_to :back
+    respond_to do |format|
+      format.js
+    end
   end
 
   private

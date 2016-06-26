@@ -3,7 +3,7 @@
     <div class="col-xs-12">
       <h2> 店名： <%= @menu.title %></h2>
     </div>
-    <div class="col-xs-6">
+    <div class="col-xs-12 col-sm-6">
       <h2> 菜單總覽 </h2>
       <table class="table table-bordered">
         <thead>
@@ -31,11 +31,11 @@
             <td>
               <%if food.price.blank? %>
               <% food.food_subs.each do |sub| %>
-              <%= button_to("＋", event_add_multi_to_cart_path(@event,food.id,sub.id), method: :post,
+              <%= button_to("＋", event_add_multi_to_cart_path(@event,food.id,sub.id), method: :post, remote: :true,
               class: "btn btn-danger btn-xs") %>
               <% end %>
               <% else %>
-              <%= button_to("＋", event_add_to_cart_path(@event,food.id), method: :post,
+              <%= button_to("＋", event_add_to_cart_path(@event,food.id), method: :post, remote: :true,
               class: "btn btn-danger btn-xs") %>
               <% end %>
             </td>
@@ -45,47 +45,8 @@
       </tbody>
     </table>
   </div>
-  <div class="col-xs-6">
-    <h2> 您的預定
-    <span class="badge"> 總計 <%= render_cart_total_price(current_cart) %> NTD  </span>
-    <small class="pull-right"> <%= link_to("清空所有選項", clean_carts_path ,
-    method: :delete , class: "btn btn-primary btn-sm",
-    data: { confirm: "你確定要清空整個購物車嗎？"} )%></small>
-    </h2>
-    <table class="table table-bordered">
-      <thead>
-        <tr>
-          <th>商品資訊</th>
-          <th>單價</th>
-          <th>數量</th>
-          <th>操作選項 </th>
-        </tr>
-      </thead>
-      <tbody>
-        <% current_cart.cart_items.each do |item| %>
-        <tr>
-          <td>
-            <%= item.name %>
-          </td>
-          <td>
-            <%= item.price %>
-          </td>
-          <td>
-             <%= form_for item, url: item_path(item), class: "form-horizontal", remote: true do |f| %>
-               <%= f.text_field :quantity %>
-                 <%= f.submit "更新", data: { disable_with: "Submiting..." } %>
-             <% end %>
-          </td>
-          <td>
-            <%= link_to item_path(item), method: :delete do %>
-            刪除
-            <% end %>
-
-          </td>
-        </tr>
-        <% end %>
-      </tbody>
-    </table>
+  <div class="col-xs-12 col-sm-6">
+    <%= render 'price_table' %>
     <%= link_to("確認訂餐", checkout_carts_path, method: :post, class: "btn btn-danger pull-right") %>
     <small> <%= link_to '放棄點餐', to_abandon_event_path, method: :post ,
     data: { confirm: "你確定要放棄這次點餐？出門外面買很熱！而且我還沒有做餐點修改的功能！！你放棄就沒辦法在點了XDD！真的要放棄嗎？"} %></small>

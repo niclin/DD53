@@ -1,0 +1,41 @@
+ <div id="price-table">
+    <h2> 您的預定
+    <span class="badge"> 總計 <%= render_cart_total_price(current_cart) %> NTD  </span>
+    <small class="pull-right"> <%= link_to("清空所有選項", clean_carts_path ,
+    method: :delete , class: "btn btn-primary btn-sm",
+    data: { confirm: "你確定要清空整個購物車嗎？"} )%></small>
+    </h2>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>商品資訊</th>
+          <th>單價</th>
+          <th>數量</th>
+          <th>操作選項 </th>
+        </tr>
+      </thead>
+      <tbody>
+        <% current_cart.cart_items.each do |item| %>
+        <tr>
+          <td>
+            <%= item.name %>
+          </td>
+          <td>
+            <%= item.price %>
+          </td>
+          <td>
+            <%= form_for item, url: item_path(item), class: "form-horizontal", remote: true do |f| %>
+            <%= f.text_field :quantity %>
+            <%= f.submit "更新", data: { disable_with: "Submiting..." } %>
+            <% end %>
+          </td>
+          <td>
+            <%= link_to item_path(item), method: :delete do %>
+            刪除
+            <% end %>
+          </td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
