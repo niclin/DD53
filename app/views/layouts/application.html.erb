@@ -11,7 +11,9 @@
   <body class="DD53-home">
     <%= render "common/navbar" %>
     <div class="container">
-      <%= notice_message %>
+      <div id='notice'>
+        <%= render :partial => 'layouts/flash' , :locals => { :flash => flash } %>
+      </div>
     </div>
     <div class="warpper">
       <section class="content">

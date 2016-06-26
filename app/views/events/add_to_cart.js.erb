@@ -1,1 +1,2 @@
 $('#price-table').html("<%= j render('events/price_table') %>");
+$("#notice").html("<%= escape_javascript(render :partial => 'layouts/flash' , :locals => { :flash => flash }).html_safe %>");
