@@ -38,10 +38,10 @@
           <%= f.simple_fields_for :info do |c| %>
           <legend>訂購人</legend>
           <div class="form-group col-lg-12">
-            <%= c.input :user_name, label: '暱稱', placeholder: '填一下你是誰好嗎', input_html: {value: current_user.name } %>
+            <%= c.input :user_name, label: '暱稱', placeholder: '填一下你是誰好嗎', input_html: {value: current_user.name }, input_html: { class: 'form-control' } %>
           </div>
           <div class="form-group col-lg-12">
-            <%= c.input :note, label: '備註', placeholder: '飯少、飯多、要辣、等特殊需求可以寫這邊^_^' %>
+            <%= c.input :note, label: '備註', placeholder: '飯少、飯多、要辣、等特殊需求可以寫這邊^_^', input_html: { class: 'form-control' } %>
           </div>
           <div class="form-group col-lg-12">
             <%= c.input :is_notify, label: '結單時發團體明細Email通知我', as: :boolean, checked_value: true, unchecked_value: false, :input_html => { :checked => true } %>
