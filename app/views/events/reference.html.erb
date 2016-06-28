@@ -19,7 +19,7 @@
           <% if !order.is_abandon? %>
           <tr>
             <td>
-              <%= order.user.name %>
+              <%= order.info.user_name %>
             </td>
             <td>
               <% order.items.each do |item| %>
