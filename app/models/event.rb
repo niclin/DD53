@@ -24,7 +24,9 @@ class Event < ActiveRecord::Base
     foods = []
     self.orders.each do |order|
       order.items.each do |item|
-        foods << item.food_name
+        item.quantity.times do |n|
+          foods << item.food_name
+        end
       end
     end
     food_hash = foods.inject(Hash.new(0)) { |total, e| total[e] += 1 ;total}
