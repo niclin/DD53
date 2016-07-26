@@ -3,7 +3,7 @@ class Admin::EventsController < ApplicationController
   layout "admin"
 
   def index
-    @events = Event.order("id DESC")
+    @events = Event.order("id DESC").paginate(:page => params[:page], :per_page => 15)
     @menus = Menu.order("id DESC")
   end
 
