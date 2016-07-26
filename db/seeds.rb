@@ -5,7 +5,7 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-puts "ㄏㄏㄏ龍山寺食堂來囉(本檔案僅限用於無資料的時候）"
+puts "設定基礎資料，測試用帳號為admin@test.com，password為12345678"
 
 u = User.new
 u.email = "admin@test.com"           # 可以改成自己的 email
@@ -16,28 +16,35 @@ u.save
 
 o = OfficialHolidayOption.new
 o.name = "星期一"
+o.datename = "1"
 o.save
 
 o = OfficialHolidayOption.new
 o.name = "星期二"
+o.datename = "2"
 o.save
 
 o = OfficialHolidayOption.new
 o.name = "星期三"
+o.datename = "3"
 o.save
 
 o = OfficialHolidayOption.new
 o.name = "星期四"
+o.datename = "4"
 o.save
 
 o = OfficialHolidayOption.new
 o.name = "星期五"
+o.datename = "5"
 o.save
 
 o = OfficialHolidayOption.new
 o.name = "星期六"
+o.datename = "6"
 o.save
 
 o = OfficialHolidayOption.new
 o.name = "星期日"
+o.datename = "0"
 o.save

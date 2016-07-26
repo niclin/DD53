@@ -19,15 +19,22 @@ class Admin::EventsController < ApplicationController
 
   def select_menu
     @menu = Menu.find(params[:menu_id])
+    today = Date.today.wday
+
     @user = current_user.id
     @date = DateTime.now
     if request.post?
-      @event = Event.create(menu_id: @menu.id, user_id: @user, date: @date, menu_name: @menu.title)
-      @event.status_open
-      redirect_to :back, alert: "已開啟#{@menu.title}的訂餐，快通知大家吧！"
-      if Rails.env.production?
-        notifier = Slack::Notifier.new "https://hooks.slack.com/services/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"
-        notifier.ping "<a href='http://dd53.xyz/'>由「#{current_user.name}」開啟了訂餐任務，今天吃「#{@menu.title}」吧，要記得點餐唷！</a> :heart:"
+      if @menu.day_off?
+        @event = Event.create(menu_id: @menu.id, user_id: @user, date: @date, menu_name: @menu.title)
+        @event.status_open
+        redirect_to :back, alert: "已開啟#{@menu.title}的訂餐，快通知大家吧！"
+        if Rails.env.production?
+          notifier = Slack::Notifier.new "https://hooks.slack.com/services/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"
+          notifier.ping "<a href='http://dd53.xyz/'>由「#{current_user.name}」開啟了訂餐任務，今天吃「#{@menu.title}」吧，要記得點餐唷！</a> :heart:"
+        end
+      else
+        flash[:warning] = "靠悲今天公休"
+        redirect_to :back
       end
     end
   end

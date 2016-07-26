@@ -22,4 +22,14 @@ class Menu < ActiveRecord::Base
       [:title, :phone]
     ]
   end
+
+  def day_off?
+    today = Date.today.wday
+    holidays =[]
+    self.official_holidays.each do|holiday|
+      o = OfficialHolidayOption.find_by(datename: holiday.official_holiday_option_id)
+      holidays << o.datename
+    end
+    holidays.include?(today)
+  end
 end

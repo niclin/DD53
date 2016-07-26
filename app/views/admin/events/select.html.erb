@@ -27,8 +27,13 @@
               不可以外送
               <% end %>
             </td>
+            <%if !menu.day_off? %>
             <td><%= link_to("選擇", admin_select_menu_path(menu), :method => :create , class: "btn btn-danger", data: { confirm: "確定是否吃「#{menu.title}」？選擇後不能刪除。" } ) %>
             </td>
+            <% else %>
+            <td><span class="label label-default">今日公休</span>
+            </td>
+            <% end %>
           </tr>
           <% end %>
         </tbody>
