@@ -24,7 +24,7 @@ class Admin::EventsController < ApplicationController
     @user = current_user.id
     @date = DateTime.now
     if request.post?
-      if @menu.day_off?
+      if !@menu.day_off?
         @event = Event.create(menu_id: @menu.id, user_id: @user, date: @date, menu_name: @menu.title)
         @event.status_open
         redirect_to :back, alert: "已開啟#{@menu.title}的訂餐，快通知大家吧！"
