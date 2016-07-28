@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= @team.name %></title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+
+ <div class="container-fluid">
+
+   <%= render "common/team_navbar" %>
+   <%= notice_message %>
+   <%= yield %>
+
+ </div>
+
+
+ <%= render "common/footer" %>
+
+</body>
+</html>

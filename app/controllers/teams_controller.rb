@@ -1,6 +1,8 @@
 class TeamsController < ApplicationController
   before_action :find_this_team
 
+  layout "teams"
+
   def show
   end
 
