@@ -1,4 +1,5 @@
 class RegistrationsController < Devise::RegistrationsController
+
   def new
     build_resource({})
     t = self.resource.teams.build
@@ -6,9 +7,7 @@ class RegistrationsController < Devise::RegistrationsController
   end
 
   def create
-
-      super
-
+    super
   end
 
 

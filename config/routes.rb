@@ -2,8 +2,6 @@ require 'subdomain'
 
 Rails.application.routes.draw do
 
-  root 'pages#welcome'
-
   as :user do
     patch '/user/confirmation' => 'confirmations#update', :via => :patch, :as => :update_user_confirmation
   end
@@ -16,7 +14,7 @@ Rails.application.routes.draw do
 
 
   constraints(Subdomain) do
-    get '/' => 'teams#show'
+    get '/' => 'events#show'
   end
 
   namespace :account do
@@ -62,5 +60,7 @@ Rails.application.routes.draw do
 
   resources :menus
   resources :orders
+
+  root 'pages#welcome'
 
 end

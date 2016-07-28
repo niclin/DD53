@@ -1,14 +1,16 @@
 class EventsController < ApplicationController
   include FindTeam
-  layout "teams"
+
   before_action :authenticate_user!
   before_action :find_this_team
-
-
+  layout "teams"
 
   def index
     @events = Event.where(date: Date.today, status: true)
     @menus = Menu.all
+  end
+
+  def show
   end
 
   def ordering

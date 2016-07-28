@@ -12,15 +12,10 @@
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-              <ul class="nav navbar-nav navbar-left">
-                <li> <%= link_to("菜單", menus_path) %></li>
-                <li> <%= link_to("訂餐", events_path) %></li>
-              </ul>
-
 
               <ul class="nav navbar-nav navbar-right">
                 <% if !current_user %>
-                  <li> <%= link_to("註冊", new_user_registration_path) %> </li>
+                  <li> <%= link_to("創建群組", new_user_registration_path) %> </li>
                   <li> <%= link_to("登入", "/signin") %> </li>
                 <% else %>
                   <li class="dropdown">

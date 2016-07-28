@@ -1,8 +1,10 @@
 class MenusController < ApplicationController
-
   include FindTeam
-    before_action :find_this_team
   layout "teams"
+
+  before_action :authenticate_user!
+  before_action :find_this_team
+
 
   def index
     @menus = Menu.all
