@@ -2,7 +2,6 @@ require 'subdomain'
 
 Rails.application.routes.draw do
 
-  #root "events#index"
   root 'pages#welcome'
 
   as :user do
@@ -10,13 +9,15 @@ Rails.application.routes.draw do
   end
   devise_for :users, :controllers => { :confirmations => "confirmations", registrations: 'registrations' }
 
-  constraints(Subdomain) do
-    get '/' => 'teams#show'
-  end
+
 
   get "/signin" => "pages#signin"
   post "/switch_domain" => "pages#switch_domain"
 
+
+  constraints(Subdomain) do
+    get '/' => 'teams#show'
+  end
 
   namespace :account do
     resources :orders

@@ -1,5 +1,10 @@
 class EventsController < ApplicationController
+  include FindTeam
+  layout "teams"
   before_action :authenticate_user!
+  before_action :find_this_team
+
+
 
   def index
     @events = Event.where(date: Date.today, status: true)
@@ -75,4 +80,5 @@ class EventsController < ApplicationController
     @cancel = Order.find_by(id: @order , event_id: @event, user_id: current_user)
     @cancel.destroy
   end
+
 end
