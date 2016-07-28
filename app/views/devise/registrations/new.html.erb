@@ -11,6 +11,14 @@
 
           <%= f.input :email, required: true, autofocus: true, :class => "" %>
           <%= f.input :name %>
+
+
+            <%= f.fields_for :teams do |team| %>
+               <%= team.input :name, :label => "Team Name" %>
+               <%= team.input :domain, :label => "Team Domain" %>
+
+
+          <% end %>
         </div>
 
       </div>
