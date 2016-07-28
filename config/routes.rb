@@ -7,6 +7,10 @@ Rails.application.routes.draw do
   end
   devise_for :users, :controllers => { :confirmations => "confirmations", registrations: 'registrations' }
 
+  constraints(Subdomain) do
+    match '/' => 'teams#show'
+  end
+
   namespace :account do
     resources :orders
   end
