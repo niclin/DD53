@@ -1,6 +1,9 @@
+require 'subdomain'
+
 Rails.application.routes.draw do
 
-  root "events#index"
+  #root "events#index"
+  root 'pages#welcome'
 
   as :user do
     patch '/user/confirmation' => 'confirmations#update', :via => :patch, :as => :update_user_confirmation
@@ -8,8 +11,12 @@ Rails.application.routes.draw do
   devise_for :users, :controllers => { :confirmations => "confirmations", registrations: 'registrations' }
 
   constraints(Subdomain) do
-    match '/' => 'teams#show'
+    get '/' => 'teams#show'
   end
+
+  get "/signin" => "pages#signin"
+  post "/switch_domain" => "pages#switch_domain"
+
 
   namespace :account do
     resources :orders

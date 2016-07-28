@@ -6,6 +6,8 @@ class ApplicationController < ActionController::Base
 
   helper_method :current_cart
 
+  include UrlHelper
+
   def admin_required
     if !current_user.admin?
       redirect_to "/"
