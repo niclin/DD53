@@ -7,8 +7,6 @@ Rails.application.routes.draw do
   end
   devise_for :users, :controllers => { :confirmations => "confirmations", registrations: 'registrations' }
 
-
-
   get "/signin" => "pages#signin"
   post "/switch_domain" => "pages#switch_domain"
 

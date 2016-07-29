@@ -28,13 +28,6 @@ ActiveRecord::Schema.define(version: 20160728022505) do
     t.integer  "event_id",   limit: 4
   end
 
-  create_table "comments", force: :cascade do |t|
-    t.string   "author",     limit: 255
-    t.text     "text",       limit: 65535
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
-  end
-
   create_table "delayed_jobs", force: :cascade do |t|
     t.integer  "priority",   limit: 4,     default: 0, null: false
     t.integer  "attempts",   limit: 4,     default: 0, null: false
