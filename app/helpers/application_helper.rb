@@ -16,4 +16,8 @@ module ApplicationHelper
 
     alerts.join("\n").html_safe
   end
+
+  def find_last_team
+    @team = current_user.teams.last
+  end
 end
