@@ -36,6 +36,7 @@ gem "carrierwave"
 gem "mini_magick"
 gem 'awesome_rails_console'
 gem 'devise'
+gem 'devise_invitable'
 gem 'cocoon'
 gem 'bootstrap-sass'
 gem "font-awesome-rails"

@@ -1,8 +1,8 @@
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable,
-    :recoverable, :rememberable, :trackable, :validatable, :confirmable
+  devise :invitable, :database_authenticatable, :registerable,
+    :recoverable, :rememberable, :trackable, :validatable, :confirmable, :invitable
   has_many :orders
   has_many :menus
   has_many :events
@@ -16,6 +16,14 @@ class User < ActiveRecord::Base
   has_many :teams, :through => :team_users, :source => :team
 
   accepts_nested_attributes_for :teams
+
+  def send_confirmation_instructions
+    binding.pry
+    super
+    self.confirmation_token = nil    # clear's the confirmation_token
+    self.confirmed_at = Time.now.utc # confirm's the user
+    self.save
+  end
 
   def send_on_create_confirmation_instructions
     Devise::Mailer.delay.confirmation_instructions(self)

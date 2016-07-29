@@ -21,4 +21,12 @@ class Admin::UsersController < ApplicationController
 
     redirect_to admin_users_path
   end
+
+  def invite
+    if params.has_key?(:email)
+      host = request.host.split('.').first
+      binding.pry
+      User.invite!(:email => params[:email])
+    end
+  end
 end

@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   as :user do
     patch '/user/confirmation' => 'confirmations#update', :via => :patch, :as => :update_user_confirmation
   end
-  devise_for :users, :controllers => { :confirmations => "confirmations", registrations: 'registrations' }
+  devise_for :users, :controllers => { :confirmations => "confirmations", registrations: 'registrations', :invitations => 'invitations' }
 
   get "/signin" => "pages#signin"
   post "/switch_domain" => "pages#switch_domain"
@@ -33,6 +33,7 @@ Rails.application.routes.draw do
     end
     match 'event/select', to: 'events#select', as: :select, via: [:get, :post]
     match 'event/select/:menu_id', to: 'events#select_menu', as: :select_menu, via: [:get, :post]
+    match 'user/invite', to: 'users#invite', as: :invite, via: [:get, :post]
   end
 
   resources :carts do
