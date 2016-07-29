@@ -17,6 +17,10 @@ class User < ActiveRecord::Base
 
   accepts_nested_attributes_for :teams
 
+  def send_on_create_confirmation_instructions
+    Devise::Mailer.delay.confirmation_instructions(self)
+  end
+
   def remember_me
     true
   end
