@@ -79,4 +79,20 @@ Rails.application.configure do
 
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = config_for(:email).symbolize_keys
+
+
+  Rails.application.config.middleware.use ExceptionNotification::Rack,
+  :email => {
+    :email_prefix => "DD53",
+    :sender_address => %{"ErrorNotify" <exception@dd53.xyz>},
+    :exception_recipients => %w{nic@kt.net.tw}
+  },
+  :slack => {
+    :webhook_url => "[https://hooks.slack.com/services/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]",
+    :username => "niclin",
+    :additional_parameters => {
+      :icon_url => "http://image.jpg",
+      :mrkdwn => true
+    }
+  }
 end
