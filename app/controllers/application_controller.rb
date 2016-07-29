@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
 
   helper_method :current_cart
 
-  include UrlHelper
+  include SubdomainHelper
 
   def admin_required
     if !current_user.admin?

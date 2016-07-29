@@ -17,14 +17,6 @@ class User < ActiveRecord::Base
 
   accepts_nested_attributes_for :teams
 
-  def send_confirmation_instructions
-    binding.pry
-    super
-    self.confirmation_token = nil    # clear's the confirmation_token
-    self.confirmed_at = Time.now.utc # confirm's the user
-    self.save
-  end
-
   def send_on_create_confirmation_instructions
     Devise::Mailer.delay.confirmation_instructions(self)
   end

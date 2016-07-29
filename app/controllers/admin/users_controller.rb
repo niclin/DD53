@@ -25,7 +25,6 @@ class Admin::UsersController < ApplicationController
   def invite
     if params.has_key?(:email)
       host = request.host.split('.').first
-      binding.pry
       User.invite!(:email => params[:email])
     end
   end
