@@ -19,10 +19,6 @@ class User < ActiveRecord::Base
 
   attr_accessor :team
 
-  def send_on_create_confirmation_instructions
-    Devise::Mailer.delay.confirmation_instructions(self)
-  end
-
   def remember_me
     true
   end
