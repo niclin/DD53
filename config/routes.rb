@@ -12,7 +12,7 @@ Rails.application.routes.draw do
 
 
   constraints(Subdomain) do
-    get '/' => 'events#show'
+    get '/' => 'events#index'
   end
 
   namespace :account do

@@ -10,10 +10,6 @@ class EventsController < ApplicationController
     @menus = Menu.all
   end
 
-  def show
-    @team = Team.find_by_domain(request.subdomain)
-  end
-
   def ordering
     @event = Event.find(params[:id])
     @menu = Menu.find(@event.menu_id)
