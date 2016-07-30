@@ -1,1 +1,7 @@
-123
+團隊名稱<%= @team.name %>
+團隊網域<%= @team.domain %>.dd53.xyz
+團隊成員：
+
+<% @team.users.each do |user| %>
+<%= user.name %>
+<% end %>

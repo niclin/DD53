@@ -11,6 +11,7 @@ class EventsController < ApplicationController
   end
 
   def show
+    @team = Team.find_by_domain(request.subdomain)
   end
 
   def ordering
