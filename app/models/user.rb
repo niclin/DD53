@@ -19,6 +19,10 @@ class User < ActiveRecord::Base
 
   attr_accessor :team
 
+  def send_devise_notification(notification, *args)
+    devise_mailer.send(notification, self, *args).deliver_later
+  end
+
   def remember_me
     true
   end
