@@ -6,8 +6,8 @@ class EventsController < ApplicationController
   layout "team"
 
   def index
-    @events = Event.where(date: Date.today, status: true)
-    @menus = Menu.all
+    @events = current_team.events(date: Date.today, status: true)
+    @menus = current_team.menus
   end
 
   def ordering

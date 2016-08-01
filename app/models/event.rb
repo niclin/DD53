@@ -2,6 +2,7 @@ class Event < ActiveRecord::Base
 
   belongs_to :user
   belongs_to :menu
+  belongs_to :team
 
   has_many :event_users
   has_many :members, through: :event_users, source: :user

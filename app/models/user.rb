@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
   has_many :events
   has_many :event_users
   has_many :participated_events, through: :event_users, source: :event
+  has_many :menus
 
 
   include EmailConfirmable

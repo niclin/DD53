@@ -3,29 +3,29 @@ class Admin::EventsController < ApplicationController
   layout "admin"
 
   def index
-    @events = Event.order("id DESC").paginate(:page => params[:page], :per_page => 15)
+    @events = current_team.events.order("id DESC").paginate(:page => params[:page], :per_page => 15)
     @menus = Menu.order("id DESC")
   end
 
   def show
-    @event = Event.find(params[:id])
+    @event = current_team.events.find(params[:id])
     @members = @event.members
-    @orders = Order.where(event_id: @event)
+    @orders = current_team.orders.where(event_id: @event)
   end
 
   def select
-    @menus = Menu.all
+    @menus = current_team.menus
   end
 
   def select_menu
-    @menu = Menu.find(params[:menu_id])
+    @menu = current_team.menus.find(params[:menu_id])
     today = Date.today.wday
 
     @user = current_user.id
     @date = DateTime.now
     if request.post?
       if !@menu.day_off?
-        @event = Event.create(menu_id: @menu.id, user_id: @user, date: @date, menu_name: @menu.title)
+        @event = Event.create(menu_id: @menu.id, user_id: @user, date: @date, menu_name: @menu.title, team_id: current_team.id)
         @event.status_open
         redirect_to :back, alert: "已開啟#{@menu.title}的訂餐，快通知大家吧！"
         if Rails.env.production?

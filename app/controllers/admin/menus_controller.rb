@@ -5,7 +5,7 @@ class Admin::MenusController < ApplicationController
   before_action :admin_required
 
   def index
-    @menus = Menu.all
+    @menus = current_team.menus
   end
 
   def new
@@ -16,6 +16,8 @@ class Admin::MenusController < ApplicationController
 
   def create
     @menu = Menu.new(menu_params)
+    @menu.team_id = current_team.id
+    @menu.user_id =current_user.id
 
     if @menu.save
       redirect_to admin_menus_path
@@ -25,7 +27,7 @@ class Admin::MenusController < ApplicationController
   end
 
   def edit
-    @menu = Menu.find(params[:id])
+    @menu = current_team.menus.find(params[:id])
     if @menu.photo.present?
       @photo = @menu.photo
     else
@@ -34,11 +36,11 @@ class Admin::MenusController < ApplicationController
   end
 
   def show
-    @menu = Menu.find(params[:id])
+    @menu = current_team.menus.find(params[:id])
   end
 
   def update
-    @menu = Menu.find(params[:id])
+    @menu = current_team.menus.find(params[:id])
 
     if @menu.update(menu_params)
       redirect_to admin_menus_path
@@ -48,7 +50,7 @@ class Admin::MenusController < ApplicationController
   end
 
   def destroy
-    @menu = Menu.find(params[:id])
+    @menu = current_team.menus.find(params[:id])
     @menu.destroy
 
     respond_to do |format|
