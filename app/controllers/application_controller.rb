@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
   before_filter :prepare_exception_notifier
 
   helper_method :current_cart
+  helper_method :current_team
 
   include SubdomainHelper
 
@@ -16,6 +17,10 @@ class ApplicationController < ActionController::Base
 
   def current_cart
     @current_cart ||= find_cart
+  end
+
+  def current_team
+    @current_team ||= find_team
   end
 
 
@@ -31,6 +36,10 @@ class ApplicationController < ActionController::Base
     session[:cart_id] = cart.id
     session[:event_id] = cart.event_id
     cart
+  end
+
+  def find_team
+    Team.find_by_domain(request.subdomain)
   end
 
   def after_sign_out_path_for(resource_or_scope)

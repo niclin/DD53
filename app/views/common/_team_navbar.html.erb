@@ -19,7 +19,7 @@
 
 
               <ul class="nav navbar-nav navbar-right">
-              <li><a> 目前群組 : <%= @team.name %></a></li>
+              <li><a> 目前群組 : <%= current_team.name %></a></li>
                 <% if !current_user %>
                   <li> <%= link_to("註冊", new_user_registration_path) %> </li>
                   <li> <%= link_to("登入", "/signin") %> </li>
