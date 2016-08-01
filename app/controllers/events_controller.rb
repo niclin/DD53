@@ -3,7 +3,7 @@ class EventsController < ApplicationController
 
   before_action :authenticate_user!
   before_action :find_this_team
-  layout "teams"
+  layout "team"
 
   def index
     @events = Event.where(date: Date.today, status: true)

@@ -1,6 +1,6 @@
 class MenusController < ApplicationController
   include FindTeam
-  layout "teams"
+  layout "team"
 
   before_action :authenticate_user!
   before_action :find_this_team

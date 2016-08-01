@@ -1,4 +1,5 @@
 class Account::OrdersController < ApplicationController
+  layout "team"
   before_action :authenticate_user!
 
   def index

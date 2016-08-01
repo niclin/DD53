@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   as :user do
     patch '/user/confirmation' => 'confirmations#update', :via => :patch, :as => :update_user_confirmation
   end
-  devise_for :users, :controllers => { :confirmations => "confirmations", registrations: 'registrations', :invitations => 'invitations' }
+  devise_for :users, :controllers => { :confirmations => "user/confirmations", registrations: 'user/registrations', :invitations => 'user/invitations' }
 
   get "/signin" => "pages#signin"
   post "/switch_domain" => "pages#switch_domain"

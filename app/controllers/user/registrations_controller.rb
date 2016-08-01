@@ -1,4 +1,5 @@
-class RegistrationsController < Devise::RegistrationsController
+class User::RegistrationsController < Devise::RegistrationsController
+  layout 'team', only: [:edit]
 
   def new
     build_resource({})
@@ -10,10 +11,11 @@ class RegistrationsController < Devise::RegistrationsController
     super
   end
 
+  def edit
+    super
+  end
 
   private
-
-
 
   def sign_up_params
     params.require(:user).permit(:name, :email, :teams_attributes => [ :name, :domain ])
