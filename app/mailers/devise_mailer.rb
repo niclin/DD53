@@ -7,7 +7,7 @@ class DeviseMailer < Devise::Mailer
   end
 
   def invitation_instructions(record, token, opts={})
-  	@team = Team.find_by_domain(record.team)
+  	@team = record.team
     super
   end
 

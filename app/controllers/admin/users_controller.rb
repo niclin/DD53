@@ -24,9 +24,8 @@ class Admin::UsersController < ApplicationController
 
   def invite
     if params.has_key?(:email)
-      host = request.host.split('.').first
       User.invite!({:email => params[:email]}, current_user) do |user|
-        user.team = host
+        user.team = current_team
       end
     end
   end
