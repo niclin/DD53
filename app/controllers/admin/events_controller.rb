@@ -10,7 +10,7 @@ class Admin::EventsController < ApplicationController
   def show
     @event = current_team.events.find(params[:id])
     @members = @event.members
-    @orders = current_team.orders.where(event_id: @event)
+    @orders = Order.where(event_id: @event)
   end
 
   def select
@@ -40,7 +40,7 @@ class Admin::EventsController < ApplicationController
   end
 
   def invoice
-    @event = Event.find(params[:event_id])
+    @event = current_team.events.find(params[:event_id])
     @event.event_invoice
 
     @event.orders.each do |order|

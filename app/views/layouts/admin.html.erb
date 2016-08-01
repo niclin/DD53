@@ -90,11 +90,13 @@
                 <i class="fa fa-tasks"></i> <span>目前狀況</span>
               </a>
             </li>
+<!--
             <li>
               <a href="<%= admin_orders_path %>">
                 <i class="fa fa-dashboard"></i> <span>歷史訂單</span>
               </a>
             </li>
+-->
             <li>
               <a href="<%= admin_menus_path %>">
                 <i class="fa fa-plus"></i> <span>菜單管理</span>
@@ -105,10 +107,11 @@
                 <i class="fa fa-user"></i> <span>使用者管理</span>
               </a>
             </li>
-
-                              <li>
-                    <%= link_to '邀請', admin_invite_path %>
-                  </li>
+            <li>
+              <a href="<%= admin_invite_path %>">
+                <i class="fa fa-envelope"></i> <span>邀請新成員</span>
+              </a>
+            </li>
           </li>
         </ul>
       </section>

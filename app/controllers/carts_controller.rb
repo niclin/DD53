@@ -1,6 +1,7 @@
 class CartsController < ApplicationController
 
   before_action :authenticate_user!, only: [:checkout]
+  layout "team", only: [:checkout]
 
   def checkout
     @event = session[:event_id]

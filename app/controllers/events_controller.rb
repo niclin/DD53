@@ -6,7 +6,7 @@ class EventsController < ApplicationController
   layout "team"
 
   def index
-    @events = current_team.events(date: Date.today, status: true)
+    @events = current_team.events.where(date: Date.today, status: true)
     @menus = current_team.menus
   end
 
