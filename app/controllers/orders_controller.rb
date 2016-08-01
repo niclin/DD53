@@ -1,5 +1,6 @@
 class OrdersController < ApplicationController
   before_action :authenticate_user!
+  layout "team", only: [:show]
 
   def create
     @order = current_user.orders.build(order_params)

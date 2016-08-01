@@ -3,6 +3,8 @@ class Menu < ActiveRecord::Base
   has_many :foods
   has_many :official_holidays, dependent: :destroy
   has_many :official_holiday_options, through: :official_holidays
+  belongs_to :user
+  belongs_to :team
 
   extend FriendlyId
   friendly_id :slug_candidates, use: :slugged

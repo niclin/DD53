@@ -1,6 +1,8 @@
 class Team < ActiveRecord::Base
   has_many :team_users
   has_many :users, :through => :team_users, :source => :user
+  has_many :menus
+  has_many :events
 
   validates :name, presence:  { error_message: "name can't be blank" }
   validates :domain, presence:  { error_message: "domain can't be blank" }
