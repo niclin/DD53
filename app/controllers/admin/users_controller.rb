@@ -5,7 +5,7 @@ class Admin::UsersController < ApplicationController
   before_action :admin_required
 
   def index
-    @users = User.all
+    @users = current_team.users
   end
 
   def to_admin
