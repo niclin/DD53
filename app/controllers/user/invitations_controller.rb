@@ -4,6 +4,7 @@ class User::InvitationsController < Devise::InvitationsController
       team = Team.find_by_domain(request.subdomain)
       super
       team.users << resource
+      resource.is_admin = true
     end
   end
 end

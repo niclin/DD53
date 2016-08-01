@@ -1,4 +1,4 @@
-class ConfirmationsController < Devise::ConfirmationsController
+class User::ConfirmationsController < Devise::ConfirmationsController
   # Remove the first skip_before_filter (:require_no_authentication) if you
   # don't want to enable logged users to access the confirmation page.
   skip_before_filter :require_no_authentication
