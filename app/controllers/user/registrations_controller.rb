@@ -9,6 +9,8 @@ class User::RegistrationsController < Devise::RegistrationsController
 
   def create
     super
+    resource.is_admin = true
+    resource.save
   end
 
   def edit
