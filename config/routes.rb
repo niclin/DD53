@@ -2,6 +2,10 @@ require 'subdomain'
 
 Rails.application.routes.draw do
 
+  get 'errors/not_found'
+
+  get 'errors/internal_server_error'
+
   as :user do
     patch '/user/confirmation' => 'confirmations#update', :via => :patch, :as => :update_user_confirmation
   end
@@ -57,6 +61,9 @@ Rails.application.routes.draw do
     resources :menus
     resources :orders
   end
+
+  match "/404", :to => "errors#not_found", :via => :all
+  match "/500", :to => "errors#internal_server_error", :via => :all
 
   root 'pages#welcome'
 
