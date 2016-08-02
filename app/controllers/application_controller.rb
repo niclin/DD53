@@ -23,9 +23,7 @@ class ApplicationController < ActionController::Base
     @current_team ||= find_team
   end
 
-  def after_sign_in_path_for(resource)
-    request.env['omniauth.origin'] || stored_location_for(resource) || root_path(:subdomain => current_team.domain)
-  end
+
 
   private
 
@@ -47,6 +45,10 @@ class ApplicationController < ActionController::Base
 
   def after_sign_out_path_for(resource_or_scope)
     root_url(:subdomain => false )
+  end
+
+  def after_sign_in_path_for(resource)
+    request.env['omniauth.origin'] || stored_location_for(resource) || root_path || root_path(:subdomain => current_team.domain)
   end
 
   def prepare_exception_notifier
