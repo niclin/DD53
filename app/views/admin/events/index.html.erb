@@ -14,7 +14,7 @@
                 <tr>
                   <th>日期</th>
                   <th>店家</th>
-                  <th>已點餐/正在點</th>
+                  <th>已點餐人數</th>
                   <th>當前總額</th>
                   <th>狀態</th>
                 </tr>
@@ -29,31 +29,31 @@
                     <%= event.menu_name %>
                   </td>
                   <td>
-                    <%= event.orders.count %> / <%= event.members.count %>
-                  </td>
-                  <td>
-                    共計：<%= event.total %>
-                  </td>
-                  <th>
-                    <% if event.status? %>
-                    <%= link_to '查看點餐情況', admin_event_path(event) %>
-                    <% else %>
-                    <%= link_to '已結單', admin_event_path(event) %>
-                    <% end %>
-                  </th>
-                </tr>
-                <% end %>
-              </tbody>
-            </table>
+                    <div class="progress">
+                      <div class="progress-bar progress-bar-success progress-bar-striped" style="width: <%= number_to_percentage(event.now_progress) %>">(<%= event.order_finish %>)</div>
+                    </td>
+                    <td>
+                      共計：<%= event.total %>
+                    </td>
+                    <th>
+                      <% if event.status? %>
+                      <%= link_to '查看點餐情況', admin_event_path(event) %>
+                      <% else %>
+                      <%= link_to '已結單', admin_event_path(event) %>
+                      <% end %>
+                    </th>
+                  </tr>
+                  <% end %>
+                </tbody>
+              </table>
+            </div>
+            <!-- /.table-responsive -->
           </div>
-          <!-- /.table-responsive -->
+          <!-- /.panel-body -->
         </div>
-        <!-- /.panel-body -->
+        <!-- /.panel -->
       </div>
-      <!-- /.panel -->
-    </div>
-
-    <div class="text-center">
-  <%= will_paginate @events, renderer: BootstrapPagination::Rails %>
-</div>
-  </section>
+      <div class="text-center">
+        <%= will_paginate @events, renderer: BootstrapPagination::Rails %>
+      </div>
+    </section>

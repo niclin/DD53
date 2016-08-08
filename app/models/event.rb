@@ -11,6 +11,16 @@ class Event < ActiveRecord::Base
   extend FriendlyId
   friendly_id :slug_candidates, use: :slugged
 
+  def order_finish
+    self.orders.pluck(:user_id).count
+  end
+
+  def now_progress
+    team_users = self.team.users.pluck(:user_id)
+    order_users = self.orders.pluck(:user_id)
+    (order_users.count.to_f / team_users.count.to_f) * 100
+  end
+
   def normalize_friendly_id(input)
     input.to_s.to_slug.normalize.to_s
   end
