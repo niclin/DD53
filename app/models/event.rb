@@ -11,6 +11,12 @@ class Event < ActiveRecord::Base
   extend FriendlyId
   friendly_id :slug_candidates, use: :slugged
 
+  def order_yet_users
+    team_users = self.team.users.pluck(:user_id)
+    order_users = self.orders.pluck(:user_id)
+    User.where(id: team_users - order_users)
+  end
+
   def order_finish
     self.orders.pluck(:user_id).count
   end
