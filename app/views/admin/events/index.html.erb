@@ -5,10 +5,14 @@
 </section>
 <section class="content">
   <div class="row">
-    <div class="col-md-12 col-lg-9">
-      <div class="panel panel-default">
-        <div class="panel-body">
-          <div class="table-responsive">
+    <div class="col-md-12 col-lg-9 col-centered">
+      <div class="box">
+        <div class="box-heaader">
+          <h3 class="box-title">
+          </h3>
+          <div class="box-tools">
+          </div>
+          <div class="box-body table-responsive no-padding">
             <table class="table table-hover">
               <thead>
                 <tr>
@@ -52,13 +56,11 @@
               </tbody>
             </table>
           </div>
-          <!-- /.table-responsive -->
+          <div class="box-footer">
+            <div class="text-center">
+              <%= will_paginate @events, renderer: BootstrapPagination::Rails %>
+            </div>
+          </div>
         </div>
-        <!-- /.panel-body -->
       </div>
-      <!-- /.panel -->
-    </div>
-    <div class="text-center">
-      <%= will_paginate @events, renderer: BootstrapPagination::Rails %>
-    </div>
-  </section>
+    </section>
