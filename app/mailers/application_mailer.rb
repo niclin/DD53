@@ -1,4 +1,4 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: "DD53 Service"
+  default from: "service@dd53.xyz"
   layout 'mailer'
 end
