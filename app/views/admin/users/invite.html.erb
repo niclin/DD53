@@ -4,9 +4,13 @@
   </h1>
 </section>
 <section class="content">
-  <%= form_tag '' do %>
-    <%= label_tag :email, 'email' %>
-    <%= email_field_tag :email, '', class: "form-control" %>
-    <%= submit_tag '送出', class: "btn btn-primary btn-tiny" %>
+  <div class="row">
+    <div class="col-md-3">
+      <%= form_tag '' do %>
+      <%= label_tag :email, 'email' %>
+      <%= email_field_tag :email, '', class: "form-control" %>
+      <%= submit_tag '送出', class: "btn btn-primary btn-tiny" %>
+    </div>
+  </div>
   <% end %>
 </section>

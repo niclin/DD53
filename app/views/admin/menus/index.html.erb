@@ -2,41 +2,48 @@
   <h1>
   菜單總覽
   </h1>
+  <br>
+  <%= link_to("新增菜單", new_admin_menu_path, class: "btn btn-primary btn-sm") %>
 </section>
 <section class="content">
-<div class="pull-right" style="padding-bottom: 20px;">
-  <%= link_to("新增菜單", new_admin_menu_path, class: "btn btn-primary btn-sm") %>
-</div>
-<table class="table table-bordered">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Address</th>
-      <th>Phone</th>
-      <th width="100"> Options</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @menus.each do |menu| %>
-      <tr>
-        <td>
-          <%= menu.title %>
-        </td>
-        <td>
-          <%= menu.phone %>
-        </td>
-        <td>
-          <%= menu.address %>
-        </td>
-        <td>
-          <%= link_to("Edit", edit_admin_menu_path(menu), class: "btn btn-primary") %>
-        <br>
-        </br>
-          <%= link_to("Delete", admin_menu_path(menu), class: "btn btn-danger",
-                          method: :delete, data: { confirm: "Are you sure?" } )%>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <div class="table-responsive">
+            <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th>店名</th>
+                  <th>地址</th>
+                  <th>電話</th>
+                  <th>功能</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% @menus.each do |menu| %>
+                <tr>
+                  <td>
+                    <%= menu.title %>
+                  </td>
+                  <td>
+                    <%= menu.phone %>
+                  </td>
+                  <td>
+                    <%= menu.address %>
+                  </td>
+                  <td>
+                    <%= link_to("編輯", edit_admin_menu_path(menu), class: "btn btn-primary") %>
+                    <%= link_to("刪除", admin_menu_path(menu), class: "btn btn-danger",
+                    method: :delete, data: { confirm: "Are you sure?" } )%>
+                  </td>
+                </tr>
+                <% end %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>

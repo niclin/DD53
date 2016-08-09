@@ -4,40 +4,50 @@
   </h1>
 </section>
 <section class="content">
-<table class="table table-bordered">
-  <thead>
-    <tr>
-      <th>名字</th>
-      <th>Email</th>
-      <th>權限</th>
-      <th>功能</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @users.each do |user| %>
-      <tr>
-        <td>
-          <%= user.name %>
-        </td>
-        <td>
-          <%= user.email %>
-        </td>
-        <td>
-          <% if user.admin? %>
-            管理者
-          <% else %>
-            一般使用者
-          <% end %>
-        </td>
-        <td>
-          <% if user.admin? %>
-            <%= link_to("轉為一般使用者", to_normal_admin_user_path(user), method: :post, class: "btn btn-info") %>
-          <% else %>
-            <%= link_to("轉為管理者", to_admin_admin_user_path(user), method: :post, class: "btn btn-primary") %>
-          <% end %>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <div class="table-responsive">
+            <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th>名字</th>
+                  <th>Email</th>
+                  <th>權限</th>
+                  <th>功能</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% @users.each do |user| %>
+                <tr>
+                  <td>
+                    <%= user.name %>
+                  </td>
+                  <td>
+                    <%= user.email %>
+                  </td>
+                  <td>
+                    <% if user.admin? %>
+                    管理者
+                    <% else %>
+                    一般使用者
+                    <% end %>
+                  </td>
+                  <td>
+                    <% if user.admin? %>
+                    <%= link_to("轉為一般使用者", to_normal_admin_user_path(user), method: :post, class: "btn btn-info") %>
+                    <% else %>
+                    <%= link_to("轉為管理者", to_admin_admin_user_path(user), method: :post, class: "btn btn-primary") %>
+                    <% end %>
+                  </td>
+                </tr>
+                <% end %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
