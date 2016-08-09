@@ -5,7 +5,7 @@
 </section>
 <section class="content">
   <div class="row">
-    <div class="col-lg-12">
+    <div class="col-md-12 col-lg-9">
       <div class="panel panel-default">
         <div class="panel-body">
           <div class="table-responsive">
@@ -15,6 +15,7 @@
                   <th>日期</th>
                   <th>店家</th>
                   <th>已點餐人數</th>
+                  <th></th>
                   <th>當前總額</th>
                   <th>狀態</th>
                 </tr>
@@ -29,36 +30,35 @@
                     <%= event.menu_name %>
                   </td>
                   <td>
-                      <div class="progress-group">
-                    <span class="progress-number" style="margin-left: 10px;"><b><%= event.order_finish %> </b>/ <%= event.team.users.count %></span>
-
                     <div class="progress md">
                       <div class="progress-bar progress-bar-success" style="width: <%= number_to_percentage(event.now_progress) %>"></div>
                     </div>
-                  </div>
-                    </td>
-                    <td>
-                      共計：<%= event.total %>
-                    </td>
-                    <th>
-                      <% if event.status? %>
-                      <%= link_to '查看點餐情況', admin_event_path(event) %>
-                      <% else %>
-                      <%= link_to '已結單', admin_event_path(event) %>
-                      <% end %>
-                    </th>
-                  </tr>
-                  <% end %>
-                </tbody>
-              </table>
-            </div>
-            <!-- /.table-responsive -->
+                  </td>
+                  <td>
+                    <span class="progress-number" style="margin-left: 10px;"><b><%= event.order_finish %> </b>/ <%= event.team.users.count %></span>
+                  </td>
+                  <td>
+                    共計：<%= event.total %>
+                  </td>
+                  <th>
+                    <% if event.status? %>
+                    <%= link_to '查看點餐情況', admin_event_path(event) %>
+                    <% else %>
+                    <%= link_to '已結單', admin_event_path(event) %>
+                    <% end %>
+                  </th>
+                </tr>
+                <% end %>
+              </tbody>
+            </table>
           </div>
-          <!-- /.panel-body -->
+          <!-- /.table-responsive -->
         </div>
-        <!-- /.panel -->
+        <!-- /.panel-body -->
       </div>
-      <div class="text-center">
-        <%= will_paginate @events, renderer: BootstrapPagination::Rails %>
-      </div>
-    </section>
+      <!-- /.panel -->
+    </div>
+    <div class="text-center">
+      <%= will_paginate @events, renderer: BootstrapPagination::Rails %>
+    </div>
+  </section>
