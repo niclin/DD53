@@ -29,8 +29,13 @@
                     <%= event.menu_name %>
                   </td>
                   <td>
-                    <div class="progress">
-                      <div class="progress-bar progress-bar-success progress-bar-striped" style="width: <%= number_to_percentage(event.now_progress) %>">(<%= event.order_finish %>)</div>
+                      <div class="progress-group">
+                    <span class="progress-number" style="margin-left: 10px;"><b><%= event.order_finish %> </b>/ <%= event.team.users.count %></span>
+
+                    <div class="progress md">
+                      <div class="progress-bar progress-bar-success" style="width: <%= number_to_percentage(event.now_progress) %>"></div>
+                    </div>
+                  </div>
                     </td>
                     <td>
                       共計：<%= event.total %>
