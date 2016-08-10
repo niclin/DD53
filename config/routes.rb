@@ -61,6 +61,10 @@ Rails.application.routes.draw do
 
     resources :menus
     resources :orders
+
+    namespace :public do
+      resources :menus
+    end
   end
 
   match "/404", :to => "errors#not_found", :via => :all
