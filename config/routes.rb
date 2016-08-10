@@ -63,7 +63,9 @@ Rails.application.routes.draw do
     resources :orders
 
     namespace :public do
-      resources :menus
+      resources :menus do
+        post :clone
+      end
     end
   end
 

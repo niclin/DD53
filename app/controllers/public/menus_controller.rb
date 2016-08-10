@@ -6,4 +6,16 @@ class Public::MenusController < ApplicationController
     @menus = Menu.where(is_public: true)
   end
 
+  def clone
+    @menu = Menu.find(params[:menu_id])
+
+    if !current_team.menus.include?(@menu)
+      flash[:warning] = "你已經是擁有這張菜單了"
+      redirect_to :back
+    else
+      m = Menu.new(@menu.attributes.merge(:id => nil, :slug => nil))
+      m.save
+    end
+
+  end
 end
