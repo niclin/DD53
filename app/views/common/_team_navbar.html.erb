@@ -25,7 +25,7 @@
           <ul class="dropdown-menu">
             <% current_user.teams.each do |team| %>
             <li>
-              <%= link_to(team.name, new_user_session_url(:subdomain => team.domain) )%>
+              <%= link_to(team.name, root_url(:subdomain => team.domain) )%>
             </li>
             <% end %>
           </ul>

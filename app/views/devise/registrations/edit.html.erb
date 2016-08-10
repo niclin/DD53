@@ -21,15 +21,11 @@
 
                       <div class="form-actions">
                         <%= f.button :submit, "更新", class: "btn btn-primary"  %>
+                        <%= link_to "返回", :back , class: "btn btn-default pull-right" %>
                       </div>
                     <% end %>
 
 
-                    <h3>取消我的帳號</h3>
-
-                    <p>不爽？想刪帳號 <%= link_to "那就點我啊", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
-
-                    <%= link_to "返回", :back , class: "btn btn-primary" %>
                 </div>
             </div>
         </div>
