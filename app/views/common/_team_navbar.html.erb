@@ -1,57 +1,65 @@
-  <nav id="mainNav" class="navbar navbar-default" role="navigation">
-        <div class="container">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="/">DD53</a>
-            </div>
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-              <ul class="nav navbar-nav navbar-left">
-                <li> <%= link_to("菜單", menus_path) %></li>
-                <li> <%= link_to("訂餐", events_path) %></li>
-              </ul>
-
-
-              <ul class="nav navbar-nav navbar-right">
-              <li><a> 目前群組 : <%= current_team.name %></a></li>
-                <% if !current_user %>
-                  <li> <%= link_to("註冊", new_user_registration_path) %> </li>
-                  <li> <%= link_to("登入", "/signin") %> </li>
-                <% else %>
-                  <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                      Hi!, <%= current_user.name %>
-                      <b class="caret"></b>
-                    </a>
-                    <ul class="dropdown-menu">
-
-                      <% if current_user.admin? %>
-                       <li>
-                         <%= link_to("Admin 選單", admin_select_path ) %>
-                       </li>
-                     <% end %>
-                     <li>
-                      <%= link_to("帳號設定", edit_user_registration_path )%>
-                    </li>
-                     <li>
-                       <%= link_to("訂餐歷史紀錄", account_orders_path ) %>
-                     </li>
-                      <li>
-                        <%= link_to("登出", destroy_user_session_path, method: :delete ) %>
-                      </li>
-                    </ul>
-                  </li>
-                <% end %>
-              </ul>
-            </div>
-            <!-- /.navbar-collapse -->
-        </div>
-        <!-- /.container -->
-    </nav>
-
+<nav id="mainNav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">DD53</a>
+    </div>
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-left">
+        <li> <%= link_to("菜單", menus_path) %></li>
+        <li> <%= link_to("訂餐", events_path) %></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+            目前群組 : <%= current_team.name %>
+            <b class="caret"></b>
+          </a>
+          <ul class="dropdown-menu">
+            <% current_user.teams.each do |team| %>
+            <li>
+              <%= link_to(team.name, new_user_session_url(:subdomain => team.domain) )%>
+            </li>
+            <% end %>
+          </ul>
+        </li>
+        <% if !current_user %>
+        <li> <%= link_to("註冊", new_user_registration_path) %> </li>
+        <li> <%= link_to("登入", "/signin") %> </li>
+        <% else %>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+            Hi!, <%= current_user.name %>
+            <b class="caret"></b>
+          </a>
+          <ul class="dropdown-menu">
+            <% if current_user.admin? %>
+            <li>
+              <%= link_to("Admin 選單", admin_select_path ) %>
+            </li>
+            <% end %>
+            <li>
+              <%= link_to("帳號設定", edit_user_registration_path )%>
+            </li>
+            <li>
+              <%= link_to("訂餐歷史紀錄", account_orders_path ) %>
+            </li>
+            <li>
+              <%= link_to("登出", destroy_user_session_path, method: :delete ) %>
+            </li>
+          </ul>
+        </li>
+        <% end %>
+      </ul>
+    </div>
+    <!-- /.navbar-collapse -->
+  </div>
+  <!-- /.container -->
+</nav>
