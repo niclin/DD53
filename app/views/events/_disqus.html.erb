@@ -2,7 +2,7 @@
 <script>
 
 var disqus_config = function () {
-    this.page.url = <%= request.original_url %>;
+    this.page.url = "<%= request.original_url %>";
     this.page.identifier = "<%= @event.id %>";
     this.page.title = "<%= @event.menu_name %>";
 };
