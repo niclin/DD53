@@ -1,63 +1,66 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-12 col-sm-6">
-        <div class="box box-widget text-center">
-    <div class="box-header with-border">
-      <h3 class="box-title">店名： <%= @menu.title %></h3>
+      <div class="box box-widget text-center">
+        <div class="box-header with-border">
+          <h3 class="box-title">店名： <%= @menu.title %></h3>
+        </div>
+        <div class="box-body">
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th>食物</th>
+                <th>價錢</th>
+                <th>數量</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <% @menu.foods.each do |food| %>
+                <td><%= food.name %></td>
+                <td>
+                  <%if food.price.blank? %>
+                  <% food.food_subs.each do |sub| %>
+                  <div>
+                    <%= sub.description %>/<%= sub.price %>
+                  </div>
+                  <% end %>
+                  <% else %>
+                  <%= food.price %>
+                  <% end %>
+                </td>
+                <td>
+                  <%if food.price.blank? %>
+                  <% food.food_subs.each do |sub| %>
+                  <%= button_to("＋", event_add_multi_to_cart_path(@event,food.id,sub.id), method: :post, remote: :true,
+                  class: "btn btn-danger btn-xs") %>
+                  <% end %>
+                  <% else %>
+                  <%= button_to("＋", event_add_to_cart_path(@event,food.id), method: :post, remote: :true,
+                  class: "btn btn-danger btn-xs") %>
+                  <% end %>
+                </td>
+              </td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
     </div>
-    <div class="box-body">
-      <table class="table table-bordered">
-        <thead>
-          <tr>
-            <th>食物</th>
-            <th>價錢</th>
-            <th>數量</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <% @menu.foods.each do |food| %>
-            <td><%= food.name %></td>
-            <td>
-              <%if food.price.blank? %>
-              <% food.food_subs.each do |sub| %>
-              <div>
-                <%= sub.description %>/<%= sub.price %>
-              </div>
-              <% end %>
-              <% else %>
-              <%= food.price %>
-              <% end %>
-            </td>
-            <td>
-              <%if food.price.blank? %>
-              <% food.food_subs.each do |sub| %>
-              <%= button_to("＋", event_add_multi_to_cart_path(@event,food.id,sub.id), method: :post, remote: :true,
-              class: "btn btn-danger btn-xs") %>
-              <% end %>
-              <% else %>
-              <%= button_to("＋", event_add_to_cart_path(@event,food.id), method: :post, remote: :true,
-              class: "btn btn-danger btn-xs") %>
-              <% end %>
-            </td>
-          </td>
-        </tr>
-        <% end %>
-      </tbody>
-    </table>
   </div>
-  </div>
-  </div>
-
-
   <div class="col-xs-12 col-sm-6">
     <div id="cart-inner">
-    <%= render 'price_table' %>
-    <div class="box-footer">
-    <%= link_to("確認訂餐", checkout_carts_path, method: :post, class: "btn btn-success pull-right") %>
-    <small> <%= link_to '放棄點餐', to_abandon_event_path, method: :post ,class: "btn btn-default",
-    data: { confirm: "你確定要放棄這次點餐？出門外面買很熱！真的要放棄嗎？"} %></small>
+      <%= render 'price_table' %>
+      <div class="box-footer">
+        <%= link_to("確認訂餐", checkout_carts_path, method: :post, class: "btn btn-success pull-right") %>
+        <small> <%= link_to '放棄點餐', to_abandon_event_path, method: :post ,class: "btn btn-default",
+        data: { confirm: "你確定要放棄這次點餐？出門外面買很熱！真的要放棄嗎？"} %></small>
+      </div>
     </div>
-    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <%= render 'disqus' %>
   </div>
 </div>
