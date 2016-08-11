@@ -1,11 +1,18 @@
-<h2><%= t 'devise.invitations.edit.header' %></h2>
-
-<%= simple_form_for resource, as: resource_name, url: invitation_path(resource_name), html: { method: :put } do |f| %>
-  <%= devise_error_messages! %>
-  <%= f.hidden_field :invitation_token %>
-
-  <%= f.input :password %>
-  <%= f.input :password_confirmation %>
-
-  <%= f.button :submit, t("devise.invitations.edit.submit_button") %>
-<% end %>
+<div class="row">
+  <div class="col-md-6 col-centered">
+    <div class="box">
+      <div class="box-header">
+        <h3 class="box-title">建立您的密碼</h3>
+      </div>
+      <div class="box-body">
+        <%= simple_form_for resource, as: resource_name, url: invitation_path(resource_name), html: { method: :put } do |f| %>
+        <%= devise_error_messages! %>
+        <%= f.hidden_field :invitation_token %>
+        <%= f.input :password, label: '密碼' %>
+        <%= f.input :password_confirmation, label: '密碼確認'  %>
+        <%= f.button :submit, class: 'btn btn-primary pull-right' %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

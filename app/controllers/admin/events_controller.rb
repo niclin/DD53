@@ -14,11 +14,12 @@ class Admin::EventsController < ApplicationController
   end
 
   def select
-    @menus = current_team.menus
+    @public_menus = Menu.where(is_public: true)
+    @team_menus = current_team.menus
   end
 
   def select_menu
-    @menu = current_team.menus.find(params[:menu_id])
+    @menu = Menu.find(params[:menu_id])
     today = Date.today.wday
 
     @user = current_user.id

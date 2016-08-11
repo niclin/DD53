@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   get "/signin" => "pages#signin"
   post "/switch_domain" => "pages#switch_domain"
 
+  resources :teams
 
   constraints(Subdomain) do
     get '/' => 'events#index'
@@ -60,13 +61,19 @@ Rails.application.routes.draw do
 
     resources :menus
     resources :orders
+
+    namespace :public do
+      resources :menus do
+        post :clone
+      end
+    end
   end
 
   match "/404", :to => "errors#not_found", :via => :all
   match "/500", :to => "errors#internal_server_error", :via => :all
 
   # redirect all unknown routes to root_url
-  get '*path' => redirect('/')
+  # get '*path' => redirect('/')
 
   root 'pages#welcome'
 

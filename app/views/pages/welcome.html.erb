@@ -9,9 +9,14 @@
                     <h3>Don't get any trouble on lunch</h3>
                     <hr class="intro-divider">
                     <ul class="list-inline intro-social-buttons">
+
+                    <% if !current_user %>
                         <li>
                             <a href="<%= new_user_registration_path %>" class="btn btn-default btn-lg"><i class="fa fa-users fa-fw"></i> <span class="network-name">立即建立你的專屬群組</span></a>
                         </li>
+                        <% else %>
+                        <%= link_to 'new team', new_team_path %>
+                        <% end %>
                         或是？
                         <% if !current_user %>
                         <li>

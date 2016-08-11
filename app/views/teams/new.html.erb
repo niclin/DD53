@@ -1,0 +1,7 @@
+<%= simple_form_for @team do |f| %>
+  <div class="form-group">
+    <%= f.input :name, input_html: { class: "form-control"} %>
+    <%= f.input :domain, input_html: { class: "form-control"} %>
+  </div>
+  <%= f.submit "Submit", class: "btn btn-primary", data: { disable_with: "Submitting..." } %>
+<% end %>
