@@ -10,11 +10,11 @@ class Public::MenusController < ApplicationController
     @menu = Menu.find(params[:menu_id])
 
     if current_team.menus.include?(@menu)
-      flash[:warning] = "你已經是擁有這張菜單了"
+      flash[:warning] = "你已經擁有這張菜單了"
       redirect_to :back
     else
       if current_team.menus.exists?(title: @menu.title, phone: @menu.phone, address: @menu.address)
-        flash[:warning] = "你已經是擁有這張菜單了"
+        flash[:warning] = "你已經擁有這張菜單了"
         redirect_to :back
       else
         m = Menu.new(@menu.attributes.merge(:id => nil, :slug => nil, :team_id => current_team.id, :is_public => false))
