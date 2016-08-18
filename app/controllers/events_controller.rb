@@ -8,6 +8,10 @@ class EventsController < ApplicationController
   def index
     @events = current_team.events.where(date: Date.today, status: true)
     @menus = current_team.menus
+
+    cover_array = ["eatwhat.jpg", "eatwhat1.jpg", "eatwhat2.jpg", "eatwhat3.jpg", "eatwhat4.jpg"]
+    @cover = cover_array[Random.rand(cover_array.length)]
+
   end
 
   def ordering

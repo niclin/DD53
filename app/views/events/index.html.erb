@@ -1,11 +1,11 @@
 <% if @events.blank? %>
-<div class="col-md-6 col-md-offset-3">
+<div class="col-md-6 col-centered">
   <div class="box box-info text-center">
     <div class="box-header with-border">
       <h3 class="box-title">今天尚未決定要吃什麼</h3>
     </div>
     <div class="box-body ">
-    <%= image_tag "eatwhat.jpg", class: 'img-responsive center-block' %>
+    <%= image_tag @cover, class: 'img-responsive center-block' %>
     </div>
     <div class="box-footer">
       請等待任務開啟...
