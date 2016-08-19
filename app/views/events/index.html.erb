@@ -5,7 +5,7 @@
       <h3 class="box-title">今天尚未決定要吃什麼</h3>
     </div>
     <div class="box-body ">
-    <%= image_tag @cover, class: 'img-responsive center-block' %>
+      <%= image_tag @cover, class: 'img-responsive center-block' %>
     </div>
     <div class="box-footer">
       請等待任務開啟...
@@ -14,56 +14,68 @@
 </div>
 <% else %>
 <div class="container">
-<div class="row">
-  <div class="col-md-6 col-md-offset-3">
-    <div class="box box-info">
-      <div class="box-header with-border">
-        <h3 class="box-title">點餐任務</h3>
-      </div>
-      <!-- /.box-header -->
-      <div class="box-body">
-        <div class="table-responsive">
-          <table class="table no-margin">
-            <thead>
-              <tr>
-                <th>日期</th>
-                <th>店家</th>
-                <th>點餐</th>
-                <th>參考</th>
-              </tr>
-            </thead>
-            <tbody>
-              <% @events.each do |event| %>
-              <tr>
-                <td>
-                  <%= event.date %>
-                </td>
-                <td>
-                  <%= event.menu_name %>
-                </td>
-                <td>
-                  <% if !current_user.is_member_of?(event) %>
-                  <%= link_to '加入點餐', join_event_event_path(event), method: :post, class: "btn btn-sm btn-info btn-flat pull-left" %>
-                  <% else %>
-                  <% if event.check_order(current_user, event) %>
-                  <%= link_to '點餐', ordering_event_path(event), class: "btn btn-sm btn-info btn-flat pull-left"%>
-                  <% else %>
-                  點餐完畢
-                  <% end %>
-                  <% end %>
-                </td>
-                <td><%= link_to '看看別人點什麼',reference_event_path(event) %></td>
-              </tr>
-              <% end %>
-            </tbody>
-          </table>
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <div class="box box-info">
+        <div class="box-header with-border">
+          <h3 class="box-title">點餐任務</h3>
         </div>
-        <!-- /.table-responsive -->
+        <!-- /.box-header -->
+        <div class="box-body">
+          <div class="table-responsive">
+            <table class="table no-margin">
+              <thead>
+                <tr>
+                  <th>日期</th>
+                  <th>店家</th>
+                  <th>點餐</th>
+                  <th>參考</th>
+                  <th>截止</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% @events.each do |event| %>
+                <tr>
+                  <td>
+                    <%= event.date %>
+                  </td>
+                  <td>
+                    <%= event.menu_name %>
+                  </td>
+                  <td>
+                    <% if !current_user.is_member_of?(event) %>
+                    <%= link_to '加入點餐', join_event_event_path(event), method: :post, class: "btn btn-sm btn-info btn-flat pull-left" %>
+                    <% else %>
+                    <% if event.check_order(current_user, event) %>
+                    <%= link_to '點餐', ordering_event_path(event), class: "btn btn-sm btn-info btn-flat pull-left"%>
+                    <% else %>
+                    點餐完畢
+                    <% end %>
+                    <% end %>
+                  </td>
+                  <td><%= link_to '看看別人點什麼',reference_event_path(event) %>
+                  </td>
+                  <td>
+                    <div id="event-<%=event.id%>"></div>
+                    <script type="text/javascript">
+                    $("#event-<%=event.id%>")
+                    .countdown("2016/08/19 12:34:56", function(event) {
+                    $(this).text(
+                    event.strftime('%D days %H:%M:%S')
+                    );
+                    });
+                    </script>
+                  </td>
+                </tr>
+                <% end %>
+              </tbody>
+            </table>
+          </div>
+          <!-- /.table-responsive -->
+        </div>
+        <!-- /.box-body -->
       </div>
-      <!-- /.box-body -->
     </div>
-  </div>
-  <% end %>
+    <% end %>
   </div>
 </div>
-

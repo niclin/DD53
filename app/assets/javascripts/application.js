@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery.sticky.js
+//= require jquery.countdown.js
 //= require bootstrap
 //= require cocoon
 //= require_tree .
