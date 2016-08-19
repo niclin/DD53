@@ -59,9 +59,9 @@
                     <div id="event-<%=event.id%>"></div>
                     <script type="text/javascript">
                     $("#event-<%=event.id%>")
-                    .countdown("2016/08/19 12:34:56", function(event) {
+                    .countdown("<%= event.due_date %>", function(event) {
                     $(this).text(
-                    event.strftime('%D days %H:%M:%S')
+                    event.strftime('%H分%M時%S秒')
                     );
                     });
                     </script>

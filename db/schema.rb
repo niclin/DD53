@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160801051139) do
+ActiveRecord::Schema.define(version: 20160819041447) do
 
   create_table "cart_items", force: :cascade do |t|
     t.integer  "cart_id",    limit: 4
@@ -62,6 +62,7 @@ ActiveRecord::Schema.define(version: 20160801051139) do
     t.datetime "updated_at",                         null: false
     t.string   "slug",       limit: 255
     t.integer  "team_id",    limit: 4
+    t.datetime "due_date"
   end
 
   add_index "events", ["slug"], name: "index_events_on_slug", unique: true, using: :btree
@@ -110,6 +111,15 @@ ActiveRecord::Schema.define(version: 20160801051139) do
   end
 
   add_index "menus", ["slug"], name: "index_menus_on_slug", unique: true, using: :btree
+
+  create_table "messages", force: :cascade do |t|
+    t.text     "body",       limit: 65535
+    t.integer  "user_id",    limit: 4
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+  end
+
+  add_index "messages", ["user_id"], name: "index_messages_on_user_id", using: :btree
 
   create_table "official_holiday_options", force: :cascade do |t|
     t.string   "name",       limit: 255, null: false
@@ -222,4 +232,5 @@ ActiveRecord::Schema.define(version: 20160801051139) do
   add_index "users", ["invited_by_id"], name: "index_users_on_invited_by_id", using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "messages", "users"
 end
