@@ -3,6 +3,21 @@
  * Copyright 2013-2016 Start Bootstrap
  * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap/blob/gh-pages/LICENSE)
  */
+.navbar-custom {
+    background-color: rgba(0, 0, 0, 0.075) !important;
+    border-color: rgba(0, 0, 0, 0.2) !important;
+}
+
+.navbar-landing > li > a,
+.navbar-landing {
+    color: white !important;
+}
+
+footer.landing {
+    background-color: white;
+    padding: 50px 0;
+    text-align: center;
+}
 
 .topnav {
     font-size: 14px;
