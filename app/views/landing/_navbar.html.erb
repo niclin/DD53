@@ -1,0 +1,37 @@
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar2">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">
+                <img src="https://drops.azureedge.net/drops/files/acc_511160/1bJeg?rscd=inline%3B%20filename%3DScreen%20Shot%20on%202016-09-06%20at%2014%3A44%3A53.png&rsct=binary&se=2016-09-06T07%3A15%3A07Z&sig=Gu5mi%2Bei1DEiV5fk8rgcyznTdoDa74806KfKQmOABRE%3D&sp=r&sr=b&st=2016-09-06T06%3A15%3A07Z&sv=2013-08-15">
+            </a>
+        </div>
+        <div id="navbar2" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <li >
+                    <a href="/">首頁</a>
+                </li>
+                <li>
+                <% if !user_signed_in? %>
+                  <%= link_to '登入', "/signin"%>
+                <% else %>
+                    <% if current_user.teams.present? %>
+                        <%= link_to root_url(:subdomain => find_last_team.domain ) do %>
+                        <i class="fa fa-sign-in fa-fw"></i> <span class="network-name">前往<%= find_last_team.name %></span>
+                        <% end %>
+                    <% end %>
+                <% end %>
+                </li>
+            </ul>
+
+
+        </div>
+        <!--/.nav-collapse -->
+    </div>
+    <!--/.container-fluid -->
+</nav>

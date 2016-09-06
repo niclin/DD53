@@ -10,28 +10,9 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
- *= require errors
+ *= require_tree ./admin
  */
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "font-awesome";
-
-.DD53-home {
-    background-color: #ecf0f5;
-}
-
-.food-subs {
-    margin-left: 100px;
-}
-
-.navbar-header a {
-    font-family: 'Allura',Verdana, Geneva, sans-serif;
-    color: #616161;
-    font-size: 35px;
-}
-
-.col-centered {
-    float: none;
-    margin: 0 auto;
-}

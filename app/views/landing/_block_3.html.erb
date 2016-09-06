@@ -1,0 +1,65 @@
+<div class="course-content-block teacher">
+    <div class="container">
+
+        <div class="row">
+
+            <div class="col-md-5 col-md-offset-2 left-content">
+
+                <div class="clearfix content-block">
+                    <h4>
+                        知名電影演員也使用DD53訂餐</h4>
+
+                    <div class="pull-left">
+                        <%= image_tag 'landing/Minion.jpg' %>
+                    </div>
+
+                    <div class="pull-left" style="padding:20px;">
+                        <ul>
+                            <li>小小兵</li>
+
+                        </ul>
+                    </div>
+
+                </div>
+
+                <div class="clearfix content-block">
+
+                    <h4>
+                        使用DD53之後不在踩到烏龜了</h4>
+
+                    <div class="pull-left">
+                        <%= image_tag 'landing/Mario.jpg' %>
+                    </div>
+
+                    <div class="pull-left" style="padding:20px;">
+                        <ul>
+                            <li>
+                                瑪利歐</li>
+                        </ul>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="col-md-4 cta-form right-content">
+                <h2>改變訂餐模式就從現在開始</h2>
+
+                <p>請立即創建獨一無二的訂餐群組，成為神助理吧！
+                </p>
+                <div class="row cta-button-block">
+                    <div class="col-md-6 col-md-offset-3 ">
+        <% if !current_user %>
+            <%= link_to("立即建立群組", new_user_registration_path, :class => "btn btn-block btn-success btn-lg") %>
+            <% else %>
+            <%= link_to '立即建立群組', new_team_path, class: 'btn btn-block btn-success btn-lg' %>
+        <% end %>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

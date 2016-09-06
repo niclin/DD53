@@ -1,41 +1,43 @@
-<!-- Header -->
-<a name="about"></a>
-<div class="intro-header">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="intro-message">
-                    <h1>就讓DD53幫您訂訂午餐</h1>
-                    <h3>Don't get any trouble on lunch</h3>
-                    <hr class="intro-divider">
-                    <ul class="list-inline intro-social-buttons">
-
-                    <% if !current_user %>
-                        <li>
-                            <a href="<%= new_user_registration_path %>" class="btn btn-default btn-lg"><i class="fa fa-users fa-fw"></i> <span class="network-name">立即建立你的專屬群組</span></a>
-                        </li>
-                        <% else %>
-                        <%= link_to 'new team', new_team_path %>
-                        <% end %>
-                        或是？
-                        <% if !current_user %>
-                        <li>
-                            <a href="/signin" class="btn btn-default btn-lg"><i class="fa fa-sign-in fa-fw"></i> <span class="network-name">登入群組</span></a>
-                        </li>
-                        <% else %>
-                        <% if current_user.teams.present? %>
-                        <li>
-                            <%= link_to root_url(:subdomain => find_last_team.domain ), class: 'btn btn-default btn-lg' do %>
-                            <i class="fa fa-sign-in fa-fw"></i> <span class="network-name">前往<%= find_last_team.name %></span>
-                            <% end %>
-                        </li>
-                        <% end %>
-                        <% end %>
-                    </ul>
+<div class="hero text-center">
+    <div class="hero-title">
+        <h1>拋棄傳統的方式讓公司訂餐也能變有趣</h1>
+        <p class="sub-slogan">
+            不需要反覆塗改的紙筆紀錄，讓自己成為團體裡的訂餐高手
+        </p>
+        <div class="hero-item-wrapper">
+            <div class="hero-item-group clearfix">
+                <div class="hero-item left">
+                    <div class="course-cost">群組
+                    </div>
+                    自由切換不同群組
+                </div>
+                <div class="hero-item right">
+                    <div class="course-cost">
+                    免費</div>
+                    不需支付任何費用
                 </div>
             </div>
         </div>
     </div>
-    <!-- /.container -->
+
+    <div class="cta-button clearfix">
+        <% if !current_user %>
+            <%= link_to("建立你的專屬群組", new_user_registration_path, :class => "btn btn-block btn-success btn-lg") %>
+            <% else %>
+            <%= link_to '建立你的專屬群組', new_team_path, class: 'btn btn-block btn-success btn-lg' %>
+        <% end %>
+    </div>
 </div>
-<!-- /.intro-header -->
+<div class="container">
+    <%= render :partial => "landing/block_1" %>
+    <%= render :partial => "landing/block_2" %>
+</div>
+<%= render :partial => "landing/block_3" %>
+<div class="container">
+    <%= render :partial => "landing/block_4" %>
+</div>
+<div class="footer" style="margin-top: 50px;">
+    <p class="text-center">Copyright ©2016 NicLin
+    </p>
+</div>
+
