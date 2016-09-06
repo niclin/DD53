@@ -17,9 +17,9 @@
                     <a href="/">首頁</a>
                 </li>
                 <li>
-                <%= link_to '登入', "/signin"%>
-                <% if user_signed_in? %>
-
+                <% if !user_signed_in? %>
+                  <%= link_to '登入', "/signin"%>
+                <% else %>
                     <% if current_user.teams.present? %>
                         <%= link_to root_url(:subdomain => find_last_team.domain ) do %>
                         <i class="fa fa-sign-in fa-fw"></i> <span class="network-name">前往<%= find_last_team.name %></span>
