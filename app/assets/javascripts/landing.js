@@ -12,15 +12,6 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require jquery.sticky.js
-//= require jquery.countdown.js
 //= require bootstrap
-//= require events
-//= require menus
 
 
-window.setTimeout(function() {
-    $(".alert-message").fadeTo(500, 0).slideUp(500, function(){
-        $(this).remove();
-    });
-}, 5000);

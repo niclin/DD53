@@ -1,0 +1,325 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ */
+
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import "font-awesome";
+
+.normal {
+    .navbar {
+        margin-bottom: 0;
+    }
+
+    .navbar-header {
+        height: 95px;
+    }
+
+    .navbar-brand {
+        padding: 0;
+
+        /* firefox bug fix */
+    }
+
+    .navbar-brand > img {
+        padding: 10px;
+
+        /* firefox bug fix */
+        width: auto;
+    }
+
+    .navbar-default {
+        background-color: white;
+        border-color: white;
+    }
+
+    .navbar-brand,
+    .navbar-nav li {
+        a {
+            line-height: 95px;
+            height: 95px;
+            padding-top: 0;
+        }
+    }
+
+    /* Small Devices, Tablets */
+    @media only screen and (max-width: 480px) {
+        .navbar-brand,
+        .navbar-nav li {
+            a {
+                line-height: 45px;
+                height: 45px;
+                padding-top: 0;
+            }
+        }
+    }
+}
+
+.red {
+    color: red;
+}
+
+.underline {
+    text-decoration: underline;
+}
+
+.footer {
+    background-color: #ea5757;
+    height: 50px;
+    padding-top: 15px;
+    color: white;
+}
+
+// Trix Form
+.formatted_content {
+    min-height: 150px;
+    margin-bottom: 15px;
+}
+
+.hero {
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(36, 65, 75, 0.9)), url("//i0.wp.com/img.liz.tw/2015-07-17-225450-4.jpg");
+    display: block;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-position: center top;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    border-style: none;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 0;
+    border-radius: 0;
+    min-height: 500px;
+    position: relative;
+    color: white;
+
+    .cta-button {
+        padding-top: 30px;
+        margin: 0 auto;
+        width: 200px;
+        padding-bottom: 30px;
+    }
+
+    .hero-item-wrapper {
+        width: 100%;
+    }
+
+    .course-cost {
+        font-size: 40px;
+    }
+}
+
+.hero-item-group {
+    width: 500px;
+    margin: 0 auto;
+    padding-top: 30px;
+
+    .left {
+        margin-left: 30px;
+        margin-right: 20px;
+    }
+
+    .right {
+        margin-left: 20px;
+    }
+
+    .hero-item {
+        margin-top: 10px;
+        padding: 20px;
+        float: left;
+        min-width: 170px;
+        border: 1px solid white;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    .hero-item-group {
+        width: 60%;
+
+        .left {
+            margin-left: 20px;
+        }
+
+        .right {
+            margin-left: 20px;
+        }
+    }
+}
+
+.hero-title {
+    padding-top: 40px;
+    padding-left: 30px;
+    padding-right: 30px;
+
+    h1 {
+        font-size: 48px;
+    }
+
+    p {
+        padding-top: 10px;
+        font-size: 18px;
+    }
+}
+
+.course-content-block {
+    margin-top: 30px;
+
+    p {
+        margin-left: 20px;
+    }
+}
+
+.course-benefit {
+    h3 {
+        font-size: 22px;
+        color: #42899d;
+        padding: 10px;
+    }
+
+    p {
+        font-size: 14px;
+    }
+}
+
+h2.underline-title {
+    color: #42899d;
+    border-bottom: 3px solid #42899d;
+    padding-bottom: 10px;
+    width: 80%;
+    margin: auto;
+}
+
+.normal-content p {
+    margin-top: 30px;
+    font-size: 18px;
+}
+
+.ideal-students {
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.syllabus {
+    .content-block {
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    h3 {
+        margin-bottom: 30px;
+    }
+
+    .list {
+        margin-left: 10px;
+    }
+}
+
+.teacher {
+    display: block;
+    background: linear-gradient(rgba(36, 65, 75, 0.9), rgba(36, 65, 75, 0.9)), url("//www.northguan-nsa.gov.tw/Att_FCK/images/ec/%E8%90%AC%E9%87%91-%E7%BE%8E%E9%A3%9F_02.jpg");
+    background-repeat: no-repeat;
+    background-position: center center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    border-style: none;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 0;
+    border-radius: 0;
+    width: 100%;
+    min-height: 480px;
+    position: relative;
+    color: white;
+
+    .left-content {
+        padding-top: 60px;
+    }
+
+    .right-content {
+        height: 480px;
+    }
+
+    @media only screen and (max-width: 480px) {
+        .right-content {
+            height: 280px;
+        }
+    }
+
+    .content-block {
+        h4 {
+            padding: 10px;
+        }
+    }
+
+    .cta-form {
+        background-color: #24414B;
+
+        h2 {
+            padding-top: 30px;
+            padding-left: 40px;
+            font-size: 22px;
+        }
+
+        p {
+            padding: 20px;
+        }
+    }
+
+    .cta-button-block {
+        margin-top: 200px;
+    }
+
+    @media only screen and (max-width: 480px) {
+        .cta-button-block {
+            margin-top: 50px;
+        }
+    }
+
+    a,
+    a:hover {
+        color: white;
+    }
+}
+
+.about-program {
+    padding-top: 20px;
+}
+
+.course-faq {
+    h2 {
+        padding: 10px 0;
+    }
+
+    .faq-block {
+        padding: 10px 0 0;
+
+        h3 {
+            margin-bottom: 15px;
+        }
+
+        p {
+            font-size: 16px;
+        }
+    }
+
+    margin-bottom: 80px;
+}
+
+.course-result {
+    padding-top: 30px;
+    padding-bottom: 30px;
+}

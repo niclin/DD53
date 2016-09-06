@@ -2,21 +2,26 @@
 <html>
   <head>
     <title>DD53</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Allura">
+    <link href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+
     <%= favicon_link_tag ('logos/mario.ico') %>
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= stylesheet_link_tag    'landing', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'landing', 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
   </head>
-  <body class="DD53-home">
-    <%= render "common/landing_page_navbar" %>
+  <body class="normal">
+    <%= render 'landing/navbar'%>
     <div class="container">
       <div id='notice'>
         <%= render :partial => 'layouts/flash' , :locals => { :flash => flash } %>
       </div>
     </div>
-        <%= yield %>
-    <%= render "common/landing_footer" %>
+    <%= yield %>
   </body>
 </html>
