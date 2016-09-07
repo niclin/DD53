@@ -4,10 +4,11 @@ module FindTeam
   protected
   def find_this_team
     @team = current_user.teams.find_by_domain(request.host.split('.').first)
-    #不是群組的人請你滾回自己的群組
+
     if @team.blank? and !current_user.teams.empty?
-      redirect_to signout_path(:subdomain => false)
-      flash[:warning] = "登入錯誤的群組"
+      @team = current_user.teams.last
+      redirect_to root_path(:subdomain => @team.domain)
+      flash[:warning] = "登入錯誤的群組，自動導向至正確頁面。"
     end
   end
 end
