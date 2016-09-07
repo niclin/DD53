@@ -7,8 +7,8 @@ module FindTeam
 
     if @team.blank? and !current_user.teams.empty?
       @team = current_user.teams.last
-      redirect_to root_path(:subdomain => @team.domain)
-      flash[:warning] = "登入錯誤的群組，自動導向至正確頁面。"
+      redirect_to root_url(:subdomain => @team.domain)
+      flash[:warning] = "您登入到錯誤的群組，已自動導向原有群組。"
     end
   end
 end
