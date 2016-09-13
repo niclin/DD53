@@ -30,7 +30,13 @@ class Menu < ActiveRecord::Base
     holidays =[]
     self.official_holidays.each do|holiday|
       o = OfficialHolidayOption.find_by(datename: holiday.official_holiday_option_id)
-      holidays << o.datename
+      if o.blank?
+        holidays << 0
+      else
+        holidays << o.datename
+      end
+
+
     end
     holidays.include?(today)
   end
