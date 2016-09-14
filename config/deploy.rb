@@ -9,7 +9,8 @@ set :deploy_to, '/var/www/rails'
 set :keep_releases, 5
 set :linked_files, fetch(:linked_files, []).push('config/database.yml', 'config/secrets.yml', 'config/initializers/carrier_wave.rb', 'config/email.yml')
 set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system')
-role :web, %w{deploy@192.168.10.246}
+role :web, %w{deploy@54.238.210.112}
+set :default_env, { rvm_bin_path: '~/.rvm/bin' }
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 
