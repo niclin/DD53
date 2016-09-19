@@ -1,31 +1,30 @@
 <div class="row">
   <div class="col-sm-8 col-sm-offset-4">
-    <h2>Sign up</h2>
-
     <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name   )) do |f| %>
-      <%= f.error_notification %>
-
-
-      <div class="row">
-        <div class="form-inputs col-sm-5">
-
-          <%= f.input :email, required: true, autofocus: true, :class => "" %>
-          <%= f.input :name %>
-
-
-            <%= f.fields_for :teams do |team| %>
-               <%= team.input :name, :label => "Team Name" %>
-               <%= team.input :domain, :label => "Team Domain" %>
-
-
-          <% end %>
+    <%= f.error_notification %>
+    <div class="row">
+      <div class="form-inputs col-sm-5">
+        <div class="box box-solid">
+                <div class="box-header with-border">
+          <h3 class="box-title">註冊群組</h3>
         </div>
-
+          <div class="box-body">
+            <%= f.input :email, :label => "電子信箱", required: true, placeholder: '您的電子信箱', autofocus: true, :class => "" %>
+            <%= f.input :name, :label => "暱稱", required: true, placeholder: '您的帳號暱稱' %>
+            <%= f.fields_for :teams do |team| %>
+            <%= team.input :name, :label => "群組名稱", placeholder: '輸入群組名稱' %>
+            <%= team.input :domain, :label => "群組網址", placeholder: '輸入自定義團隊域名' %>
+            <% end %>
+          </div>
+          <div class="box-footer text-center">
+                <div class="form-actions">
+      <%= f.button :submit, "創建群組", class: 'btn btn-primary' %>
+    </div>
+          </div>
+        </div>
       </div>
+    </div>
 
-      <div class="form-actions">
-        <%= f.button :submit, "Sign up" %>
-      </div>
     <% end %>
   </div>
 </div>
