@@ -1,10 +1,10 @@
 development:
   adapter: mysql2
   encoding: utf8
-  database: ilunch
+  database: dd53
   pool: 25
   host: 127.0.0.1
   encoding: utf8
-  username: root
-  password: ceo810226
+  username: yourusername
+  password: yourpassword
   port: 3306
