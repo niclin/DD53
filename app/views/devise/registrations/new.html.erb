@@ -5,9 +5,9 @@
     <div class="row">
       <div class="form-inputs col-sm-5">
         <div class="box box-solid">
-                <div class="box-header with-border">
-          <h3 class="box-title">註冊群組</h3>
-        </div>
+          <div class="box-header with-border">
+            <h3 class="box-title">註冊群組</h3>
+          </div>
           <div class="box-body">
             <%= f.input :email, :label => "電子信箱", required: true, placeholder: '您的電子信箱', autofocus: true, :class => "" %>
             <%= f.input :name, :label => "暱稱", required: true, placeholder: '您的帳號暱稱' %>
@@ -17,14 +17,13 @@
             <% end %>
           </div>
           <div class="box-footer text-center">
-                <div class="form-actions">
-      <%= f.button :submit, "創建群組", class: 'btn btn-primary' %>
-    </div>
+            <div class="form-actions">
+              <%= f.button :submit, "創建群組", class: 'btn btn-primary' %>
+            </div>
           </div>
         </div>
       </div>
     </div>
-
     <% end %>
   </div>
 </div>

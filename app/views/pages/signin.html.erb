@@ -1,19 +1,22 @@
-
 <div class="row">
-  <div class="col-sm-8 col-sm-offset-4">
-
-<h2> Singin </h2>
-
-<%= form_tag switch_domain_path  do %>
-
-  <%= text_field_tag :domain %>.dd53.tw
-
-  <div class="form-actions" style="padding-top:10px;">
-    <%= button_tag :type => "submit", :class => " btn btn-default btn-primary"  do %>
-        Continue <i class="fa fa-long-arrow-right" %> </i>
-    <% end %>
+  <div class="col-sm-6 col-centered">
+    <div class="box box-solid text-center">
+      <div class="box-header with-border">
+        <h3 class="box-title">登入群組</h3>
+      </div>
+      <div class="box-body">
+        <p class="large_bottom_margin">輸入你的群組網址進行登入</p>
+        <%= form_tag switch_domain_path  do %>
+        <%= text_field_tag :domain, "", class: 'align_right domain-input', placeholder: 'teamdomain' %>.dd53.tw
+        <div class="form-actions" style="padding-top:10px;">
+          <p class="large_bottom_margin">
+            <%= button_tag :type => "submit", :class => "btn btn-info", style: 'width: 260px'  do %>
+            登入 <i class="fa fa-long-arrow-right" %> </i>
+            <% end %>
+          </div>
+          <% end %>
+        </p>
+      </div>
+    </div>
   </div>
-<% end %>
-
-
 </div>
