@@ -1,7 +1,20 @@
-<%= simple_form_for @team do |f| %>
-  <div class="form-group">
-    <%= f.input :name, input_html: { class: "form-control"} %>
-    <%= f.input :domain, input_html: { class: "form-control"} %>
+<div class="row">
+  <div class="col-md-6 col-centered">
+    <div class="box box-solid">
+    <div class="box-header with-border">
+      <h3 class="box-title">
+        群組建立
+      </h3>
+    </div>
+      <div class="box-body">
+        <%= simple_form_for @team do |f| %>
+        <div class="form-group">
+          <%= f.input :name, label:'群組名稱' , input_html: { class: "form-control"} %>
+          <%= f.input :domain, label: '群組專屬網域', input_html: { class: "form-control"} %>
+        </div>
+        <%= f.submit "立即建立", class: "btn btn-primary", data: { disable_with: "Submitting..." } %>
+        <% end %>
+      </div>
+    </div>
   </div>
-  <%= f.submit "Submit", class: "btn btn-primary", data: { disable_with: "Submitting..." } %>
-<% end %>
+</div>
