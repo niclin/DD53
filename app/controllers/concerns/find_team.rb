@@ -3,7 +3,7 @@ module FindTeam
 
   protected
   def find_this_team
-    @team = current_user.teams.find_by_domain(request.host.split('.').first)
+    @team = current_user.teams.find_by_domain(request.subdomain)
 
     if @team.blank? and !current_user.teams.empty?
       @team = current_user.teams.last
