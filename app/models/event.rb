@@ -8,6 +8,10 @@ class Event < ActiveRecord::Base
   has_many :members, through: :event_users, source: :user
   has_many :orders
 
+  scope :are_ready_to_inactive, -> {
+      where(status: true).where('due_date <= ?', Time.zone.now)
+    }
+
   extend FriendlyId
   friendly_id :slug_candidates, use: :slugged
 
