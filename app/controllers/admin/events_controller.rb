@@ -1,5 +1,9 @@
 class Admin::EventsController < ApplicationController
   require 'slack-notifier'
+
+  before_action :authenticate_user!
+  before_action :admin_required
+
   layout "admin"
 
   def index
