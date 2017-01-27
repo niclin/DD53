@@ -28,19 +28,13 @@ class Admin::EventsController < ApplicationController
 
     @user = current_user.id
     @date = DateTime.now
-    if request.post?
-      if !@menu.day_off?
-        @event = Event.create(menu_id: @menu.id, user_id: @user, date: @date, menu_name: @menu.title, team_id: current_team.id, due_date: Time.zone.now + 120.minutes)
-        @event.status_open
-        redirect_to :back, alert: "已開啟#{@menu.title}的訂餐，快通知大家吧！"
-        if Rails.env.production?
-          notifier = Slack::Notifier.new "https://hooks.slack.com/services/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"
-          notifier.ping "<a href='http://#{request.subdomain}.dd53.tw/'>由「#{current_user.name}」開啟了訂餐任務，今天吃「#{@menu.title}」吧，要記得點餐唷！</a> :heart:"
-        end
-      else
-        flash[:warning] = "靠悲今天公休"
-        redirect_to :back
-      end
+    if request.post? && !@menu.day_off?
+      @event = Event.create(menu_id: @menu.id, user_id: @user, date: @date, menu_name: @menu.title, team_id: current_team.id, due_date: Time.zone.now + 120.minutes)
+      @event.status_open
+      redirect_to :back, alert: "已開啟#{@menu.title}的訂餐，快通知大家吧！"
+    else
+      flash[:warning] = "靠悲今天公休"
+      redirect_to :back
     end
   end
 
