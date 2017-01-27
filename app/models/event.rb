@@ -26,9 +26,8 @@ class Event < ActiveRecord::Base
   end
 
   def now_progress
-    team_users = self.team.users.pluck(:user_id)
     order_users = self.orders.pluck(:user_id)
-    (order_users.count.to_f / team_users.count.to_f) * 100
+    (order_users.count.to_f / members.count.to_f) * 100
   end
 
   def normalize_friendly_id(input)
