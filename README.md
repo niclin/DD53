@@ -5,6 +5,10 @@ In my company . I don`t wanna get any trobule on my lunch.
 So, I want to build this repo and try to improve fucking mistake order.
 
 
+![DD53_logo](logo.png)
+
+Icon design by [Doris Lin](https://dorislin.me/)
+
 ## Contributing
 
 1. Fork it
